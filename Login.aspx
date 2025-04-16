@@ -8,7 +8,7 @@
     <title>Connexion</title>
     <style>
         body {
-            background: url('COUCOU.png') no-repeat center center fixed;
+            background: url('LOGIN.png') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             height: 100vh;
