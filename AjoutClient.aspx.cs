@@ -1,5 +1,6 @@
 ﻿using PROJETFIN1.DataSetProspectTableAdapters;
 using System;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -16,9 +17,10 @@ namespace PROJETFIN1
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string nom = Nom.Value.Trim();
-
-            decimal capital = 0;
+            //string nom = Nom.Value.Trim();
+            var nom = TBNom.Text.Trim();
+            decimal CAPITAL = Convert.ToDecimal(TBCapital.Text.Trim());
+           
             string formeJuridique = DropDownList6.SelectedValue;
             string secteur = DDLSecteur.SelectedValue;
             string sousSecteur = DDLSSecteur.SelectedValue;
@@ -28,50 +30,56 @@ namespace PROJETFIN1
             string commune = DDLCommune.SelectedValue;
             string codePostal = DropDownList5.SelectedValue;
             string dirigeant = Request.Form["Dirigeant"]?.Trim();
-            string besoins = Request.Form["Besoins"]?.Trim();
+            string besoins = TBBesoins.Text.Trim();
             string typeRencontre = TypeRencontreDDL.SelectedValue;
             string interdit = RadioButtonList2?.SelectedValue ?? "";
             string blacklist = RadioButtonList1.SelectedValue ?? "";
-            string adresse = $"{commune}, {wilaya}, {codePostal}";
+            string numTel = TBNumTel.Text.Trim();
+            string email = TBEMAIL.Text.Trim();
+            string adresse = TBAdresse.Text.Trim();// TBNumTel est ton TextBox pour le numéro
 
-            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(formeJuridique) ||
-                string.IsNullOrEmpty(secteur) || string.IsNullOrEmpty(sousSecteur) || string.IsNullOrEmpty(dirigeant) ||
-                string.IsNullOrEmpty(nbEmployes) || string.IsNullOrEmpty(adresse) || string.IsNullOrEmpty(besoins) ||
-                string.IsNullOrEmpty(typeRencontre) || string.IsNullOrEmpty(canal) || string.IsNullOrEmpty(interdit) ||
-                string.IsNullOrEmpty(blacklist))
+            int rowsInserted = 0;
+
+
+            bool AuMoinsUnNull = new[] { nom, formeJuridique, secteur, sousSecteur, dirigeant, nbEmployes, wilaya, commune, codePostal, canal, interdit, blacklist,email,adresse }.Any(string.IsNullOrEmpty);
+            if (true)// (!AuMoinsUnNull)
+            {
+                int ifExists = (int)tPROSPECTS_.IfExists(nom.ToUpper()).Value;
+
+                if (ifExists == 0)
+                {
+                    rowsInserted = tPROSPECTS_.InsertClient(
+           nom,
+           secteur,
+           sousSecteur,
+           besoins,
+           nbEmployes, // <- ici on met l'entier converti
+           typeRencontre,
+           canal,
+           blacklist,
+           interdit,
+           DateTime.Now,
+           CAPITAL,
+           formeJuridique,
+           numTel,
+           email,
+           adresse// commentaire
+            // numtel
+       );
+                }
+                else
+                {
+
+                    ShowAlert("Erreur", "Nom Prospect exite déjà.", "error");
+                    return;
+                }
+
+            }
+            else
             {
                 ShowAlert("Erreur", "Veuillez remplir tous les champs.", "error");
                 return;
             }
-
-            var existingProspects = tPROSPECTS_.GetData();
-            foreach (var p in existingProspects)
-            {
-                if (p.NOM.Equals(nom, StringComparison.OrdinalIgnoreCase))
-                {
-                    ShowAlert("Erreur", "Ce client existe déjà dans la base de données.", "error");
-                    return;
-                }
-            }
-
-            int rowsInserted = tPROSPECTS_.InsertClient(
-                1, // ID_PROSPECT simulé ou à adapter si auto-incrément
-                nom,
-                secteur,
-                sousSecteur,
-                besoins,
-                nbEmployes,
-                adresse,
-                typeRencontre,
-                canal,
-                blacklist,
-                interdit,
-                DateTime.Now,
-         
-                formeJuridique,
-                "",
-                "",
-                "");
 
             if (rowsInserted > 0)
             {
@@ -116,6 +124,21 @@ namespace PROJETFIN1
             message = message.Replace("'", "\\'");
             string script = $"Swal.fire(\"{titre}\", \"{message}\", \"{icone}\");";
             ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+        }
+
+        protected void TypeRencontreDDL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBBesoins_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBCapital_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

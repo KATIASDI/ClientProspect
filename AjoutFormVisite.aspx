@@ -244,7 +244,7 @@
         <button id="toggleSidebar" class="toggle-btn">
     <i class="fas fa-bars"></i>
 </button>
-                    <a href="Chargé.aspx"><i class="fas fa-chart-line me-2"></i> Vue d'ensemble</a>
+                    <a href="ChargeAff.aspx"><i class="fas fa-chart-line me-2"></i> Vue d'ensemble</a>
 
         <a href="AjoutClient.aspx"><i class="fas fa-user-plus me-2"></i> Proposer Client</a>
         <a href="GererDossiers.aspx"><i class="fas fa-folder-open me-2"></i> Gérer Dossiers</a>
@@ -326,7 +326,7 @@
                         <button type="button" class="btn-prev" onclick="prevStep(3)">← Retour</button>
                         <button type="submit" runat="server" class="btn-finish" onserverclick="BtnSubmit_Click">Enregistrer</button>
                     </div>
-                    <button type="button" class="btn-back" onclick="flipPage('Chargé.aspx')">Retour a l'acceuil</button>
+                    <button type="button" class="btn-back" onclick="flipPage('ChargeAff.aspx')">Retour a l'acceuil</button>
                 </div>
             </form>
         </div>

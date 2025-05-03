@@ -926,7 +926,7 @@ namespace PROJETFIN1 {
                         string SECTEUR, 
                         string SOUS_SECTEUR, 
                         string BESOINS, 
-                        decimal NBR_EMPLOYES, 
+                        string NBR_EMPLOYES, 
                         string ADRESSE, 
                         string TYPE_RENCONTRE, 
                         string CANAL_ACQUISITION, 
@@ -1018,7 +1018,7 @@ namespace PROJETFIN1 {
                 base.Columns.Add(this.columnSOUS_SECTEUR);
                 this.columnBESOINS = new global::System.Data.DataColumn("BESOINS", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBESOINS);
-                this.columnNBR_EMPLOYES = new global::System.Data.DataColumn("NBR_EMPLOYES", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnNBR_EMPLOYES = new global::System.Data.DataColumn("NBR_EMPLOYES", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNBR_EMPLOYES);
                 this.columnADRESSE = new global::System.Data.DataColumn("ADRESSE", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnADRESSE);
@@ -1428,9 +1428,9 @@ namespace PROJETFIN1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal NBR_EMPLOYES {
+            public string NBR_EMPLOYES {
                 get {
-                    return ((decimal)(this[this.tableCLIENT_PROSPECT.NBR_EMPLOYESColumn]));
+                    return ((string)(this[this.tableCLIENT_PROSPECT.NBR_EMPLOYESColumn]));
                 }
                 set {
                     this[this.tableCLIENT_PROSPECT.NBR_EMPLOYESColumn] = value;
@@ -2545,32 +2545,35 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OracleClient.OracleCommand[2];
+            this._commandCollection = new global::System.Data.OracleClient.OracleCommand[3];
             this._commandCollection[0] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT* FROM CLIENT_PROSPECT";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"INSERT INTO ""CLIENT_PROSPECT"" (""ID_PROSPECT"", ""NOM"", ""SECTEUR"", ""SOUS_SECTEUR"", ""BESOINS"", ""NBR_EMPLOYES"", ""ADRESSE"", ""TYPE_RENCONTRE"", ""CANAL_ACQUISITION"", ""BLACK_LIST"", ""INTERDIT_CHEQUIER"", ""DATE_CREATION"", ""CAPITAL"", ""FORME_JURIDIQUE"", ""COMMENTAIRE"", ""NUMTEL"", ""EMAIL"") VALUES (:ID_PROSPECT, :NOM, :SECTEUR, :SOUS_SECTEUR, :BESOINS, :NBR_EMPLOYES, :ADRESSE, :TYPE_RENCONTRE, :CANAL_ACQUISITION, :BLACK_LIST, :INTERDIT_CHEQUIER, :DATE_CREATION, :CAPITAL, :FORME_JURIDIQUE, :COMMENTAIRE, :NUMTEL, :EMAIL)";
+            this._commandCollection[1].CommandText = "select count(*)from client_prospect\r\nwhere upper(NOM) =upper( :pNOM)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("ID_PROSPECT", global::System.Data.OracleClient.OracleType.Number, 22, global::System.Data.ParameterDirection.Input, "ID_PROSPECT", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NOM", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "NOM", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("SECTEUR", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "SECTEUR", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("SOUS_SECTEUR", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "SOUS_SECTEUR", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("BESOINS", global::System.Data.OracleClient.OracleType.VarChar, 200, global::System.Data.ParameterDirection.Input, "BESOINS", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NBR_EMPLOYES", global::System.Data.OracleClient.OracleType.Number, 22, global::System.Data.ParameterDirection.Input, "NBR_EMPLOYES", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("ADRESSE", global::System.Data.OracleClient.OracleType.VarChar, 40, global::System.Data.ParameterDirection.Input, "ADRESSE", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("TYPE_RENCONTRE", global::System.Data.OracleClient.OracleType.VarChar, 25, global::System.Data.ParameterDirection.Input, "TYPE_RENCONTRE", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("CANAL_ACQUISITION", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "CANAL_ACQUISITION", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("BLACK_LIST", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "BLACK_LIST", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("INTERDIT_CHEQUIER", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "INTERDIT_CHEQUIER", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("DATE_CREATION", global::System.Data.OracleClient.OracleType.DateTime, 7, global::System.Data.ParameterDirection.Input, "DATE_CREATION", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("CAPITAL", global::System.Data.OracleClient.OracleType.Float, 22, global::System.Data.ParameterDirection.Input, "CAPITAL", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("FORME_JURIDIQUE", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "FORME_JURIDIQUE", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("COMMENTAIRE", global::System.Data.OracleClient.OracleType.VarChar, 200, global::System.Data.ParameterDirection.Input, "COMMENTAIRE", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NUMTEL", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "NUMTEL", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("EMAIL", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "EMAIL", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("pNOM", global::System.Data.OracleClient.OracleType.VarChar, 1024, global::System.Data.ParameterDirection.Input, "", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2] = new global::System.Data.OracleClient.OracleCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"INSERT INTO ""CLIENT_PROSPECT"" (""NOM"", ""SECTEUR"", ""SOUS_SECTEUR"", ""BESOINS"", ""NBR_EMPLOYES"", ""TYPE_RENCONTRE"", ""CANAL_ACQUISITION"", ""BLACK_LIST"", ""INTERDIT_CHEQUIER"", ""DATE_CREATION"", ""CAPITAL"", ""FORME_JURIDIQUE"", ""NUMTEL"",""EMAIL"",""ADRESSE"") VALUES (:NOM, :SECTEUR, :SOUS_SECTEUR, :BESOINS, :NBR_EMPLOYES, :TYPE_RENCONTRE, :CANAL_ACQUISITION, :BLACK_LIST, :INTERDIT_CHEQUIER, :DATE_CREATION, :CAPITAL, :FORME_JURIDIQUE, :NUMTEL,:EMAIL,:ADRESSE)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NOM", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "NOM", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("SECTEUR", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "SECTEUR", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("SOUS_SECTEUR", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "SOUS_SECTEUR", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("BESOINS", global::System.Data.OracleClient.OracleType.VarChar, 200, global::System.Data.ParameterDirection.Input, "BESOINS", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NBR_EMPLOYES", global::System.Data.OracleClient.OracleType.VarChar, 50, global::System.Data.ParameterDirection.Input, "NBR_EMPLOYES", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("TYPE_RENCONTRE", global::System.Data.OracleClient.OracleType.VarChar, 25, global::System.Data.ParameterDirection.Input, "TYPE_RENCONTRE", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("CANAL_ACQUISITION", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "CANAL_ACQUISITION", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("BLACK_LIST", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "BLACK_LIST", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("INTERDIT_CHEQUIER", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "INTERDIT_CHEQUIER", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("DATE_CREATION", global::System.Data.OracleClient.OracleType.DateTime, 7, global::System.Data.ParameterDirection.Input, "DATE_CREATION", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("CAPITAL", global::System.Data.OracleClient.OracleType.Float, 22, global::System.Data.ParameterDirection.Input, "CAPITAL", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("FORME_JURIDIQUE", global::System.Data.OracleClient.OracleType.VarChar, 200, global::System.Data.ParameterDirection.Input, "FORME_JURIDIQUE", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NUMTEL", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "NUMTEL", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("EMAIL", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "EMAIL", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("ADRESSE", global::System.Data.OracleClient.OracleType.VarChar, 50, global::System.Data.ParameterDirection.Input, "ADRESSE", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2918,107 +2921,122 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertClient(
-                    decimal ID_PROSPECT, 
-                    string NOM, 
-                    string SECTEUR, 
-                    string SOUS_SECTEUR, 
-                    string BESOINS, 
-                    decimal NBR_EMPLOYES, 
-                    string ADRESSE, 
-                    string TYPE_RENCONTRE, 
-                    string CANAL_ACQUISITION, 
-                    string BLACK_LIST, 
-                    string INTERDIT_CHEQUIER, 
-                    System.DateTime DATE_CREATION, 
-                    decimal CAPITAL, 
-                    string FORME_JURIDIQUE, 
-                    string COMMENTAIRE, 
-                    string NUMTEL, 
-                    string EMAIL) {
+        public virtual global::System.Nullable<decimal> IfExists(string pNOM) {
             global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[1];
-            command.Parameters[0].Value = ((decimal)(ID_PROSPECT));
+            if ((pNOM == null)) {
+                throw new global::System.ArgumentNullException("pNOM");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(pNOM));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<decimal>();
+            }
+            else {
+                return new global::System.Nullable<decimal>(((decimal)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertClient(string NOM, string SECTEUR, string SOUS_SECTEUR, string BESOINS, string NBR_EMPLOYES, string TYPE_RENCONTRE, string CANAL_ACQUISITION, string BLACK_LIST, string INTERDIT_CHEQUIER, System.DateTime DATE_CREATION, decimal CAPITAL, string FORME_JURIDIQUE, string NUMTEL, string EMAIL, string ADRESSE) {
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[2];
             if ((NOM == null)) {
                 throw new global::System.ArgumentNullException("NOM");
             }
             else {
-                command.Parameters[1].Value = ((string)(NOM));
+                command.Parameters[0].Value = ((string)(NOM));
             }
             if ((SECTEUR == null)) {
                 throw new global::System.ArgumentNullException("SECTEUR");
             }
             else {
-                command.Parameters[2].Value = ((string)(SECTEUR));
+                command.Parameters[1].Value = ((string)(SECTEUR));
             }
             if ((SOUS_SECTEUR == null)) {
                 throw new global::System.ArgumentNullException("SOUS_SECTEUR");
             }
             else {
-                command.Parameters[3].Value = ((string)(SOUS_SECTEUR));
+                command.Parameters[2].Value = ((string)(SOUS_SECTEUR));
             }
             if ((BESOINS == null)) {
-                command.Parameters[4].Value = global::System.DBNull.Value;
+                command.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[4].Value = ((string)(BESOINS));
+                command.Parameters[3].Value = ((string)(BESOINS));
             }
-            command.Parameters[5].Value = ((decimal)(NBR_EMPLOYES));
-            if ((ADRESSE == null)) {
-                throw new global::System.ArgumentNullException("ADRESSE");
+            if ((NBR_EMPLOYES == null)) {
+                throw new global::System.ArgumentNullException("NBR_EMPLOYES");
             }
             else {
-                command.Parameters[6].Value = ((string)(ADRESSE));
+                command.Parameters[4].Value = ((string)(NBR_EMPLOYES));
             }
             if ((TYPE_RENCONTRE == null)) {
                 throw new global::System.ArgumentNullException("TYPE_RENCONTRE");
             }
             else {
-                command.Parameters[7].Value = ((string)(TYPE_RENCONTRE));
+                command.Parameters[5].Value = ((string)(TYPE_RENCONTRE));
             }
             if ((CANAL_ACQUISITION == null)) {
                 throw new global::System.ArgumentNullException("CANAL_ACQUISITION");
             }
             else {
-                command.Parameters[8].Value = ((string)(CANAL_ACQUISITION));
+                command.Parameters[6].Value = ((string)(CANAL_ACQUISITION));
             }
             if ((BLACK_LIST == null)) {
                 throw new global::System.ArgumentNullException("BLACK_LIST");
             }
             else {
-                command.Parameters[9].Value = ((string)(BLACK_LIST));
+                command.Parameters[7].Value = ((string)(BLACK_LIST));
             }
             if ((INTERDIT_CHEQUIER == null)) {
                 throw new global::System.ArgumentNullException("INTERDIT_CHEQUIER");
             }
             else {
-                command.Parameters[10].Value = ((string)(INTERDIT_CHEQUIER));
+                command.Parameters[8].Value = ((string)(INTERDIT_CHEQUIER));
             }
-            command.Parameters[11].Value = ((System.DateTime)(DATE_CREATION));
-            command.Parameters[12].Value = ((decimal)(CAPITAL));
+            command.Parameters[9].Value = ((System.DateTime)(DATE_CREATION));
+            command.Parameters[10].Value = ((decimal)(CAPITAL));
             if ((FORME_JURIDIQUE == null)) {
                 throw new global::System.ArgumentNullException("FORME_JURIDIQUE");
             }
             else {
-                command.Parameters[13].Value = ((string)(FORME_JURIDIQUE));
+                command.Parameters[11].Value = ((string)(FORME_JURIDIQUE));
             }
-            if ((COMMENTAIRE == null)) {
+            if ((NUMTEL == null)) {
+                command.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[12].Value = ((string)(NUMTEL));
+            }
+            if ((EMAIL == null)) {
+                command.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[13].Value = ((string)(EMAIL));
+            }
+            if ((ADRESSE == null)) {
                 command.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[14].Value = ((string)(COMMENTAIRE));
-            }
-            if ((NUMTEL == null)) {
-                command.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[15].Value = ((string)(NUMTEL));
-            }
-            if ((EMAIL == null)) {
-                command.Parameters[16].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[16].Value = ((string)(EMAIL));
+                command.Parameters[14].Value = ((string)(ADRESSE));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Ajout Client - Prospect</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -186,9 +187,8 @@
         <button id="toggleSidebar" class="toggle-btn">
             <i class="fas fa-bars"></i>
         </button>
-        <a href="Chargé.aspx"><i class="fas fa-chart-line me-2"></i> Vue d'ensemble</a>
+        <a href="ChargeAff.aspx"><i class="fas fa-chart-line me-2"></i> Dashboard</a>
         <a href="AjoutClient.aspx"><i class="fas fa-user-plus me-2"></i> Proposer Client</a>
-        <a href="GererDossiers.aspx"><i class="fas fa-folder-open me-2"></i> Gérer Dossiers</a>
                 <a href="PlanningVisite.aspx"><i class="fas fa-calendar-check me-2"></i> Consulter Planning Visite</a>
 
         <a href="AjoutFormVisite.aspx"><i class="fas fa-edit me-2"></i> Formulaire Visite</a>
@@ -200,8 +200,8 @@
             <form id="ajoutClientForm" runat="server">
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="Nom">Nom</label>
-            <input type="text" id="Nom" runat="server" placeholder="Entrez le nom du client/prospect" />
+            <label for="Nom">Nom</label>&nbsp;
+            <asp:TextBox ID="TBNom" runat="server" MaxLength="30"></asp:TextBox>
         </div>
         <div class="col-md-6 mb-3">
             <label for="Secteur">Secteur</label>
@@ -255,9 +255,9 @@
     
     <div class="col-md-6 mb-3">
     <label for="DDLWilaya">Wilaya</label>
-    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select" DataSourceID="SqlDataSource2" DataTextField="WILAYA" DataValueField="WILAYA" AutoPostBack="True">
+    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select" DataSourceID="SqlDataSource2" DataTextField="NOMWILAYA" DataValueField="NOMWILAYA" AutoPostBack="True">
     </asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DISTINCT WILAYA FROM ADRESSE  ORDER BY WILAYA"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DISTINCT NOMWILAYA FROM WILAYA ORDER BY NOMWILAYA"></asp:SqlDataSource>
 &nbsp</div>
 
     
@@ -266,20 +266,17 @@
     <label for="DDLCommune">Commune</label>
     <asp:DropDownList ID="DDLCommune" runat="server" CssClass="form-select" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="COMMUNE" DataValueField="COMMUNE">
     </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DISTINCT COMMUNE FROM ADRESSE WHERE WILAYA=:wilaya order by commune">
-                <SelectParameters>
-                    <asp:ControlParameter ControlID="DropDownList2" Name="wilaya" PropertyName="SelectedValue" />
-                </SelectParameters>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DISTINCT COMMUNE FROM ADRESSE order by commune">
             </asp:SqlDataSource>
 </div>
             <div class="col-md-6 mb-3">
      <label for="CodePostal">Code Postal</label>
  <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SqlCodePostal" DataTextField="CODE_POSTAL" DataValueField="CODE_POSTAL">
  </asp:DropDownList>
-    <asp:SqlDataSource ID="SqlCodePostal" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DISTINCT CODE_POSTAL FROM ADRESSE WHERE  COMMUNE =:commune and WILAYA=:wilaya order by CODE_POSTAL">
+    <asp:SqlDataSource ID="SqlCodePostal" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DISTINCT CODE_POSTAL FROM ADRESSE WHERE  COMMUNE =:commune
+order by CODE_POSTAL">
         <SelectParameters>
             <asp:ControlParameter ControlID="DDLCommune" Name="commune" PropertyName="SelectedValue" />
-            <asp:ControlParameter ControlID="DropDownList2" Name="wilaya" PropertyName="SelectedValue" />
         </SelectParameters>
     </asp:SqlDataSource>
 &nbsp;</div>
@@ -288,29 +285,48 @@
        <!-- Capital, Forme Juridique, Dirigeant et Téléphone -->
 <div class="col-md-6 mb-3">
     <label for="Capital">Capital</label>
-    <input type="text" class="form-control" id="Capital" name="Capital" value="10000 DA" />
-</div>
+    <asp:TextBox ID="TBCapital" runat="server" ></asp:TextBox>
+&nbsp;</div>
 <div class="col-md-6 mb-3">
     <label for="FormeJuridique">Forme Juridique</label>
     <asp:SqlDataSource ID="DATASOURCEFORMEJURIDIQUE" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DESCRIPTION FROM NOMENCLATURE  WHERE CODE=3 order by DESCRIPTION "></asp:SqlDataSource>
     <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="DATASOURCEFORMEJURIDIQUE" DataTextField="DESCRIPTION" DataValueField="DESCRIPTION">
     </asp:DropDownList>
 &nbsp;</div>
-<div class="col-md-6 mb-3">
-    <label for="Dirigeant">Principal Dirigeant</label>
-    <input type="text" id="Dirigeant" runat="server" placeholder="Nom du dirigeant" class="form-control" />
+<div class="mb-3">
+    <label class="form-label">Principal Dirigeant</label>
+    <div id="dirigeants-container">
+        <div class="input-group mb-2">
+            <input type="text" name="dirigeant[]" class="form-control" placeholder="Nom du dirigeant">
+            <button type="button" class="btn btn-outline-primary" onclick="ajouterChamp('dirigeants-container', 'dirigeant[]')">+</button>
+        </div>
+    </div>
 </div>
-<div class="col-md-6 mb-3">
-    <label for="TelDirigeant">Numéro de téléphone </label>
-&nbsp;<input type="text" id="TelDirigeant" runat="server" placeholder="Ex : 0550 00 00 00" class="form-control" />
+        <div class="col-md-6 mb-3">
+    <label for="Adresse">Adresse</label>
+    <asp:TextBox ID="TBAdresse" runat="server" ></asp:TextBox>
+&nbsp;</div>
+                <div class="col-md-6 mb-3">
+    <label for="E-mail">E-mail</label>
+    <asp:TextBox ID="TBEMAIL" runat="server" ></asp:TextBox>
 </div>
+
+<!-- Téléphones -->
+<div class="mb-3">
+    <label class="form-label">Numéro de téléphone</label>
+    <div id="telephones-container">
+        <asp:TextBox ID="TBNumTel" runat="server"></asp:TextBox>
+    </div>
+    &nbsp;
+</div>
+
   <div class="row">
     <div class="col-md-6">
         <div class="form-group">
             <label for="RadioButtonList1">Blacklisté</label>
             <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" CssClass="radio-group">
                 <asp:ListItem Text="<span class='icon-oui'>oui</span>" Value="oui" />
-                <asp:ListItem Text="<span class='icon-non'>non</span>" Value="non" />
+                <asp:ListItem Text="<span class='icon-non'>non</span>" Selected="True"  Value="non" />
             </asp:RadioButtonList>
         </div>
     </div>
@@ -320,7 +336,7 @@
             <label for="RadioButtonList2">Interdit de chéquier</label>
             <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal" CssClass="radio-group">
                 <asp:ListItem Text="<span class='icon-oui'>oui</span>" Value="oui" />
-                <asp:ListItem Text="<span class='icon-non'>non</span>" Value="non" />
+                <asp:ListItem Text="<span class='icon-non'>non</span>" Selected="True"  Value="non" />
             </asp:RadioButtonList>
         </div>
     </div>
@@ -332,19 +348,21 @@
         <!-- Besoins à gauche, Type de Rencontre à droite -->
         <div class="col-md-6 mb-3">
             <label for="Besoins">Besoins Exprimés</label>
-            <textarea id="Besoins" runat="server" rows="3" class="form-control" placeholder="Quels sont les besoins du prospect ?"></textarea>
-        </div>
+            <asp:TextBox ID="TBBesoins" runat="server" Height="100px" MaxLength="200" TextMode="MultiLine" OnTextChanged="TBBesoins_TextChanged"></asp:TextBox>
+&nbsp;</div>
         <div class="col-md-6 mb-3">
             <label for="TypeRencontreDDL">Type de Rencontre</label>
-            <asp:DropDownList ID="TypeRencontreDDL" runat="server" CssClass="form-select">
+            <asp:DropDownList ID="TypeRencontreDDL" runat="server" CssClass="form-select" OnSelectedIndexChanged="TypeRencontreDDL_SelectedIndexChanged">
                 <asp:ListItem Text="Présentiel" Value="Présentiel" />
                 <asp:ListItem Text="Distanciel" Value="Distanciel" />
                 <asp:ListItem Text="Événementiel" Value="Événementiel" />
             </asp:DropDownList>
         </div>
 
+       
+
         <!-- Actions -->
-        <div class="col-md-6 mb-3">
+        <div class="col-md-12 mb-3">
             <asp:Button ID="BtnSoumettreDirecteur" runat="server" Text="Soumettre au Directeur d'Agence"
                 CssClass="btn btn-success w-100" OnClick="BtnSoumettreDirecteur_Click" />
         </div>
@@ -357,6 +375,31 @@
 
         </div>
     </div>
+    <script>
+        function ajouterChamp(containerId, name) {
+            const container = document.getElementById(containerId);
+
+            const group = document.createElement('div');
+            group.className = 'input-group mb-2';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = name;
+            input.className = 'form-control';
+            input.placeholder = (name === 'dirigeant[]') ? 'Nom du dirigeant' : 'Numéro de téléphone';
+
+            const bouton = document.createElement('button');
+            bouton.type = 'button';
+            bouton.className = 'btn btn-outline-danger';
+            bouton.textContent = '-';
+            bouton.onclick = () => group.remove();
+
+            group.appendChild(input);
+            group.appendChild(bouton);
+
+            container.appendChild(group);
+        }
+    </script>
 
     <script>
         const toggleBtn = document.getElementById("toggleSidebar");

@@ -15,4 +15,3 @@ namespace PROJETFIN1
 		}
 	}
 }
-Install - Package iTextSharp - Version 5.5.13.3

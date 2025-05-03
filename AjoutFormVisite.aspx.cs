@@ -20,9 +20,13 @@ namespace DashboardFormulaire
             string reputation = txtReputation.Value;
             string solvabilite = txtSolvabilite.Value;
 
-            // Ici tu peux ajouter du code pour enregistrer ces informations dans une base de données
+            // Simuler la récupération d'ID
+            int idProspect = Convert.ToInt32(Request.QueryString["id_prospect"]);
+            int idUser = Convert.ToInt32(Session["user_id"]);
+            DateTime dateVisite = DateTime.Now;
 
-            Response.Write("<script>alert('Compte rendu enregistré avec succès !');</script>");
+            // Affichage de confirmation (exemple)
+            Response.Write("<script>alert('Formulaire soumis avec succès !');</script>");
         }
     }
 }

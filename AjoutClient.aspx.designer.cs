@@ -24,13 +24,13 @@ namespace PROJETFIN1
         protected global::System.Web.UI.HtmlControls.HtmlForm ajoutClientForm;
 
         /// <summary>
-        /// Contrôle Nom.
+        /// Contrôle TBNom.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Nom;
+        protected global::System.Web.UI.WebControls.TextBox TBNom;
 
         /// <summary>
         /// Contrôle DDLSecteur.
@@ -141,6 +141,15 @@ namespace PROJETFIN1
         protected global::System.Web.UI.WebControls.SqlDataSource SqlCodePostal;
 
         /// <summary>
+        /// Contrôle TBCapital.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBCapital;
+
+        /// <summary>
         /// Contrôle DATASOURCEFORMEJURIDIQUE.
         /// </summary>
         /// <remarks>
@@ -159,22 +168,31 @@ namespace PROJETFIN1
         protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
 
         /// <summary>
-        /// Contrôle Dirigeant.
+        /// Contrôle TBAdresse.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Dirigeant;
+        protected global::System.Web.UI.WebControls.TextBox TBAdresse;
 
         /// <summary>
-        /// Contrôle TelDirigeant.
+        /// Contrôle TBEMAIL.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText TelDirigeant;
+        protected global::System.Web.UI.WebControls.TextBox TBEMAIL;
+
+        /// <summary>
+        /// Contrôle TBNumTel.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBNumTel;
 
         /// <summary>
         /// Contrôle RadioButtonList1.
@@ -195,13 +213,13 @@ namespace PROJETFIN1
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
 
         /// <summary>
-        /// Contrôle Besoins.
+        /// Contrôle TBBesoins.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Besoins;
+        protected global::System.Web.UI.WebControls.TextBox TBBesoins;
 
         /// <summary>
         /// Contrôle TypeRencontreDDL.

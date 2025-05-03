@@ -1,4 +1,4 @@
-﻿using DashboardChargeAffaire;
+﻿using static PROJETFIN1.ChargeAff;
 using PROJETFIN1.DataSetProspectTableAdapters;
 using System;
 using System.Configuration;

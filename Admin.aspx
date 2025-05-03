@@ -3,104 +3,106 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head runat="server">
-    <meta charset="UTF-8">
-                            <title>Dashboard Admin</title>
-    
-    <!-- CSS Nifty (ou personnalisé) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-    
-    <!-- SweetAlert -->
+    <meta charset="UTF-8" />
+    <title>Dashboard Admin</title>
+
+    <!-- Bootstrap & Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
+        :root {
+            --primary: #003E7E;
+            --secondary: #007BFF;
+            --accent: #D4E6F1;
+            --background: #F7F9FB;
+            --text-color: #333;
+            --card-bg: #fff;
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f6f9;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text-color);
         }
 
         .sidebar {
-            background-color: #1e3c72;
-            color: white;
-            height: 100vh;
             position: fixed;
+            top: 0;
+            left: 0;
             width: 250px;
-            padding-top: 20px;
+            height: 100vh;
+            background-color: var(--primary);
+            padding: 30px 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            color: white;
+            z-index: 999;
         }
 
         .sidebar img {
-    width: 80%; /* ou 100% si tu veux qu'il remplisse toute la largeur */
-    height: auto;
-    margin: 0 auto 20px auto;
-    display: block;
-    margin-top: 0; /* s'assurer qu'il commence tout en haut */
-    padding-top: 0;
-}
+            max-width: 80%;
+            display: block;
+            margin: 0 auto 30px;
+        }
 
         .sidebar .nav-link {
             color: white;
+            margin: 10px 0;
+            font-size: 16px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
         }
 
         .sidebar .nav-link:hover {
-            background-color: #2a5298;
-            color: #fff;
+            text-decoration: none;
+            transform: translateX(5px);
+            color: var(--accent);
         }
 
         .content {
-            margin-left: 250px;
+            margin-left: 270px;
             padding: 30px;
         }
 
         .card-style {
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .table th {
-            background-color: #1e3c72;
-            color: white;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
         }
 
         .btn-custom {
-            background-color: #2ecc71;
+            background-color: var(--secondary);
             color: white;
             font-weight: bold;
+            border-radius: 10px;
         }
 
         .btn-custom:hover {
-            background-color: #27ae60;
+            background-color: #0056b3;
         }
 
-        .logout {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
+        .profile-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-section img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .table th {
+            background-color: var(--primary);
             color: white;
         }
-
-        iframe {
-            border: none;
-        }
-        .profile-section {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.profile-section img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.profile-section .profile-icon {
-    font-size: 20px;
-    color: #1e3c72;
-    margin-right: 10px;
-}
-
     </style>
 
     <script>
@@ -123,8 +125,8 @@
         }
 
         function flipPage() {
-            document.getElementById('addUserContainer').style.display = 'block';
             document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('addUserContainer').style.display = 'block';
         }
 
         function flipBack() {
@@ -134,57 +136,51 @@
     </script>
 </head>
 <body>
-    <form runat="server">
-        <!-- Sidebar -->
-        <div class="sidebar d-flex flex-column justify-content-between">
-            <div>
-                <img src="Logo.png" alt="Housing Bank Logo" />
-               <nav class="nav flex-column px-3">
-    <a class="nav-link" href="Admin.aspx">🏠 Dashboard</a>
-    <a class="nav-link" href="#" onclick="flipPage(); return false;">➕ Ajouter Utilisateur</a>
-    <!-- Liens supplémentaires -->
-    <a class="nav-link" href="#">👔 Chargé d'affaire</a>
-    <a class="nav-link" href="#">🏢 Direction commerciale</a>
-    <a class="nav-link" href="#">💼 Comité crédit</a>
-    <a class="nav-link" href="#">🏦 Directeur d'agence</a>
-</nav>
-
+    <form id="form1" runat="server">
+        <!-- SIDEBAR -->
+        <div class="sidebar d-flex flex-column align-items-start">
+            <div class="text-center w-100 mb-4">
+                <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid">
             </div>
-            <div class="logout">
-                <a href="Login.aspx" class="text-white text-decoration-none">🔒 Déconnexion</a>
-            </div>
+            <a class="nav-link" href="Dashboard.aspx"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
+            <a class="nav-link" href="Admin.aspx"><i class="bi bi-people-fill me-2"></i>Manage Users</a>
+            <a class="nav-link" href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
+            <a class="nav-link" href="#"><i class="bi bi-shield-lock-fill me-2"></i>Roles & Permissions</a>
+            <a class="nav-link" href="#"><i class="bi bi-folder2-open me-2"></i>View Prospects</a>
+            <a class="nav-link" href="#"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
+            <a class="nav-link" href="#"><i class="bi bi-clock-history me-2"></i>User History</a>
+            <a class="nav-link" href="#"><i class="bi bi-gear-fill me-2"></i>Settings</a>
         </div>
 
-        <!-- Main content -->
+        <!-- MAIN CONTENT -->
         <div class="content">
             <div id="mainContent">
-         
                 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Dashboard Admin</h2>
-    <div class="profile-section">
-        <span class="profile-icon"><i class="bi bi-person-circle"></i></span>
-        <img src="adminpic.png" alt="Admin" />
-        <span class="text-dark">Abdellah Toufik</span>
-    </div>
-</div>
+                    <h2>Dashboard Admin</h2>
+                    <div class="profile-section">
+                        <span class="fw-semibold text-dark">Abdellah Toufik</span>
+                        <img src="adminpic.png" alt="Profil" />
+                    </div>
+                </div>
 
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="card card-style p-3">
-                            👤 Utilisateurs : <asp:Label ID="lblUsers" runat="server" Text="0" />
+                        <div class="card-style">
+                            👤 Utilisateurs :
+                            <asp:Label ID="lblUsers" runat="server" Text="0" CssClass="fw-bold fs-5 ms-2" />
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card card-style p-3">
-                            📩 Notifications : <asp:Label ID="lblMessages" runat="server" Text="0" />
+                        <div class="card-style">
+                            📩 Notifications :
+                            <asp:Label ID="lblMessages" runat="server" Text="0" CssClass="fw-bold fs-5 ms-2" />
                         </div>
                     </div>
                 </div>
 
                 <asp:Button ID="btnAjouter" runat="server" CssClass="btn btn-custom mb-3" Text="➕ Ajouter un utilisateur" OnClientClick="flipPage(); return false;" />
 
-                <!-- GridView Utilisateurs -->
-                <div class="table-responsive card card-style p-3">
+                <div class="table-responsive card-style">
                     <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" OnRowCommand="gvUsers_RowCommand">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" />
@@ -195,22 +191,20 @@
                             <asp:TemplateField HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnEdit" runat="server" CommandName="EditUser" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-sm btn-warning me-2">✏️</asp:LinkButton>
-                                  
-                                <asp:Button ID="btnUpdate" runat="server" CssClass="btn btn-sm btn-danger" title="Mettre à jour"
-            CommandArgument='<%# Eval("ID") %>' Text="Désactiver" OnClick="btnUpdate_Click"
-            OnClientClick="return confirm('Voulez-vous vraiment mettre à jour ce prospect ?');">
-        </asp:Button>
-    </ItemTemplate>
+                                    <asp:Button ID="btnUpdate" runat="server" CssClass="btn btn-sm btn-danger"
+                                        CommandArgument='<%# Eval("ID") %>' Text="Désactiver" OnClick="btnUpdate_Click"
+                                        OnClientClick='<%# "return confirmerSuppression(\"" + Eval("Nom") + "\", \"" + Eval("ID") + "\");" %>' />
+                                </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </div>
             </div>
 
-            <!-- Ajout Utilisateur -->
+            <!-- Formulaire d’ajout utilisateur -->
             <div id="addUserContainer" style="display: none;">
-                <h2>Ajouter un utilisateur</h2>
-                <iframe src="AjoutUser.aspx" width="100%" height="600px"></iframe>
+                <h2 class="mb-3">Ajouter un utilisateur</h2>
+                <iframe src="AjoutUser.aspx" width="100%" height="600px" style="border: none;"></iframe>
                 <button class="btn btn-secondary mt-3" onclick="flipBack(); return false;">⬅ Retour</button>
             </div>
         </div>

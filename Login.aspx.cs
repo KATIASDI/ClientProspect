@@ -45,14 +45,17 @@ namespace YourNamespace
                         {
                             string role = result.ToString();
 
-                            if (role == "ADMINISTRATEUR")
+                            if (role == "Administrateur")
                             {
                                 Response.Redirect("Admin.aspx");
                             }
-                            else
+                            else if(role=="Chargé d'affaire")
                             {
-                                Response.Redirect("Chargé.aspx");
+                                Response.Redirect("ChargeAff.aspx");
                             }
+                            else
+                            { Response.Redirect("DirAgence.aspx"); }
+                                
                         }
                         else
                         {

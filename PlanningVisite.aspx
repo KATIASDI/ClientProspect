@@ -90,7 +90,7 @@
         <button id="toggleSidebar" class="toggle-btn">
             <i class="fas fa-bars"></i>
         </button>
-        <a href="Chargé.aspx"><i class="fas fa-chart-line me-2"></i> Vue d'ensemble</a>
+        <a href="ChargeAff.aspx"><i class="fas fa-chart-line me-2"></i> Vue d'ensemble</a>
         <a href="AjoutClient.aspx"><i class="fas fa-user-plus me-2"></i> Proposer Client</a>
         <a href="PlanningVisite.aspx"><i class="fas fa-calendar-check me-2"></i> Consulter Planning Visite</a>
         <a href="AjoutFormVisite.aspx"><i class="fas fa-edit me-2"></i> Formulaire Visite</a>

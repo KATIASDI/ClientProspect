@@ -3,15 +3,35 @@
   "WorkspaceRootPath": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\chargeaff.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:chargeaff.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\diragence.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:diragence.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\diragence.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:diragence.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\dashboard.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:dashboard.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\admin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\admin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:admin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -22,37 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.aspx",
-              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Login.aspx",
-              "RelativeDocumentMoniker": "Login.aspx",
-              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Login.aspx",
-              "RelativeToolTip": "Login.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-04-16T08:31:07.192Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Admin.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Admin.aspx.cs",
-              "RelativeDocumentMoniker": "Admin.aspx.cs",
-              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Admin.aspx.cs",
-              "RelativeToolTip": "Admin.aspx.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAmwG4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T21:42:49.682Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Admin.aspx",
               "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Admin.aspx",
               "RelativeDocumentMoniker": "Admin.aspx",
@@ -60,7 +54,99 @@
               "RelativeToolTip": "Admin.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-04-16T01:57:26.39Z",
+              "WhenOpened": "2025-04-26T02:16:49.293Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Login.aspx",
+              "RelativeDocumentMoniker": "Login.aspx",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Login.aspx",
+              "RelativeToolTip": "Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-05-02T15:01:47.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Dashboard.aspx",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Dashboard.aspx",
+              "RelativeDocumentMoniker": "Dashboard.aspx",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Dashboard.aspx",
+              "RelativeToolTip": "Dashboard.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-05-02T11:29:41.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DirAgence.aspx",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\DirAgence.aspx",
+              "RelativeDocumentMoniker": "DirAgence.aspx",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\DirAgence.aspx",
+              "RelativeToolTip": "DirAgence.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-04-26T00:52:28.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DirAgence.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\DirAgence.aspx.cs",
+              "RelativeDocumentMoniker": "DirAgence.aspx.cs",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\DirAgence.aspx.cs",
+              "RelativeToolTip": "DirAgence.aspx.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAYwJoAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T01:15:53.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChargeAff.aspx",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\ChargeAff.aspx",
+              "RelativeDocumentMoniker": "ChargeAff.aspx",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\ChargeAff.aspx",
+              "RelativeToolTip": "ChargeAff.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-04-26T18:06:25.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Dashboard.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Dashboard.aspx.cs",
+              "RelativeDocumentMoniker": "Dashboard.aspx.cs",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Dashboard.aspx.cs",
+              "RelativeToolTip": "Dashboard.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T00:10:28.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Admin.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Admin.aspx.cs",
+              "RelativeDocumentMoniker": "Admin.aspx.cs",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Admin.aspx.cs",
+              "RelativeToolTip": "Admin.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:26:56.939Z",
               "EditorCaption": ""
             }
           ]
