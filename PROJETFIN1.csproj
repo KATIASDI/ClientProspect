@@ -115,13 +115,16 @@
     <Content Include="AjoutClient.aspx" />
     <Content Include="AjoutFormVisite.aspx" />
     <Content Include="ChargeAff.aspx" />
+    <Content Include="ComiteCredit.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="DirAgence.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Login2.aspx" />
     <Content Include="PlanningVisite.aspx" />
     <Content Include="Web.config" />
     <Content Include="AjoutUser.aspx" />
     <Content Include="test.aspx" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.aspx.cs">
@@ -152,6 +155,15 @@
     <Compile Include="ChargeAff.aspx.designer.cs">
       <DependentUpon>ChargeAff.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="ComiteCredit.aspx.cs">
+      <DependentUpon>ComiteCredit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComiteCredit.aspx.designer.cs">
+      <DependentUpon>ComiteCredit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -178,6 +190,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login2.aspx.cs">
+      <DependentUpon>Login2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login2.aspx.designer.cs">
+      <DependentUpon>Login2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PlanningVisite.aspx.cs">
       <DependentUpon>PlanningVisite.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -199,6 +218,14 @@
     </Compile>
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web form.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,10 @@
 <head>
     <meta charset="UTF-8" />
     <title>Ajout Client - Prospect</title>
-
+    <!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -176,23 +179,84 @@
     width: 40px;
     margin: 0 auto 20px;
 }
+.sidebar {
+    background: var(--primary); /* Bleu foncé */
+    min-height: 100vh;
+    padding: 1rem;
+    color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 1.2rem;
+    display: block;
+    font-weight: 600;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+.logo-img {
+    max-width: 80%;
+    height: auto;
+    opacity: 0.95;
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar {
+    background-color: #003e7e; /* fond identique au logo pour intégration */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1040;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .col-md-10 {
+        margin-left: 0 !important;
+    }
+}
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo Housing Bank" />
-        </div>
-        <button id="toggleSidebar" class="toggle-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <a href="ChargeAff.aspx"><i class="fas fa-chart-line me-2"></i> Dashboard</a>
-        <a href="AjoutClient.aspx"><i class="fas fa-user-plus me-2"></i> Proposer Client</a>
-                <a href="PlanningVisite.aspx"><i class="fas fa-calendar-check me-2"></i> Consulter Planning Visite</a>
+<!-- Bouton Hamburger -->
+<button class="btn d-md-none" id="toggleSidebar" style="position: absolute; top: 1rem; left: 1rem; z-index: 1050;">
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+</button>
 
-        <a href="AjoutFormVisite.aspx"><i class="fas fa-edit me-2"></i> Formulaire Visite</a>
+<!-- Sidebar -->
+<div class="col-md-2 sidebar d-flex flex-column">
+    <div class="text-center mb-4">
+        <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
     </div>
+    <a href="#.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+    <a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Proposer Client</a>
+    <a href="PlanningVisite.aspx"><i class="bi bi-calendar-week me-2"></i>Consulter Planning Visite</a>
+    <a href="PlanifierVisite.aspx"><i class="bi bi-calendar-plus me-2"></i>Planifier Visite</a>
+    <a href="AjoutFormVisite.aspx"><i class="bi bi-journal-text me-2"></i>Formulaire Visite</a>
+    <a href="Reports.aspx"><i class="bi bi-bar-chart-line-fill me-2"></i>Rapports</a>
+    <a href="UserHistory.aspx"><i class="bi bi-clock-history me-2"></i>Historique Utilisateur</a>
+    <a href="Settings.aspx"><i class="bi bi-gear-fill me-2"></i>Paramètres</a>
+</div>
 
     <div class="main-content">
         <div class="card-form">
@@ -406,6 +470,11 @@ order by CODE_POSTAL">
         const sidebar = document.querySelector(".sidebar");
         toggleBtn.addEventListener("click", () => {
             sidebar.classList.toggle("collapsed");
+        });
+    </script>
+    <script>
+        document.getElementById('toggleSidebar').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('active');
         });
     </script>
 </body>

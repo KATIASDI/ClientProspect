@@ -32,35 +32,44 @@ namespace YourNamespace
                     conn.Open();
 
                     // Vérification de l'utilisateur dans la base de données
-                    string query = "SELECT ROLE_ FROM UTILISATEUR_ WHERE IDENTIFIANT = :Identifiant AND PASSWORD_ = :MotDePasse";
+                    string query = "SELECT ROLE_, STATUS FROM UTILISATEUR_ WHERE IDENTIFIANT = :Identifiant AND PASSWORD_ = :MotDePasse\r\n";
 
                     using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
                         cmd.Parameters.Add(":Identifiant", OracleDbType.Varchar2).Value = username;
                         cmd.Parameters.Add(":MotDePasse", OracleDbType.Varchar2).Value = hashedPassword; // Comparaison avec le mot de passe haché
 
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != null) // L'utilisateur existe
+                        using (OracleDataReader reader = cmd.ExecuteReader())
                         {
-                            string role = result.ToString();
+                            if (reader.Read())
+                            {
+                                string role = reader["ROLE_"].ToString();
+                                int status = Convert.ToInt32(reader["STATUS"]);
 
-                            if (role == "Administrateur")
-                            {
-                                Response.Redirect("Admin.aspx");
-                            }
-                            else if(role=="Chargé d'affaire")
-                            {
-                                Response.Redirect("ChargeAff.aspx");
+                                if (status == 0)
+                                {
+                                    Response.Redirect("Login2.aspx");
+                                }
+                                else
+                                {
+                                    if (role == "Administrateur")
+                                        Response.Redirect("Admin.aspx");
+                                    else if (role == "Chargé d'affaires")
+                                        Response.Redirect("ChargeAff.aspx");
+                                    else if (role == "Directeur d'agence")
+                                        Response.Redirect("DirAgence.aspx");
+                                    else if (role == "Comité crédit")
+                                        Response.Redirect("ComCredit.aspx");
+                                    else
+                                        Response.Redirect("DirComm.aspx");
+                                }
                             }
                             else
-                            { Response.Redirect("DirAgence.aspx"); }
-                                
+                            {
+                                lblMessage.Text = "Identifiant ou mot de passe incorrect.";
+                            }
                         }
-                        else
-                        {
-                            lblMessage.Text = "Identifiant ou mot de passe incorrect.";
-                        }
+
                     }
                 }
                 catch (Exception ex)

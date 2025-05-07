@@ -1872,7 +1872,7 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OracleClient.OracleCommand[5];
+            this._commandCollection = new global::System.Data.OracleClient.OracleCommand[7];
             this._commandCollection[0] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "select * from utilisateur_";
@@ -1886,24 +1886,17 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
             this._commandCollection[1].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("passwordHash", global::System.Data.OracleClient.OracleType.VarChar, 40, global::System.Data.ParameterDirection.Input, "PASSWORD_", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[2] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO \"UTILISATEUR_\" (\"ID_USER\", \"IDENTIFIANT\", \"PASSWORD_\", \"NAME\", \"EMAIL" +
-                "\", \"ROLE_\", \"STATUS\", \"DATE_CREATION\") VALUES (:ID_USER, :IDENTIFIANT, :PASSWORD" +
-                "_, :NAME, :EMAIL, :ROLE_, :STATUS, :DATE_CREATION)";
+            this._commandCollection[2].CommandText = "SELECT ID_USER, PASSWORD_, STATUS\r\nFROM UTILISATEUR_\r\nWHERE IDENTIFIANT = :identi" +
+                "fiant\r\n";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("ID_USER", global::System.Data.OracleClient.OracleType.Number, 22, global::System.Data.ParameterDirection.Input, "ID_USER", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("IDENTIFIANT", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "IDENTIFIANT", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("PASSWORD_", global::System.Data.OracleClient.OracleType.VarChar, 40, global::System.Data.ParameterDirection.Input, "PASSWORD_", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NAME", global::System.Data.OracleClient.OracleType.VarChar, 80, global::System.Data.ParameterDirection.Input, "NAME", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("EMAIL", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "EMAIL", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("ROLE_", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "ROLE_", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("STATUS", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "STATUS", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("DATE_CREATION", global::System.Data.OracleClient.OracleType.DateTime, 7, global::System.Data.ParameterDirection.Input, "DATE_CREATION", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("identifiant", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "IDENTIFIANT", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO \"UTILISATEUR_\" (\"IDENTIFIANT\", \"PASSWORD_\", \"NAME\", \"EMAIL\", \"ROLE_\"," +
-                " \"STATUS\", \"DATE_CREATION\") VALUES (:IDENTIFIANT, :PASSWORD_, :NAME, :EMAIL, :RO" +
-                "LE_, :STATUS, :DATE_CREATION)";
+            this._commandCollection[3].CommandText = "INSERT INTO \"UTILISATEUR_\" (\"ID_USER\", \"IDENTIFIANT\", \"PASSWORD_\", \"NAME\", \"EMAIL" +
+                "\", \"ROLE_\", \"STATUS\", \"DATE_CREATION\") VALUES (:ID_USER, :IDENTIFIANT, :PASSWORD" +
+                "_, :NAME, :EMAIL, :ROLE_, :STATUS, :DATE_CREATION)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("ID_USER", global::System.Data.OracleClient.OracleType.Number, 22, global::System.Data.ParameterDirection.Input, "ID_USER", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("IDENTIFIANT", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "IDENTIFIANT", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("PASSWORD_", global::System.Data.OracleClient.OracleType.VarChar, 40, global::System.Data.ParameterDirection.Input, "PASSWORD_", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NAME", global::System.Data.OracleClient.OracleType.VarChar, 80, global::System.Data.ParameterDirection.Input, "NAME", global::System.Data.DataRowVersion.Current, false, null));
@@ -1913,10 +1906,31 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
             this._commandCollection[3].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("DATE_CREATION", global::System.Data.OracleClient.OracleType.DateTime, 7, global::System.Data.ParameterDirection.Input, "DATE_CREATION", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[4] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "UPDATE UTILISATEUR_\r\nSET          STATUS = :status\r\nWHERE  (IDENTIFIANT = :id)";
+            this._commandCollection[4].CommandText = "INSERT INTO \"UTILISATEUR_\" (\"IDENTIFIANT\", \"PASSWORD_\", \"NAME\", \"EMAIL\", \"ROLE_\"," +
+                " \"STATUS\", \"DATE_CREATION\") VALUES (:IDENTIFIANT, :PASSWORD_, :NAME, :EMAIL, :RO" +
+                "LE_, :STATUS, :DATE_CREATION)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("status", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "STATUS", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("id", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "IDENTIFIANT", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("IDENTIFIANT", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "IDENTIFIANT", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("PASSWORD_", global::System.Data.OracleClient.OracleType.VarChar, 40, global::System.Data.ParameterDirection.Input, "PASSWORD_", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NAME", global::System.Data.OracleClient.OracleType.VarChar, 80, global::System.Data.ParameterDirection.Input, "NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("EMAIL", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "EMAIL", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("ROLE_", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "ROLE_", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("STATUS", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "STATUS", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("DATE_CREATION", global::System.Data.OracleClient.OracleType.DateTime, 7, global::System.Data.ParameterDirection.Input, "DATE_CREATION", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5] = new global::System.Data.OracleClient.OracleCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "UPDATE UTILISATEUR_\r\nSET PASSWORD = :password, STATUS = :status\r\nWHERE ID_USER= :" +
+                "id\r\n";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("password", global::System.Data.OracleClient.OracleType.Blob, 1024, global::System.Data.ParameterDirection.Input, "PASSWORD", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("status", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "STATUS", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("id", global::System.Data.OracleClient.OracleType.Number, 22, global::System.Data.ParameterDirection.Input, "ID_USER", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[6] = new global::System.Data.OracleClient.OracleCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "UPDATE UTILISATEUR_\r\nSET          STATUS = :status\r\nWHERE  (IDENTIFIANT = :id)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("status", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "STATUS", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("id", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "IDENTIFIANT", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1989,6 +2003,25 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
             DataSetProspect.UTILISATEUR_DataTable dataTable = new DataSetProspect.UTILISATEUR_DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int GetUserByIdentifiant(DataSetProspect.UTILISATEUR_DataTable dataTable, string identifiant) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((identifiant == null)) {
+                throw new global::System.ArgumentNullException("identifiant");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(identifiant));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2184,7 +2217,7 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertUser(decimal ID_USER, string IDENTIFIANT, string PASSWORD_, string NAME, string EMAIL, string ROLE_, string STATUS, global::System.Nullable<global::System.DateTime> DATE_CREATION) {
-            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[2];
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[3];
             command.Parameters[0].Value = ((decimal)(ID_USER));
             if ((IDENTIFIANT == null)) {
                 throw new global::System.ArgumentNullException("IDENTIFIANT");
@@ -2250,7 +2283,7 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertUtilisateur(string IDENTIFIANT, string PASSWORD_, string NAME, string EMAIL, string ROLE_, string STATUS, global::System.Nullable<global::System.DateTime> DATE_CREATION) {
-            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[3];
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[4];
             if ((IDENTIFIANT == null)) {
                 throw new global::System.ArgumentNullException("IDENTIFIANT");
             }
@@ -2314,8 +2347,44 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdatePasswordAndStatus(object password, string status, decimal id) {
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[5];
+            if ((password == null)) {
+                throw new global::System.ArgumentNullException("password");
+            }
+            else {
+                command.Parameters[0].Value = ((object)(password));
+            }
+            if ((status == null)) {
+                throw new global::System.ArgumentNullException("status");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(status));
+            }
+            command.Parameters[2].Value = ((decimal)(id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateStatus1(string status, string id) {
-            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[4];
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[6];
             if ((status == null)) {
                 throw new global::System.ArgumentNullException("status");
             }

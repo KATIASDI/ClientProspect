@@ -13,7 +13,7 @@ namespace PROJETFIN1
     {
         UTILISATEUR_TableAdapter tUTILISATEUR_ =new UTILISATEUR_TableAdapter(); 
 
-        /* private static string connectionString = "Data Source=Katia12:1521/PROSPECT;User Id=KATIA;Password=hbtf2025;";
+        /* private static string connectionString = "Data Source=Katia12:1521/PROSPECT;User Id=KATIAa;Password=hbtf2025;";
         */
         private static string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;    
         protected void Page_Load(object sender, EventArgs e)

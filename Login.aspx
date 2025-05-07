@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head runat="server">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Connexion</title>
@@ -60,7 +62,12 @@
             <h2>Connexion</h2>
             
             <asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Placeholder="Identifiant"></asp:TextBox>
-            <asp:TextBox ID="txtPassword" runat="server" CssClass="textbox" Placeholder="Mot de passe" TextMode="Password"></asp:TextBox>
+<div style="position: relative;">
+    <asp:TextBox ID="txtPassword" runat="server" CssClass="textbox" Placeholder="Mot de passe" TextMode="Password"></asp:TextBox>
+    <span id="togglePassword" style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: #333;">
+        <i class="fa-solid fa-eye" id="eyeIcon"></i>
+    </span>
+</div>
             <asp:TextBox ID="hashedPassword" runat="server" TextMode="SingleLine" Placeholder="HashedPassword" Style="display:none;" />
 
 
@@ -72,5 +79,20 @@
 
         </div>
     </form>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const eyeIcon = document.getElementById("eyeIcon");
+        const passwordField = document.getElementById("<%= txtPassword.ClientID %>");
+        const togglePassword = document.getElementById("togglePassword");
+
+        togglePassword.addEventListener("click", function () {
+            const type = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = type;
+            eyeIcon.classList.toggle("fa-eye");
+            eyeIcon.classList.toggle("fa-eye-slash");
+        });
+    });
+    </script>
+
 </body>
 </html>

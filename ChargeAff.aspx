@@ -1,347 +1,266 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChargeAff.aspx.cs" Inherits="PROJETFIN1.ChargeAff" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="PROJETFIN1.Dashboard" %>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard Chargé d'Affaires</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <title>Housing Bank Dashboard</title>
+
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
     <style>
+        :root {
+            --primary: #00529B; /* Bleu foncé */
+            --secondary: #007BFF; /* Bleu normal */
+            --accent: #D4E6F1; /* Bleu clair */
+            --background: #F7F9FB; /* Gris très clair */
+            --beige: #C6B18D;
+            --text-color: #333333;
+            --card-bg: rgba(255, 255, 255, 0.8);
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f6f9;
+            font-family: 'Poppins', sans-serif;
+            background: var(--background);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-color);
         }
-
         .sidebar {
-            width: 240px;
-            background: linear-gradient(180deg, #4b6cb7, #182848);
+            background: var(--primary);
+            min-height: 100vh;
+            padding: 1rem;
             color: white;
-            position: fixed;
-            height: 100vh;
-            padding: 20px 15px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
-
-        .sidebar img {
-            width: 150px;
-            margin: 0 auto 30px;
-            display: block;
-        }
-
         .sidebar a {
             color: white;
             text-decoration: none;
-            padding: 12px;
+            margin-bottom: 1.2rem;
             display: block;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            transition: background 0.2s ease-in-out;
+            font-weight: 600;
         }
-
         .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: underline;
         }
-
-        .main-content {
-            margin-left: 260px;
-            padding: 30px;
-        }
-
-        .card-metric {
-            border-radius: 15px;
-            color: white;
-            padding: 20px;
-            transition: transform 0.2s ease;
-        }
-
-        .card-metric:hover {
-            transform: scale(1.02);
-        }
-
-        .card-metric h5 {
-            font-weight: 500;
-        }
-
-        .sidebar.collapsed {
-            width: 70px;
-        }
-
-        .sidebar.collapsed a {
-            text-align: center;
-            font-size: 0;
-        }
-
-        .sidebar.collapsed a i {
-            font-size: 18px;
-        }
-
-        .sidebar img {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin: 0;
-            padding: 0;
-            object-fit: cover;
-            border-radius: 0;
-        }
-
-        .sidebar.collapsed img {
-            width: 40px;
-            margin: 0 auto 20px;
-        }
-
-        .main-content {
-            margin-left: 260px;
-            transition: margin-left 0.3s ease;
-        }
-
-        .sidebar.collapsed + .main-content {
-            margin-left: 90px;
-        }
-
-        .chart-placeholder {
-            height: 300px;
-            background: #e6ecf3;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .table th, .table td {
-            vertical-align: middle;
-        }
-
-        .table thead {
-            background-color: #f1f3f5;
-        }
-
-        .progress-bar {
-            border-radius: 12px;
-        }
-
-        .toggle-btn {
-            background: none;
+        .card-custom {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            margin-left: 5px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
         }
-
-        .logout-btn {
-            margin-top: 30px;
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 8px;
+        .small-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            padding: 1rem;
             text-align: center;
-            font-size: 18px;
-            transition: background-color 0.3s;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
         }
+        .small-card:hover {
+            transform: translateY(-5px);
+        }
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        @media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1040;
+    }
 
-        .logout-btn:hover {
-            background-color: #c82333;
-        }
+    .sidebar.active {
+        transform: translateX(0);
+    }
 
-        .logout-btn i {
-            margin-right: 10px;
-        }
+    .col-md-10 {
+        margin-left: 0 !important;
+    }
+}
+        .logo-img {
+    max-width: 80%;
+    height: auto;
+    opacity: 0.95;
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar {
+    background-color: #003e7e; /* fond identique au logo pour intégration */
+}
+
+
 
     </style>
 </head>
+
 <body>
+<div class="container-fluid">
+    <div class="row">
+        
+        <!-- Bouton Hamburger -->
+<button class="btn d-md-none" id="toggleSidebar" style="position: absolute; top: 1rem; left: 1rem; z-index: 1050;">
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+</button>
+                <!-- Sidebar -->
 
-    <div class="sidebar">
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo Housing Bank" />
-        </div>
-        <button id="toggleSidebar" class="toggle-btn">
-            <i class="fas fa-bars"></i>
-        </button>
 
-        <a href="AjoutClient.aspx"><i class="fas fa-user-plus me-2"></i> Proposer Client</a>
-        <a href="PlanningVisite.aspx"><i class="fas fa-calendar-check me-2"></i> Consulter Planning Visite</a>
-        <a href="AjoutFormVisite.aspx"><i class="fas fa-edit me-2"></i> Formulaire Visite</a>
-
-        <!-- Bouton de déconnexion -->
-        <a href="Login.aspx" class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i> Se Déconnecter
-        </a>
+        
+   <div class="col-md-2 sidebar d-flex flex-column">
+    <div class="text-center mb-4">
+        <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
     </div>
+    <a href="#.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+    <a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Proposer Client</a>
+    <a href="PlanningVisite.aspx"><i class="bi bi-calendar-week me-2"></i>Consulter Planning Visite</a>
+    <a href="PlanifierVisite.aspx"><i class="bi bi-calendar-plus me-2"></i>Planifier Visite</a>
+    <a href="AjoutFormVisite.aspx"><i class="bi bi-journal-text me-2"></i>Formulaire Visite</a>
+    <a href="Reports.aspx"><i class="bi bi-bar-chart-line-fill me-2"></i>Rapports</a>
+    <a href="UserHistory.aspx"><i class="bi bi-clock-history me-2"></i>Historique Utilisateur</a>
+    <a href="Settings.aspx"><i class="bi bi-gear-fill me-2"></i>Paramètres</a>
+</div>
 
-    <div class="main-content">
-        <h3 class="mb-4 fw-semibold text-dark">Dashboard Chargé d'affaires</h3>
 
-        <!-- Statistiques -->
-        <div class="row mb-4">
-            <div class="col-md-3">
-                <div class="card-metric bg-primary">
-                    <h5>👤 Clients</h5>
-                    <h3>120</h3>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-metric bg-info">
-                    <h5>📊 Projets</h5>
-                    <h3>45</h3>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-metric" style= "background-color:#8f539a;color: white; ">
-                    <h5>📨 Messages</h5>
-                    <h3>68</h3>
-                </div>
-            </div>
-            <div class="col-md-3">
-<div class="card-metric" style="background-color: #ff00af53; color: white;">
-                    <h5>📋 Dossiers</h5>
-                    <h3>20</h3>
-                </div>
-            </div>
-        </div>
 
-        <div class="row mb-4">
-            <!-- Progression client -->
-            <div class="col-md-6">
-                <div class="card shadow p-3">
-                    <h6 class="text-primary mb-2">Progression du processus client</h6>
-                    <div style="height: 220px;">
-                        <canvas id="progressionChart"></canvas>
+        <!-- Main Content -->
+        <div class="col-md-10 p-4">
+            <div class="row mb-4">
+                <div class="col-md-3 small-card">
+                    <h6>Today's Deposits</h6>
+                    <h4>$120,000 <span class="text-success">+8%</span></h4>
+                </div>
+                <div class="col-md-3 small-card" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">
+                    <h6>New Accounts</h6>
+                    <h4>45 <span class="text-success">+3%</span></h4>
+                </div>
+                <div class="col-md-3 small-card">
+                    <h6>Loan Applications</h6>
+                    <h4>25 <span class="text-warning">~</span></h4>
+                </div>
+                <div class="col-md-3 small-card" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">
+                    <h6>Total Clients</h6>
+                    <h4>3,200 <span class="text-success">+5%</span></h4>
+                </div>
+            </div>
+
+            <!-- Welcome Card -->
+            <div class="card-custom mb-4 text-center">
+                <h2>Welcome back, Chargé d'affaires 👋</h2>
+                <p>Here is the latest overview of the bank's performance.</p>
+            </div>
+
+            <!-- Graphs -->
+            <div class="row">
+                <div class="col-md-8 chart-container">
+                    <h5>Monthly Transactions</h5>
+                    <canvas id="transactionsChart"></canvas>
+                </div>
+                <div class="col-md-4 chart-container">
+                    <h5>Active Loans</h5>
+                    <canvas id="loansChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Clients & Operations -->
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <div class="card-custom">
+                        <h5>Recent Client Activities</h5>
+                        <table class="table table-hover mt-3 rounded bg-light">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Account</th>
+                                    <th>Action</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Ahmed B.</td><td>Savings</td><td>Deposit</td><td>27 Apr 2025</td></tr>
+                                <tr><td>Sara D.</td><td>Current</td><td>Withdrawal</td><td>27 Apr 2025</td></tr>
+                                <tr><td>Mohamed K.</td><td>Loan</td><td>Application</td><td>26 Apr 2025</td></tr>
+                                <tr><td>Lina Z.</td><td>Savings</td><td>Deposit</td><td>26 Apr 2025</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-custom">
+                        <h5>Summary</h5>
+                        <ul class="list-group mt-3">
+                            <li class="list-group-item bg-transparent border-0 text-dark">✔️ 10 New Deposits</li>
+                            <li class="list-group-item bg-transparent border-0 text-dark">📝 5 Loan Applications</li>
+                            <li class="list-group-item bg-transparent border-0 text-dark">📈 Account Growth +5%</li>
+                            <li class="list-group-item bg-transparent border-0 text-dark">🛒 2 New Business Accounts</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- État des prospects -->
-            <div class="col-md-6">
-                <div class="card shadow p-3">
-                    <h6 class="text-primary mb-2">État des prospects</h6>
-                    <div style="height: 220px;">
-                        <canvas id="prospectsPieChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="chart-placeholder">
-            📊 Graphique de progression à intégrer ici (Chart.js / ASP.NET)
-        </div>
-
-        <!-- Tableau de dossiers -->
-        <div class="card shadow p-4">
-            <h5 class="text-primary mb-3">Dossiers en cours</h5>
-            <table class="table table-hover align-middle">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Statut</th>
-                        <th>Progression</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <asp:Repeater ID="rptClients" runat="server">
-                        <ItemTemplate>
-                            <tr>
-                                <td><%# Eval("Nom") %></td>
-                                <td><%# Eval("Statut") %></td>
-                                <td>
-                                    <div class="progress" style="height: 20px;">
-                                        <div class="progress-bar <%# GetProgressBarClass(Convert.ToInt32(Eval("Progression"))) %>" 
-                                             role="progressbar"
-                                             style="width: <%# Eval("Progression") %>%;" 
-                                             aria-valuenow="<%# Eval("Progression") %>" 
-                                             aria-valuemin="0" 
-                                             aria-valuemax="100">
-                                            <%# Eval("Progression") %>% 
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </tbody>
-            </table>
         </div>
     </div>
+</div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const toggleBtn = document.getElementById("toggleSidebar");
-        const sidebar = document.querySelector(".sidebar");
-        const mainContent = document.querySelector(".main-content");
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        toggleBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("collapsed");
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Progression client
-    const ctx = document.getElementById('progressionChart').getContext('2d');
-    const progressionChart = new Chart(ctx, {
-        type: 'bar',
+    var ctx1 = document.getElementById('transactionsChart').getContext('2d');
+    var transactionsChart = new Chart(ctx1, {
+        type: 'line',
         data: {
-            labels: ['Prospection', 'Contact', 'RDV', 'Offre', 'Acceptation'],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
             datasets: [{
-                label: 'Taux (%)',
-                data: [100, 80, 60, 40, 20],
-                backgroundColor: '#4b6cb7',
-                borderRadius: 6
+                label: 'Transactions',
+                data: [300, 400, 350, 500, 450, 480, 530],
+                backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                borderColor: '#00529B',
+                borderWidth: 3,
+                tension: 0.5,
+                fill: true,
             }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
         }
     });
 
-    // Camembert prospects
-    const pieCtx = document.getElementById('prospectsPieChart').getContext('2d');
-    const prospectsPieChart = new Chart(pieCtx, {
-        type: 'doughnut',
+    var ctx2 = document.getElementById('loansChart').getContext('2d');
+    var loansChart = new Chart(ctx2, {
+        type: 'bar',
         data: {
-            labels: ['Clients', 'En cours', 'Rejetés'],
+            labels: ['Home', 'Car', 'Business', 'Personal'],
             datasets: [{
-                data: [45, 30, 25],
-                backgroundColor: ['#198754', '#ffc107', '#dc3545'],
-                borderWidth: 1
+                label: 'Loans',
+                data: [30, 20, 15, 10],
+                backgroundColor: '#007BFF'
             }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        font: {
-                            size: 12
-                        }
-                    }
-                }
-            }
         }
     });
 </script>
+    <script>
+        document.getElementById('toggleSidebar').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>

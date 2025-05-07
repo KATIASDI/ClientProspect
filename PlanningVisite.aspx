@@ -83,18 +83,27 @@
 </head>
 <body>
 
-    <div class="sidebar">
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo Housing Bank" />
-        </div>
-        <button id="toggleSidebar" class="toggle-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <a href="ChargeAff.aspx"><i class="fas fa-chart-line me-2"></i> Vue d'ensemble</a>
-        <a href="AjoutClient.aspx"><i class="fas fa-user-plus me-2"></i> Proposer Client</a>
-        <a href="PlanningVisite.aspx"><i class="fas fa-calendar-check me-2"></i> Consulter Planning Visite</a>
-        <a href="AjoutFormVisite.aspx"><i class="fas fa-edit me-2"></i> Formulaire Visite</a>
+   <!-- Bouton Hamburger -->
+<button class="btn d-md-none" id="toggleSidebar" style="position: absolute; top: 1rem; left: 1rem; z-index: 1050;">
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+    <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+</button>
+
+<!-- Sidebar -->
+<div class="col-md-2 sidebar d-flex flex-column">
+    <div class="text-center mb-4">
+        <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
     </div>
+    <a href="ChargeAff.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+    <a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Proposer Client</a>
+    <a href="PlanningVisite.aspx"><i class="bi bi-calendar-week me-2"></i>Consulter Planning Visite</a>
+    <a href="PlanifierVisite.aspx"><i class="bi bi-calendar-plus me-2"></i>Planifier Visite</a>
+    <a href="AjoutFormVisite.aspx"><i class="bi bi-journal-text me-2"></i>Formulaire Visite</a>
+    <a href="Reports.aspx"><i class="bi bi-bar-chart-line-fill me-2"></i>Rapports</a>
+    <a href="UserHistory.aspx"><i class="bi bi-clock-history me-2"></i>Historique Utilisateur</a>
+    <a href="Settings.aspx"><i class="bi bi-gear-fill me-2"></i>Paramètres</a>
+</div>
 
     <div class="main-content">
         <h3 class="mb-4 fw-semibold text-dark">📅 Planning Visite</h3>
