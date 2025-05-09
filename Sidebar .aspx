@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -113,12 +113,12 @@
 <div class="container-fluid">
     <div class="row">
         
-        <!-- Bouton Hamburger -->
+<%--        <!-- Bouton Hamburger -->
 <button class="btn d-md-none" id="toggleSidebar" style="position: absolute; top: 1rem; left: 1rem; z-index: 1050; color:red;">
     <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
     <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
     <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
-</button>
+</button>--%>
                 <!-- Sidebar -->
 
 
@@ -156,4 +156,3 @@
 
 </body>
 </html>
-.vs/

@@ -35,7 +35,7 @@ namespace PROJETFIN1
                 lblEmailError.Visible = true;
                 return;
             }
-
+            
             // 🔍 Vérifier si l'utilisateur existe déjà
             var existingUsers = tUTILISATEUR_.GetData(); // Récupère tous les utilisateurs
             foreach (var user in existingUsers)
@@ -77,7 +77,9 @@ namespace PROJETFIN1
                 string safeMessage = HttpUtility.JavaScriptStringEncode(message);
                 string script = $"Swal.fire('Erreur', '{safeMessage}', 'error');";
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-            }
+            
+            
+          }
         }
         #endregion
 
@@ -104,6 +106,16 @@ namespace PROJETFIN1
         }
 
         protected void txtNom_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void txtIdentifiant_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlRole_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

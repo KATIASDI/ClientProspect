@@ -121,34 +121,52 @@
                 <div class="col-md-2 sidebar d-flex flex-column">
                     <div class="text-center mb-4">
                         <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img" />
-                    </div>
-                    <a href="Dashboard.aspx"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
-                    <a href="Admin.aspx"><i class="bi bi-people-fill me-2"></i>Manage Users</a>
-                    <a href="#"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
-                    <a href="#"><i class="bi bi-shield-lock-fill me-2"></i>Roles & Permissions</a>
-                    <a href="#"><i class="bi bi-folder2-open me-2"></i>View Prospects</a>
-                    <a href="#"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
-                    <a href="#"><i class="bi bi-clock-history me-2"></i>User History</a>
-                    <a href="#"><i class="bi bi-gear-fill me-2"></i>Settings</a>
-                </div>
+                       </div>
+
+    <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+    <a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
+    <a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
+    <a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
+    <a href="#"><i class="bi bi-clock-history me-2"></i>User History</a>
+    <a href="#"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+    <a href="#"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
+    <a href="#"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+    <a href="#"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
+    <a href="#"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
+    <a href="#"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
+    <a href="#"><i class="bi bi-file-earmark-check me-2"></i>Final Decision</a>
+</div>
 
                 <!-- Main Content -->
                 <div class="col-md-10 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
                     <div class="form-container">
                         <h2>Ajout Utilisateur</h2>
-                        <asp:TextBox ID="txtNom" runat="server" placeholder="Ex: Nom Prénom" CssClass="input-field"></asp:TextBox>
-                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Ex: nom.prenom@mail.com" CssClass="input-field"></asp:TextBox>
-                        <asp:Label ID="lblEmailError" runat="server" CssClass="aspNet-Label" Visible="false"></asp:Label>
-                        <asp:TextBox ID="txtIdentifiant" runat="server" placeholder="Ex: NomPrenom123_" CssClass="input-field"></asp:TextBox>
-                        <asp:DropDownList ID="ddlRole" runat="server" CssClass="dropdown-field">
-                            <asp:ListItem Value="">Sélectionner un rôle</asp:ListItem>
-                            <asp:ListItem Value="ADMINISTRATEUR">Administrateur</asp:ListItem>
-                            <asp:ListItem Value="Chargé d'affaire">Chargé d'affaires</asp:ListItem>
-                            <asp:ListItem Value="Direction d'agence">Directeur d'agence</asp:ListItem>
-                            <asp:ListItem Value="Comité crédit">Comité crédit</asp:ListItem>
-                            <asp:ListItem Value="Direction commercial">Direction commerciale</asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Mot de passe sécurisé..." CssClass="input-field"></asp:TextBox>
+                       <!-- Nom et prénom -->
+<asp:Label runat="server" AssociatedControlID="txtNom" Text="Nom et Prénom :"></asp:Label>
+<asp:TextBox ID="txtNom" runat="server" placeholder="Ex: Nom Prénom" CssClass="input-field"></asp:TextBox>
+
+<!-- Email -->
+<asp:Label runat="server" AssociatedControlID="txtEmail" Text="Email :"></asp:Label>
+<asp:TextBox ID="txtEmail" runat="server" placeholder="Ex: nom.prenom@mail.com" CssClass="input-field"></asp:TextBox>
+<asp:Label ID="lblEmailError" runat="server" CssClass="aspNet-Label" Visible="false"></asp:Label>
+
+
+<!-- Identifiant -->
+<asp:Label runat="server" AssociatedControlID="txtIdentifiant" Text="Identifiant :"></asp:Label>
+<asp:TextBox ID="txtIdentifiant" runat="server" placeholder="Ex: NomPrenom123_" CssClass="input-field"></asp:TextBox>
+
+<!-- Rôle -->
+<asp:Label runat="server" AssociatedControlID="ddlRole" Text="Rôle :"></asp:Label>
+<asp:DropDownList ID="ddlRole" runat="server" CssClass="dropdown-field" AutoPostBack="True" DataSourceID="DataSourceRoles" DataTextField="DESCRIPTION" DataValueField="DESCRIPTION" OnSelectedIndexChanged="ddlRole_SelectedIndexChanged">
+  
+</asp:DropDownList>
+
+                        <asp:SqlDataSource ID="DataSourceRoles" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DESCRIPTION FROM NOMENCLATURE WHERE TYPE_CODE='4'"></asp:SqlDataSource>
+
+<!-- Mot de passe -->
+<asp:Label runat="server"  Text="Mot de passe :"></asp:Label>
+<asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Mot de passe sécurisé..." CssClass="input-field"></asp:TextBox>
+
                         <asp:Button ID="btnEnregistrer" runat="server" Text="Enregistrer" OnClick="btnEnregistrer_Click" CssClass="btn-submit" />
                     </div>
                 </div>

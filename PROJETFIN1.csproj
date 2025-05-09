@@ -121,6 +121,9 @@
     <Content Include="Login.aspx" />
     <Content Include="Login2.aspx" />
     <Content Include="PlanningVisite.aspx" />
+    <Content Include="RolesetPermissions.aspx" />
+    <Content Include="Settings.aspx" />
+    <Content Include="Sidebar .aspx" />
     <Content Include="Web.config" />
     <Content Include="AjoutUser.aspx" />
     <Content Include="test.aspx" />
@@ -163,7 +166,6 @@
     <Compile Include="ComiteCredit.aspx.designer.cs">
       <DependentUpon>ComiteCredit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Utils.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,6 +214,27 @@
     <Compile Include="AjoutUser.aspx.designer.cs">
       <DependentUpon>AjoutUser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RolesetPermissions.aspx.cs">
+      <DependentUpon>RolesetPermissions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RolesetPermissions.aspx.designer.cs">
+      <DependentUpon>RolesetPermissions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sidebar .aspx.cs">
+      <DependentUpon>Sidebar .aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sidebar .aspx.designer.cs">
+      <DependentUpon>Sidebar .aspx</DependentUpon>
+    </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,7 +242,6 @@
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="web form.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

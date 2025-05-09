@@ -10,106 +10,262 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+     <!-- Bootstrap 5 -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         :root {
-            --primary: #003E7E;
-            --secondary: #007BFF;
-            --accent: #D4E6F1;
-            --background: #F7F9FB;
-            --text-color: #333;
-            --card-bg: #fff;
+            --primary: #1F2937;
+            --secondary: #2563EB;
+            --bg-light: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --text-color: #111827;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--background);
+            background-color: var(--bg-light);
             color: var(--text-color);
         }
 
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100vh;
-            background-color: var(--primary);
-            padding: 30px 20px;
-            border-top-right-radius: 20px;
-            border-bottom-right-radius: 20px;
-            color: white;
-            z-index: 999;
-        }
-
-        .sidebar img {
-            max-width: 80%;
-            display: block;
-            margin: 0 auto 30px;
-        }
-
-        .sidebar .nav-link {
-            color: white;
-            margin: 10px 0;
-            font-size: 16px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            transition: all 0.2s ease;
-        }
-
-        .sidebar .nav-link:hover {
-            text-decoration: none;
-            transform: translateX(5px);
-            color: var(--accent);
-        }
-
         .content {
-            margin-left: 270px;
-            padding: 30px;
+            margin: 30px auto;
+            max-width: 1100px;
+            padding: 20px;
+        }
+
+        .title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
         }
 
         .card-style {
             background: var(--card-bg);
             border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            padding: 2rem;
         }
 
         .btn-custom {
             background-color: var(--secondary);
             color: white;
-            font-weight: bold;
-            border-radius: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            padding: 8px 16px;
         }
 
         .btn-custom:hover {
-            background-color: #0056b3;
+            background-color: #1D4ED8;
         }
 
-        .profile-section {
-            display: flex;
-            align-items: center;
+        .table {
+            border-collapse: collapse;
+            width: 100%;
         }
 
-        .profile-section img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: 10px;
-        }
-
-        .table th {
+        .table thead th {
             background-color: var(--primary);
             color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            border-bottom: 1px solid #e5e7eb;
         }
+
+        .table thead th:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        .table thead th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        .table tbody td {
+            background-color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 13px;
+            padding: 10px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f3f4f6;
+            transition: background 0.3s ease;
+        }
+
+        .action-buttons .btn {
+            font-size: 0.75rem;
+            padding: 6px 10px;
+        }
+
+        .action-buttons i {
+            font-size: 14px;
+        }
+
+        /* Modern toggle switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 42px;
+            height: 22px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 22px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        .toggle-switch input:checked + .slider {
+            background-color: var(--secondary);
+        }
+
+        .toggle-switch input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 600px;
+            border-radius: 12px;
+        }
+        :root {
+            --primary: #00529B; /* Bleu foncé */
+            --secondary: #007BFF; /* Bleu normal */
+            --accent: #D4E6F1; /* Bleu clair */
+            --background: #F7F9FB; /* Gris très clair */
+            --beige: #C6B18D;
+            --text-color: #333333;
+            --card-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-color);
+        }
+        .sidebar {
+            background: var(--primary);
+            min-height: 100vh;
+            padding: 1rem;
+            color: white;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 1.2rem;
+            display: block;
+            font-weight: 600;
+        }
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        .card-custom {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+        }
+        .small-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+        .small-card:hover {
+            transform: translateY(-5px);
+        }
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        @media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1040;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .col-md-10 {
+        margin-left: 0 !important;
+    }
+}
+        .logo-img {
+    max-width: 80%;
+    height: auto;
+    opacity: 0.95;
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar {
+    background-color: #003e7e; /* fond identique au logo pour intégration */
+}
+
+
+
+    
     </style>
 
     <script>
-        function confirmerSuppression(nom, userId) {
+       
+            document.getElementById('toggleSidebar').addEventListener('click', function () {
+                document.querySelector('.sidebar').classList.toggle('active');
+      });
+  
+        function confirmerDesactivation(nom, userId) {
             Swal.fire({
                 title: "Désactiver l'utilisateur ?",
-                text: "Êtes-vous sûr de vouloir désactiver le compte de " + nom + " ?",
+                text: "Souhaitez-vous désactiver le compte de " + nom + " ?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
@@ -136,64 +292,65 @@
     </script>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <!-- SIDEBAR -->
-        <div class="sidebar d-flex flex-column align-items-start">
-            <div class="text-center w-100 mb-4">
-                <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid">
-            </div>
-            <a class="nav-link" href="Dashboard.aspx"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
-            <a class="nav-link" href="Admin.aspx"><i class="bi bi-people-fill me-2"></i>Manage Users</a>
-            <a class="nav-link" href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
-            <a class="nav-link" href="#"><i class="bi bi-shield-lock-fill me-2"></i>Roles & Permissions</a>
-            <a class="nav-link" href="#"><i class="bi bi-folder2-open me-2"></i>View Prospects</a>
-            <a class="nav-link" href="#"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
-            <a class="nav-link" href="#"><i class="bi bi-clock-history me-2"></i>User History</a>
-            <a class="nav-link" href="#"><i class="bi bi-gear-fill me-2"></i>Settings</a>
-        </div>
+   <form id="form1" runat="server">
+    <div class="container-fluid">
+        <div class="row">
 
-        <!-- MAIN CONTENT -->
-        <div class="content">
-            <div id="mainContent">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2>Dashboard Admin</h2>
-                    <div class="profile-section">
-                        <span class="fw-semibold text-dark">Abdellah Toufik</span>
-                        <img src="adminpic.png" alt="Profil" />
-                    </div>
+            <!-- Bouton Hamburger pour mobile -->
+            <button class="btn d-md-none" id="toggleSidebar" style="position: absolute; top: 1rem; left: 1rem; z-index: 1050; color:red;">
+                <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+                <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+                <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
+            </button>
+
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar d-flex flex-column">
+                <div class="text-center mb-4">
+                    <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img" />
+                   </div>
+    <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+<a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
+<a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
+<a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
+<a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
+<a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+<a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
+<a href="ChargeAff.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+<a href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
+<a href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
+<a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
+<a href="Decision.aspx"><i class="bi bi-file-earmark-check me-2"></i> Final Decision</a>
+
+
+
+</div>
+
+            <!-- Contenu principal -->
+            <div class="col-md-10 content">
+                <div class="title-bar d-flex justify-content-between align-items-center my-4 px-3">
+                    <h3>👤 Gestion des Utilisateurs</h3>
                 </div>
 
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="card-style">
-                            👤 Utilisateurs :
-                            <asp:Label ID="lblUsers" runat="server" Text="0" CssClass="fw-bold fs-5 ms-2" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-style">
-                            📩 Notifications :
-                            <asp:Label ID="lblMessages" runat="server" Text="0" CssClass="fw-bold fs-5 ms-2" />
-                        </div>
-                    </div>
-                </div>
-
-                <asp:Button ID="btnAjouter" runat="server" CssClass="btn btn-custom mb-3" Text="➕ Ajouter un utilisateur" OnClientClick="flipPage(); return false;" />
-
-                <div class="table-responsive card-style">
-                    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" OnRowCommand="gvUsers_RowCommand">
+                <div class="card-style px-3">
+                    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-striped" OnRowCommand="gvUsers_RowCommand">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" />
                             <asp:BoundField DataField="Nom" HeaderText="Nom" />
                             <asp:BoundField DataField="ROLE" HeaderText="Rôle" />
                             <asp:BoundField DataField="DateAjout" HeaderText="Date d'ajout" />
                             <asp:BoundField DataField="Email" HeaderText="Email" />
+
                             <asp:TemplateField HeaderText="Actions">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnEdit" runat="server" CommandName="EditUser" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-sm btn-warning me-2">✏️</asp:LinkButton>
-                                    <asp:Button ID="btnUpdate" runat="server" CssClass="btn btn-sm btn-danger"
-                                        CommandArgument='<%# Eval("ID") %>' Text="Désactiver" OnClick="btnUpdate_Click"
-                                        OnClientClick='<%# "return confirmerSuppression(\"" + Eval("Nom") + "\", \"" + Eval("ID") + "\");" %>' />
+                                    <div class="d-flex justify-content-center gap-2 action-buttons">
+                                        <asp:LinkButton ID="btnEdit" runat="server" CommandName="EditUser" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-outline-warning btn-sm" ToolTip="Modifier">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </asp:LinkButton>
+                                        <label class="toggle-switch" title="Désactiver">
+                                            <input type="checkbox" checked onclick='<%# "return confirmerDesactivation(\"" + Eval("Nom") + "\", \"" + Eval("ID") + "\");" %>' />
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -201,13 +358,12 @@
                 </div>
             </div>
 
-            <!-- Formulaire d’ajout utilisateur -->
-            <div id="addUserContainer" style="display: none;">
-                <h2 class="mb-3">Ajouter un utilisateur</h2>
-                <iframe src="AjoutUser.aspx" width="100%" height="600px" style="border: none;"></iframe>
-                <button class="btn btn-secondary mt-3" onclick="flipBack(); return false;">⬅ Retour</button>
-            </div>
         </div>
-    </form>
+    </div>
+</form>
+
+
+            
+      
 </body>
 </html>

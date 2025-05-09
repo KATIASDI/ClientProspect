@@ -129,14 +129,21 @@
     <div class="text-center mb-4">
         <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
     </div>
-    <a href="Dashboard.aspx"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
-    <a href="Admin.aspx"><i class="bi bi-people-fill me-2"></i>Manage Users</a>
-    <a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
-    <a href="#"><i class="bi bi-shield-lock-fill me-2"></i>Roles & Permissions</a>
-    <a href="#"><i class="bi bi-folder2-open me-2"></i>View Prospects</a>
-    <a href="#"><i class="bi bi-bar-chart-line-fill me-2"></i>Reports</a>
-    <a href="#"><i class="bi bi-clock-history me-2"></i>User History</a>
-    <a href="#"><i class="bi bi-gear-fill me-2"></i>Settings</a>
+    <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+<a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
+<a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
+<a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
+<a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
+<a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+<a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
+<a href="ChargeAff.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+<a href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
+<a href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
+<a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
+<a href="Decision.aspx"><i class="bi bi-file-earmark-check me-2"></i> Final Decision</a>
+
+
+
 </div>
 
 

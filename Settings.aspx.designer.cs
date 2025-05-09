@@ -7,92 +7,74 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace PROJETFIN1
+namespace YourNamespace
 {
 
 
-    public partial class AjoutUser
+    public partial class Settings
     {
 
         /// <summary>
-        /// Contrôle form1.
+        /// Contrôle ddlLangue.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLangue;
 
         /// <summary>
-        /// Contrôle txtNom.
+        /// Contrôle btnChangeLangue.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNom;
+        protected global::System.Web.UI.WebControls.Button btnChangeLangue;
 
         /// <summary>
-        /// Contrôle txtEmail.
+        /// Contrôle rblTheme.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblTheme;
 
         /// <summary>
-        /// Contrôle lblEmailError.
+        /// Contrôle btnTheme.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmailError;
+        protected global::System.Web.UI.WebControls.Button btnTheme;
 
         /// <summary>
-        /// Contrôle txtIdentifiant.
+        /// Contrôle chkEmailNotif.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdentifiant;
+        protected global::System.Web.UI.WebControls.CheckBox chkEmailNotif;
 
         /// <summary>
-        /// Contrôle ddlRole.
+        /// Contrôle btnNotif.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlRole;
+        protected global::System.Web.UI.WebControls.Button btnNotif;
 
         /// <summary>
-        /// Contrôle DataSourceRoles.
+        /// Contrôle lblMessage.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DataSourceRoles;
-
-        /// <summary>
-        /// Contrôle txtPassword.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
-
-        /// <summary>
-        /// Contrôle btnEnregistrer.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEnregistrer;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
     }
 }

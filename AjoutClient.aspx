@@ -13,31 +13,98 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <style>
+               :root {
+            --primary: #00529B; /* Bleu foncé */
+            --secondary: #007BFF; /* Bleu normal */
+            --accent: #D4E6F1; /* Bleu clair */
+            --background: #F7F9FB; /* Gris très clair */
+            --beige: #C6B18D;
+            --text-color: #333333;
+            --card-bg: rgba(255, 255, 255, 0.8);
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f6f9;
+            font-family: 'Poppins', sans-serif;
+            background: var(--background);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-color);
         }
-
         .sidebar {
-            width: 240px;
-            background: linear-gradient(180deg, #4b6cb7, #182848);
+            background: var(--primary);
+            min-height: 100vh;
+            padding: 1rem;
             color: white;
-            position: fixed;
-            height: 100vh;
-            padding: 20px 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
-
         .sidebar a {
             color: white;
             text-decoration: none;
-            padding: 12px;
+            margin-bottom: 1.2rem;
             display: block;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            transition: background 0.2s ease-in-out;
+            font-weight: 600;
         }
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        .card-custom {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+        }
+        .small-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+        .small-card:hover {
+            transform: translateY(-5px);
+        }
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        @media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1040;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .col-md-10 {
+        margin-left: 0 !important;
+    }
+}
+        .logo-img {
+    max-width: 80%;
+    height: auto;
+    opacity: 0.95;
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar {
+    background-color: #003e7e; /* fond identique au logo pour intégration */
+}
         .radio-group label {
     display: inline-flex;
     align-items: center;
@@ -68,46 +135,9 @@
 }
 
 
-        .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .logo-container {
-    width: 100%;
-    height: 160px;
-    overflow: hidden;
-}
-
-.logo-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        
 
 
-
-        .toggle-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            margin-left: 5px;
-        }
-
-        .sidebar.collapsed {
-            width: 70px;
-        }
-
-        .sidebar.collapsed a {
-            text-align: center;
-            font-size: 0;
-        }
-
-        .sidebar.collapsed a i {
-            font-size: 18px;
-        }
 
         .main-content {
             margin-left: 260px;
@@ -115,9 +145,7 @@
             transition: margin-left 0.3s ease;
         }
 
-        .sidebar.collapsed + .main-content {
-            margin-left: 90px;
-        }
+        
 
         .card-form {
             background-color: #fff;
@@ -165,74 +193,8 @@
         .btn-submit:hover {
             background-color: #3551a3;
         }
-        .sidebar img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0;
-    padding: 0;
-    object-fit: cover;
-    border-radius: 0;
-}
+       
 
-.sidebar.collapsed img {
-    width: 40px;
-    margin: 0 auto 20px;
-}
-.sidebar {
-    background: var(--primary); /* Bleu foncé */
-    min-height: 100vh;
-    padding: 1rem;
-    color: white;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.sidebar a {
-    color: white;
-    text-decoration: none;
-    margin-bottom: 1.2rem;
-    display: block;
-    font-weight: 600;
-}
-
-.sidebar a:hover {
-    text-decoration: underline;
-}
-
-.logo-img {
-    max-width: 80%;
-    height: auto;
-    opacity: 0.95;
-    mix-blend-mode: normal;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-    transition: all 0.3s ease-in-out;
-}
-
-.sidebar {
-    background-color: #003e7e; /* fond identique au logo pour intégration */
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 250px;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 1040;
-    }
-
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
-    .col-md-10 {
-        margin-left: 0 !important;
-    }
-}
     </style>
 </head>
 <body>
@@ -244,19 +206,30 @@
 </button>
 
 <!-- Sidebar -->
-<div class="col-md-2 sidebar d-flex flex-column">
+        <div class="col-md-2 sidebar d-flex flex-column">
+
     <div class="text-center mb-4">
         <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
     </div>
-    <a href="#.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
-    <a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Proposer Client</a>
-    <a href="PlanningVisite.aspx"><i class="bi bi-calendar-week me-2"></i>Consulter Planning Visite</a>
-    <a href="PlanifierVisite.aspx"><i class="bi bi-calendar-plus me-2"></i>Planifier Visite</a>
-    <a href="AjoutFormVisite.aspx"><i class="bi bi-journal-text me-2"></i>Formulaire Visite</a>
-    <a href="Reports.aspx"><i class="bi bi-bar-chart-line-fill me-2"></i>Rapports</a>
-    <a href="UserHistory.aspx"><i class="bi bi-clock-history me-2"></i>Historique Utilisateur</a>
-    <a href="Settings.aspx"><i class="bi bi-gear-fill me-2"></i>Paramètres</a>
+    <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+<a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
+<a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
+<a href="#"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
+<a href="#"><i class="bi bi-clock-history me-2"></i>User History</a>
+<a href="#"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+<a href="#"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
+<a href="#"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+<a href="#"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
+<a href="#"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
+<a href="#"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
+<a href="#"><i class="bi bi-file-earmark-check me-2"></i> Final Decision</a>
+
+
+
 </div>
+     
+  
+
 
     <div class="main-content">
         <div class="card-form">

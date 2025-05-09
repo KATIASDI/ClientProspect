@@ -20,22 +20,11 @@ namespace PROJETFIN1
         {
             if (!IsPostBack)
             {
-                ChargerStatistiques();
                 ChargerUtilisateurs();
             }
         }
 
-        private void ChargerStatistiques()
-        {
-            using (OracleConnection conn = new OracleConnection(connectionString))
-            {
-                conn.Open();
-                OracleCommand cmd = new OracleCommand("SELECT COUNT(*) FROM UTILISATEUR_", conn);
-                lblUsers.Text = cmd.ExecuteScalar().ToString();
-
-                lblMessages.Text = "30";
-            }
-        }
+      
 
         private void ChargerUtilisateurs()
         {
