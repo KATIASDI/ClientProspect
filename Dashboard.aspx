@@ -136,7 +136,7 @@
 <a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
 <a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
 <a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
-<a href="ChargeAff.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+<a href="ViewProspect.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
 <a href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
 <a href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
 <a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
@@ -147,26 +147,34 @@
 </div>
 
 
-        <!-- Main Content -->
-        <div class="col-md-10 p-4">
-            <div class="row mb-4">
-                <div class="col-md-3 small-card">
-                    <h6>Today's Deposits</h6>
-                    <h4>$120,000 <span class="text-success">+8%</span></h4>
-                </div>
-                <div class="col-md-3 small-card" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">
-                    <h6>New Accounts</h6>
-                    <h4>45 <span class="text-success">+3%</span></h4>
-                </div>
-                <div class="col-md-3 small-card">
-                    <h6>Loan Applications</h6>
-                    <h4>25 <span class="text-warning">~</span></h4>
-                </div>
-                <div class="col-md-3 small-card" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">
-                    <h6>Total Clients</h6>
-                    <h4>3,200 <span class="text-success">+5%</span></h4>
-                </div>
-            </div>
+<!-- Main Content -->
+<div class="col-md-10 p-4">
+    <div class="row mb-4">
+        <div class="col-md-3 small-card">
+            <h6>Today's Deposits</h6>
+            <h4>$120,000 <span class="text-success">+8%</span></h4>
+        </div>
+        <div class="col-md-3 small-card" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">
+            <h6>Users Accounts</h6>
+            <h4>
+                <asp:Label ID="lblUsersCount" runat="server" Text="0"></asp:Label>
+                <span class="text-success"></span>
+            </h4>
+        </div>
+        <div class="col-md-3 small-card">
+            <h6>Loan Applications</h6>
+            <h4>25 <span class="text-warning">~</span></h4>
+        </div>
+        <div class="col-md-3 small-card" style="background: linear-gradient(135deg, var(--secondary), var(--accent));">
+            <h6>Total Prospects</h6>
+            <h4>
+                <asp:Label ID="lblProspectsCount" runat="server" Text="0"></asp:Label>
+                <span class="text-success">+5%</span>
+            </h4>
+        </div>
+    </div>
+
+
 
             <!-- Welcome Card -->
             <div class="card-custom mb-4 text-center">
@@ -227,6 +235,7 @@
     </div>
 </div>
 
+
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -266,6 +275,6 @@
             document.querySelector('.sidebar').classList.toggle('active');
         });
     </script>
-
+    </div>
 </body>
 </html>

@@ -47,9 +47,26 @@ namespace PROJETFIN1
             string userId = e.CommandArgument.ToString();
             if (e.CommandName == "EditUser")
             {
-                Response.Redirect("EditUser.aspx?id=" + userId);
+                using (OracleConnection conn = new OracleConnection(connectionString))
+                {
+                    conn.Open();
+                    OracleCommand cmd = new OracleCommand("SELECT IDENTIFIANT, NAME, EMAIL, ROLE_, STATUS FROM UTILISATEUR_ WHERE IDENTIFIANT = :id", conn);
+                    cmd.Parameters.Add(new OracleParameter("id", userId));
+                    OracleDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        hiddenIdentifiant.Value = reader["IDENTIFIANT"].ToString();
+                        txtName.Text = reader["NAME"].ToString();
+                        txtEmail.Text = reader["EMAIL"].ToString();
+                        txtRole.Text = reader["ROLE_"].ToString();
+                        txtStatus.Text = reader["STATUS"].ToString();
+
+                        pnlEditForm.Visible = true;
+                    }
+                }
             }
-           else if (e.CommandName == "DesactivateUser")
+            else if (e.CommandName == "DesactivateUser")
             {
                 ConfirmerSuppression(e.CommandArgument.ToString());
             }
@@ -107,6 +124,67 @@ namespace PROJETFIN1
             tUTILISATEUR_.UpdateStatus1("2", id);
             Response.Redirect("~/Admin.aspx");
         }
+
+        protected void gvUsers_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnEdit_Command(object sender, CommandEventArgs e)
+        {
+            string identifiant = e.CommandArgument.ToString();
+            hiddenIdentifiant.Value = identifiant;
+
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT NAME, EMAIL, ROLE_, STATUS FROM UTILISATEUR_ WHERE IDENTIFIANT = :id";
+
+                using (OracleCommand cmd = new OracleCommand(query, conn))
+                {
+                    cmd.Parameters.Add(new OracleParameter("id", identifiant));
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            txtName.Text = reader["NAME"].ToString();
+                            txtEmail.Text = reader["EMAIL"].ToString();
+                            txtRole.Text = reader["ROLE_"].ToString();
+                            txtStatus.Text = reader["STATUS"].ToString();
+                            pnlEditForm.Visible = true;
+                        }
+                    }
+                }
+            }
+        }
+        protected void btnEnregistrer_Click(object sender, EventArgs e)
+        {
+            string identifiant = hiddenIdentifiant.Value;
+            string name = txtName.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string role = txtRole.Text.Trim();
+            string status = txtStatus.Text.Trim();
+
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+                string query = "UPDATE UTILISATEUR_ SET NAME = :name, EMAIL = :email, ROLE_ = :role, STATUS = :status WHERE IDENTIFIANT = :id";
+
+                using (OracleCommand cmd = new OracleCommand(query, conn))
+                {
+                    cmd.Parameters.Add(new OracleParameter("name", name));
+                    cmd.Parameters.Add(new OracleParameter("email", email));
+                    cmd.Parameters.Add(new OracleParameter("role", role));
+                    cmd.Parameters.Add(new OracleParameter("status", status));
+                    cmd.Parameters.Add(new OracleParameter("id", identifiant));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            pnlEditForm.Visible = false;
+            ChargerUtilisateurs(); // Recharge la liste
+        }
+
 
     }
 

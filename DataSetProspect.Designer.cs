@@ -1872,7 +1872,7 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OracleClient.OracleCommand[7];
+            this._commandCollection = new global::System.Data.OracleClient.OracleCommand[8];
             this._commandCollection[0] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "select * from utilisateur_";
@@ -1919,18 +1919,22 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
             this._commandCollection[4].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("DATE_CREATION", global::System.Data.OracleClient.OracleType.DateTime, 7, global::System.Data.ParameterDirection.Input, "DATE_CREATION", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "UPDATE UTILISATEUR_\r\nSET PASSWORD = :password, STATUS = :status\r\nWHERE ID_USER= :" +
-                "id\r\n";
+            this._commandCollection[5].CommandText = "SELECT COUNT(*) AS EXPR1\r\nFROM     UTILISATEUR_";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("password", global::System.Data.OracleClient.OracleType.Blob, 1024, global::System.Data.ParameterDirection.Input, "PASSWORD", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("status", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "STATUS", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("id", global::System.Data.OracleClient.OracleType.Number, 22, global::System.Data.ParameterDirection.Input, "ID_USER", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[6] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "UPDATE UTILISATEUR_\r\nSET          STATUS = :status\r\nWHERE  (IDENTIFIANT = :id)";
+            this._commandCollection[6].CommandText = "UPDATE UTILISATEUR_\r\nSET PASSWORD = :password, STATUS = :status\r\nWHERE ID_USER= :" +
+                "id\r\n";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("password", global::System.Data.OracleClient.OracleType.Blob, 1024, global::System.Data.ParameterDirection.Input, "PASSWORD", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[6].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("status", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "STATUS", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("id", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "IDENTIFIANT", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("id", global::System.Data.OracleClient.OracleType.Number, 22, global::System.Data.ParameterDirection.Input, "ID_USER", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[7] = new global::System.Data.OracleClient.OracleCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "UPDATE UTILISATEUR_\r\nSET          STATUS = :status\r\nWHERE  (IDENTIFIANT = :id)";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("status", global::System.Data.OracleClient.OracleType.VarChar, 1, global::System.Data.ParameterDirection.Input, "STATUS", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("id", global::System.Data.OracleClient.OracleType.VarChar, 30, global::System.Data.ParameterDirection.Input, "IDENTIFIANT", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2346,9 +2350,37 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object Nbr_Users() {
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[5];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdatePasswordAndStatus(object password, string status, decimal id) {
-            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[5];
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[6];
             if ((password == null)) {
                 throw new global::System.ArgumentNullException("password");
             }
@@ -2384,7 +2416,7 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateStatus1(string status, string id) {
-            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[6];
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[7];
             if ((status == null)) {
                 throw new global::System.ArgumentNullException("status");
             }
@@ -2614,7 +2646,7 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OracleClient.OracleCommand[3];
+            this._commandCollection = new global::System.Data.OracleClient.OracleCommand[4];
             this._commandCollection[0] = new global::System.Data.OracleClient.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT* FROM CLIENT_PROSPECT";
@@ -2643,6 +2675,10 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
             this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("NUMTEL", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "NUMTEL", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("EMAIL", global::System.Data.OracleClient.OracleType.VarChar, 20, global::System.Data.ParameterDirection.Input, "EMAIL", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[2].Parameters.Add(new global::System.Data.OracleClient.OracleParameter("ADRESSE", global::System.Data.OracleClient.OracleType.VarChar, 50, global::System.Data.ParameterDirection.Input, "ADRESSE", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[3] = new global::System.Data.OracleClient.OracleCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT COUNT(*) FROM CLIENT_PROSPECT";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3122,6 +3158,34 @@ namespace PROJETFIN1.DataSetProspectTableAdapters {
                 }
             }
             return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<decimal> Nbr_Prospect() {
+            global::System.Data.OracleClient.OracleCommand command = this.CommandCollection[3];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<decimal>();
+            }
+            else {
+                return new global::System.Nullable<decimal>(((decimal)(returnValue)));
+            }
         }
     }
     

@@ -140,7 +140,7 @@
 
 
         .main-content {
-            margin-left: 260px;
+            margin-left:  0 px;
             padding: 30px;
             transition: margin-left 0.3s ease;
         }
@@ -193,6 +193,8 @@
         .btn-submit:hover {
             background-color: #3551a3;
         }
+
+
        
 
     </style>
@@ -204,34 +206,30 @@
     <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
     <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
 </button>
+    <div class="container-fluid">
+    <div class="row">
 
 <!-- Sidebar -->
         <div class="col-md-2 sidebar d-flex flex-column">
-
     <div class="text-center mb-4">
         <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
-    </div>
-    <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+   
+                                           </div>
+                        <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
 <a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
 <a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
-<a href="#"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
-<a href="#"><i class="bi bi-clock-history me-2"></i>User History</a>
-<a href="#"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
-<a href="#"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
-<a href="#"><i class="bi bi-list-check me-2"></i>View Prospect</a>
-<a href="#"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
-<a href="#"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
-<a href="#"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
-<a href="#"><i class="bi bi-file-earmark-check me-2"></i> Final Decision</a>
-
-
-
-</div>
-     
-  
-
-
-    <div class="main-content">
+<a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
+<a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
+<a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+<a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
+<a href="ViewProspect.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+<a href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
+<a href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
+<a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
+<a href="Decision.aspx"><i class="bi bi-file-earmark-check me-2"></i> Final Decision</a>
+                </div>
+        <!-- Contenu principal -->
+        <div class="col-md-10 main-content">
         <div class="card-form">
             <h1>Ajout d'un Client Prospect</h1>
             <form id="ajoutClientForm" runat="server">
@@ -299,7 +297,7 @@
 
     
 
-        <div class="col-md-6 mb-3">
+      <%--  <div class="col-md-6 mb-3">
     <label for="DDLCommune">Commune</label>
     <asp:DropDownList ID="DDLCommune" runat="server" CssClass="form-select" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="COMMUNE" DataValueField="COMMUNE">
     </asp:DropDownList>
@@ -316,7 +314,7 @@ order by CODE_POSTAL">
             <asp:ControlParameter ControlID="DDLCommune" Name="commune" PropertyName="SelectedValue" />
         </SelectParameters>
     </asp:SqlDataSource>
-&nbsp;</div>
+&nbsp;</div>--%>
 
 
        <!-- Capital, Forme Juridique, Dirigeant et Téléphone -->
@@ -384,7 +382,7 @@ order by CODE_POSTAL">
 
         <!-- Besoins à gauche, Type de Rencontre à droite -->
         <div class="col-md-6 mb-3">
-            <label for="Besoins">Besoins Exprimés</label>
+            <label for="Besoins">Commentaire</label>
             <asp:TextBox ID="TBBesoins" runat="server" Height="100px" MaxLength="200" TextMode="MultiLine" OnTextChanged="TBBesoins_TextChanged"></asp:TextBox>
 &nbsp;</div>
         <div class="col-md-6 mb-3">
@@ -412,6 +410,8 @@ order by CODE_POSTAL">
 
         </div>
     </div>
+          </div>
+</div>
     <script>
         function ajouterChamp(containerId, name) {
             const container = document.getElementById(containerId);

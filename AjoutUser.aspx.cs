@@ -4,6 +4,10 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Web;
 using PROJETFIN1.DataSetProspectTableAdapters;
+using System.Net;
+using System.Net.Mail;
+
+
 
 namespace PROJETFIN1
 {
@@ -35,7 +39,7 @@ namespace PROJETFIN1
                 lblEmailError.Visible = true;
                 return;
             }
-            
+
             // 🔍 Vérifier si l'utilisateur existe déjà
             var existingUsers = tUTILISATEUR_.GetData(); // Récupère tous les utilisateurs
             foreach (var user in existingUsers)
@@ -69,17 +73,19 @@ namespace PROJETFIN1
 
             if (nbInsertedRows > 0)
             {
+                EnvoyerMail(email, nom, identifiant, password);
                 ShowAlert("Succès", "Utilisateur ajouté avec succès !", "success");
             }
+
             else
             {
                 string message = "Une erreur est survenue lors de l'ajout.";
                 string safeMessage = HttpUtility.JavaScriptStringEncode(message);
                 string script = $"Swal.fire('Erreur', '{safeMessage}', 'error');";
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-            
-            
-          }
+
+
+            }
         }
         #endregion
 
@@ -119,5 +125,48 @@ namespace PROJETFIN1
         {
 
         }
+
+        private void EnvoyerMail(string destinataire, string nomUtilisateur, string identifiant, string motDePasseTemporaire)
+        {
+            var fromAddress = new MailAddress("noreplyhbtf@gmail.com", "HBTF Algérie");
+            var toAddress = new MailAddress(destinataire);
+            const string sujet = "Création de votre compte HBTF";
+
+            string body = $@"
+Bonjour {nomUtilisateur},
+
+Votre compte a été créé avec succès sur notre plateforme HBTF Algérie.
+
+Veuillez vous connecter en utilisant les identifiants suivants :
+- Identifiant : {identifiant}
+- Mot de passe temporaire : {motDePasseTemporaire}
+
+Pour votre sécurité, pensez à changer votre mot de passe après la première connexion.
+
+Cordialement,
+L'équipe HBTF.";
+
+            string motDePasseApp = "zkyetzzjkwmfouzn"; // 🔐 À sécuriser ailleurs en prod (fichier de config chiffré)
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, motDePasseApp)
+            };
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = sujet,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+        }
+
     }
 }

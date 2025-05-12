@@ -13,5 +13,23 @@ namespace PROJETFIN1
 
     public partial class Dashboard
     {
+
+        /// <summary>
+        /// Contrôle lblUsersCount.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsersCount;
+
+        /// <summary>
+        /// Contrôle lblProspectsCount.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProspectsCount;
     }
 }

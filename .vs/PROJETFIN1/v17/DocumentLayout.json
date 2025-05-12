@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\ajoutclient.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:ajoutclient.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\ajoutuser.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:ajoutuser.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\sidebar .aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:sidebar .aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\ajoutclient.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:ajoutclient.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|c:\\users\\smadhi katia\\source\\repos\\projetfin1\\ajoutuser.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{002C3DC1-CB53-4753-A3F0-1A07D03A2394}|PROJETFIN1.csproj|solutionrelative:ajoutuser.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Sidebar .aspx",
-              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Sidebar .aspx",
-              "RelativeDocumentMoniker": "Sidebar .aspx",
-              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\Sidebar .aspx",
-              "RelativeToolTip": "Sidebar .aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-05-09T17:54:50.258Z",
+              "Title": "AjoutClient.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\AjoutClient.aspx.cs",
+              "RelativeDocumentMoniker": "AjoutClient.aspx.cs",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\AjoutClient.aspx.cs",
+              "RelativeToolTip": "AjoutClient.aspx.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T21:07:23.482Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AjoutClient.aspx",
-              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\AjoutClient.aspx",
-              "RelativeDocumentMoniker": "AjoutClient.aspx",
-              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\AjoutClient.aspx",
-              "RelativeToolTip": "AjoutClient.aspx",
+              "Title": "AjoutUser.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\AjoutUser.aspx.cs",
+              "RelativeDocumentMoniker": "AjoutUser.aspx.cs",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\AjoutUser.aspx.cs",
+              "RelativeToolTip": "AjoutUser.aspx.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAAAJcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T20:50:42.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AjoutUser.aspx",
+              "DocumentMoniker": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\AjoutUser.aspx",
+              "RelativeDocumentMoniker": "AjoutUser.aspx",
+              "ToolTip": "C:\\Users\\Smadhi Katia\\source\\repos\\PROJETFIN1\\AjoutUser.aspx",
+              "RelativeToolTip": "AjoutUser.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-05-09T17:54:21.053Z",
+              "WhenOpened": "2025-05-11T20:48:19.621Z",
               "EditorCaption": ""
             }
           ]

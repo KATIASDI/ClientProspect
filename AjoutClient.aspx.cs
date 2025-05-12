@@ -27,8 +27,6 @@ namespace PROJETFIN1
             string canal = DropDownList1.SelectedValue;
             string nbEmployes = DropDownList3.SelectedValue;
             string wilaya = DropDownList2.SelectedValue;
-            string commune = DDLCommune.SelectedValue;
-            string codePostal = DropDownList5.SelectedValue;
             string dirigeant = Request.Form["Dirigeant"]?.Trim();
             string besoins = TBBesoins.Text.Trim();
             string typeRencontre = TypeRencontreDDL.SelectedValue;
@@ -41,7 +39,7 @@ namespace PROJETFIN1
             int rowsInserted = 0;
 
 
-            bool AuMoinsUnNull = new[] { nom, formeJuridique, secteur, sousSecteur, dirigeant, nbEmployes, wilaya, commune, codePostal, canal, interdit, blacklist,email,adresse }.Any(string.IsNullOrEmpty);
+            bool AuMoinsUnNull = new[] { nom, formeJuridique, secteur, sousSecteur, dirigeant, nbEmployes, wilaya, canal, interdit, blacklist,email,adresse }.Any(string.IsNullOrEmpty);
             if (true)// (!AuMoinsUnNull)
             {
                 int ifExists = (int)tPROSPECTS_.IfExists(nom.ToUpper()).Value;

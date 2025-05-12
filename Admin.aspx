@@ -315,7 +315,7 @@
 <a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
 <a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
 <a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
-<a href="ChargeAff.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+<a href="ViewProspect.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
 <a href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
 <a href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
 <a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
@@ -332,9 +332,11 @@
                 </div>
 
                 <div class="card-style px-3">
-                    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-striped" OnRowCommand="gvUsers_RowCommand">
+                    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-striped" OnRowCommand="gvUsers_RowCommand" OnSelectedIndexChanged="gvUsers_SelectedIndexChanged1">
+                  
+
                         <Columns>
-                            <asp:BoundField DataField="ID" HeaderText="ID" />
+                            <asp:BoundField DataField="ID" HeaderText="IDENTIFIANT" />
                             <asp:BoundField DataField="Nom" HeaderText="Nom" />
                             <asp:BoundField DataField="ROLE" HeaderText="Rôle" />
                             <asp:BoundField DataField="DateAjout" HeaderText="Date d'ajout" />
@@ -343,7 +345,8 @@
                             <asp:TemplateField HeaderText="Actions">
                                 <ItemTemplate>
                                     <div class="d-flex justify-content-center gap-2 action-buttons">
-                                        <asp:LinkButton ID="btnEdit" runat="server" CommandName="EditUser" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-outline-warning btn-sm" ToolTip="Modifier">
+                                        <asp:LinkButton ID="btnEdit" runat="server" CommandName="EditUser" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEdit_Command"
+ CssClass="btn btn-outline-warning btn-sm" ToolTip="Modifier">
                                             <i class="bi bi-pencil-square"></i>
                                         </asp:LinkButton>
                                         <label class="toggle-switch" title="Désactiver">
@@ -355,12 +358,36 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                                                <asp:Panel ID="pnlEditForm" runat="server" Visible="false" CssClass="card p-3">
+    <asp:HiddenField ID="hiddenIdentifiant" runat="server" />
+    
+    <div class="mb-2">
+        <label>Nom :</label>
+        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Email :</label>
+        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Rôle :</label>
+        <asp:TextBox ID="txtRole" runat="server" CssClass="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Statut :</label>
+        <asp:TextBox ID="txtStatus" runat="server" CssClass="form-control" />
+    </div>
+
+    <asp:Button ID="btnUpdate" runat="server" Text="Enregistrer" CssClass="btn btn-success mt-2" OnClick="btnUpdate_Click" />
+</asp:Panel>
                 </div>
+
             </div>
 
         </div>
     </div>
 </form>
+   
 
 
             

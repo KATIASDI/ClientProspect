@@ -21,9 +21,9 @@
         .login-container {
     width: 450px;
     padding: 40px;
-    background: rgba(255, 255, 255, 0.7); /* Transparence douce */
-    backdrop-filter: blur(8px); /* Ajoute un effet de flou élégant */
-    -webkit-backdrop-filter: blur(8px); /* Compatibilité Safari */
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); 
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
