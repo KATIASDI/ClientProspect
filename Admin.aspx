@@ -314,12 +314,8 @@
 <a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
 <a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
 <a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
-<a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
-<a href="ViewProspect.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
-<a href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
-<a href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
-<a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
-<a href="Decision.aspx"><i class="bi bi-file-earmark-check me-2"></i> Final Decision</a>
+
+
 
 
 
@@ -336,7 +332,7 @@
                   
 
                         <Columns>
-                            <asp:BoundField DataField="ID" HeaderText="IDENTIFIANT" />
+                            <asp:BoundField DataField="IDENTIFIANT" HeaderText="IDENTIFIANT" />
                             <asp:BoundField DataField="Nom" HeaderText="Nom" />
                             <asp:BoundField DataField="ROLE" HeaderText="Rôle" />
                             <asp:BoundField DataField="DateAjout" HeaderText="Date d'ajout" />
@@ -345,12 +341,14 @@
                             <asp:TemplateField HeaderText="Actions">
                                 <ItemTemplate>
                                     <div class="d-flex justify-content-center gap-2 action-buttons">
-                                        <asp:LinkButton ID="btnEdit" runat="server" CommandName="EditUser" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEdit_Command"
- CssClass="btn btn-outline-warning btn-sm" ToolTip="Modifier">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </asp:LinkButton>
+<asp:LinkButton ID="btnEdit" runat="server"
+    CssClass="btn btn-outline-warning btn-sm"
+    ToolTip="Modifier"
+    PostBackUrl='<%# "EditUser.aspx?id=" + Eval("IDENTIFIANT") + "&nom=" + Eval("NOM") + "&role=" + Eval("ROLE") + "&dateAjout=" + "&email=" + Eval("EMAIL") %>'>
+    <i class="bi bi-pencil-square"></i>
+</asp:LinkButton>
                                         <label class="toggle-switch" title="Désactiver">
-                                            <input type="checkbox" checked onclick='<%# "return confirmerDesactivation(\"" + Eval("Nom") + "\", \"" + Eval("ID") + "\");" %>' />
+                                            <input type="checkbox" checked onclick='<%# "return confirmerDesactivation(\"" + Eval("Nom") + "\", \"" + Eval("IDENTIFIANT") + "\");" %>' />
                                             <span class="slider"></span>
                                         </label>
                                     </div>

@@ -73,12 +73,16 @@ namespace PROJETFIN1
                                         string role = reader["ROLE_"].ToString();
 
                                         // Redirection selon le rôle
-                                        if (role == "ADMINISTRATEUR")
-                                            Response.Redirect("Admin.aspx");
-                                        else if (role == "Chargé d'affaire")
-                                            Response.Redirect("ChargeAff.aspx");
+                                        if (role == "Administrateur")
+                                            Response.Redirect("Dashboard.aspx");
+                                        else if (role == "Chargé d'affaires")
+                                            Response.Redirect("Dashboard.aspx");
+                                        else if (role == "Directeur d'agence")
+                                            Response.Redirect("Dashboard.aspx");
+                                        else if (role == "Comité crédit")
+                                            Response.Redirect("Dashboard.aspx");
                                         else
-                                            Response.Redirect("DirAgence.aspx");
+                                            Response.Redirect("Dashboard.aspx");
                                     }
                                     else
                                     {

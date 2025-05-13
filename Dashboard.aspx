@@ -129,22 +129,28 @@
     <div class="text-center mb-4">
         <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
     </div>
-    <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
-<a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
-<a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
-<a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
-<a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
-<a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
-<a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
-<a href="ViewProspect.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
-<a href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
-<a href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
-<a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
-<a href="Decision.aspx"><i class="bi bi-file-earmark-check me-2"></i> Final Decision</a>
+    <a id="linkDashboard" runat="server" href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+<a id="linkManageUsers" runat="server" href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
+<a id="linkAddUser" runat="server" href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
+<a id="linkRolesPermissions" runat="server" href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
+<a id="linkHistory" runat="server" href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
+<a id="linkSettings" runat="server" href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+<a id="linkAddProspect" runat="server" href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
+<a id="linkViewProspect" runat="server" href="ViewProspect.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+<a id="linkVote" runat="server" href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
+<a id="linkViewVote" runat="server" href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
+<a id="linkPlanningVisite" runat="server" href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
+<a id="linkDecision" runat="server" href="Decision.aspx"><i class="bi bi-file-earmark-check me-2"></i>Final Decision</a>
 
+<div class="mt-auto p-3">
+    <a href="Login.aspx" class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center">
+        <i class="bi bi-box-arrow-right me-2"></i> Déconnexion
+    </a>
+</div>
 
 
 </div>
+
 
 
 <!-- Main Content -->
@@ -169,7 +175,7 @@
             <h6>Total Prospects</h6>
             <h4>
                 <asp:Label ID="lblProspectsCount" runat="server" Text="0"></asp:Label>
-                <span class="text-success">+5%</span>
+                <span class="text-success"></span>
             </h4>
         </div>
     </div>

@@ -1,5 +1,3 @@
-C:\Users\Smadhi Katia\source\repos\PROJETFIN1\obj\Debug\PROJETFIN1.csproj.AssemblyReference.cache
-C:\Users\Smadhi Katia\source\repos\PROJETFIN1\obj\Debug\PROJETFIN1.csproj.CoreCompileInputs.cache
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\bin\PROJETFIN1.dll.config
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\bin\PROJETFIN1.dll
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\bin\PROJETFIN1.pdb
@@ -67,6 +65,8 @@ C:\Users\Smadhi Katia\source\repos\PROJETFIN1\bin\System.Text.Encodings.Web.xml
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\bin\System.Text.Json.xml
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\bin\System.ValueTuple.xml
+C:\Users\Smadhi Katia\source\repos\PROJETFIN1\obj\Debug\PROJETFIN1.csproj.AssemblyReference.cache
+C:\Users\Smadhi Katia\source\repos\PROJETFIN1\obj\Debug\PROJETFIN1.csproj.CoreCompileInputs.cache
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\obj\Debug\PROJETFIN1.csproj.Up2Date
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\obj\Debug\PROJETFIN1.dll
 C:\Users\Smadhi Katia\source\repos\PROJETFIN1\obj\Debug\PROJETFIN1.pdb

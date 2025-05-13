@@ -168,5 +168,9 @@ L'équipe HBTF.";
             }
         }
 
+        protected void DataSourceRoles_Selecting(object sender, System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs e)
+        {
+
+        }
     }
 }

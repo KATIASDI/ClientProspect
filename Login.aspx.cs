@@ -46,6 +46,9 @@ namespace YourNamespace
                                 string role = reader["ROLE_"].ToString();
                                 int status = Convert.ToInt32(reader["STATUS"]);
 
+                                Session["ROLE_"] = role;
+
+
                                 if (status == 0)
                                 {
                                     Response.Redirect("Login2.aspx");
@@ -53,15 +56,15 @@ namespace YourNamespace
                                 else
                                 {
                                     if (role == "Administrateur")
-                                        Response.Redirect("Admin.aspx");
+                                        Response.Redirect("Dashboard.aspx");
                                     else if (role == "Chargé d'affaires")
-                                        Response.Redirect("ChargeAff.aspx");
+                                        Response.Redirect("Dashboard.aspx");
                                     else if (role == "Directeur d'agence")
-                                        Response.Redirect("DirAgence.aspx");
+                                        Response.Redirect("Dashboard.aspx");
                                     else if (role == "Comité crédit")
-                                        Response.Redirect("ComCredit.aspx");
+                                        Response.Redirect("Dashboard.aspx");
                                     else
-                                        Response.Redirect("DirComm.aspx");
+                                        Response.Redirect("Dashboard.aspx");
                                 }
                             }
                             else

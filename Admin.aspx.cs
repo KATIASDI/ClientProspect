@@ -31,7 +31,7 @@ namespace PROJETFIN1
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
-                OracleCommand cmd = new OracleCommand("SELECT IDENTIFIANT AS ID, NAME AS Nom, ROLE_ as ROLE, DATE_CREATION AS DateAjout, EMAIL FROM UTILISATEUR_", conn);
+                OracleCommand cmd = new OracleCommand("SELECT IDENTIFIANT AS IDENTIFIANT, NAME AS Nom, ROLE_ as ROLE, DATE_CREATION AS DateAjout, EMAIL FROM UTILISATEUR_", conn);
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -74,20 +74,31 @@ namespace PROJETFIN1
         }
         private void ConfirmerSuppression(string userId)
         {
-     //       tUTILISATEUR_.UpdateStatus1(userId, "2"); // Mettre à jour le statut de l'utilisateur 
-            //using (OracleConnection conn = new OracleConnection(connectionString))
-            //{
-            //  conn.Open();
-            //   OracleCommand cmd = new OracleCommand("UPDATE UTILISATEUR_ SET STATUS =2 WHERE IDENTIFIANT = :id", conn);
-            //    cmd.Parameters.Add(new OracleParameter("id", userId));
+            tUTILISATEUR_.UpdateStatus1(userId, "2"); // Mettre à jour le statut de l'utilisateur 
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+                OracleCommand cmd = new OracleCommand("UPDATE UTILISATEUR_ SET STATUS =2 WHERE IDENTIFIANT = :id", conn);
+                cmd.Parameters.Add(new OracleParameter("id", userId));
 
-            // int rowsAffected = cmd.ExecuteNonQuery();
+                int rowsAffected = cmd.ExecuteNonQuery();
 
-            // if (rowsAffected > 0)
-            //  {
-            //     ChargerUtilisateurs();  // Rafraîchir le GridView après mise à jour
-            //   }
-            //}
+                if (rowsAffected > 0)
+                {
+                    ChargerUtilisateurs();  // Rafraîchir le GridView après mise à jour
+                }
+                else
+                {
+                    // Gérer le postback manuel depuis __doPostBack
+                    string eventTarget = Request["__EVENTTARGET"];
+                    string eventArgument = Request["__EVENTARGUMENT"];
+
+                    if (eventTarget == "btnDesactivate" && !string.IsNullOrEmpty(eventArgument))
+                    {
+                        ConfirmerSuppression(eventArgument); // Désactive l’utilisateur avec l’ID
+                    }
+                }
+            }
         }
      
       

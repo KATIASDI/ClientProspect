@@ -148,5 +148,10 @@ namespace PROJETFIN1
             string filtre = txtRecherche.Text.Trim();
             ChargerUtilisateurs(filtre);
         }
+
+        protected void gvUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
