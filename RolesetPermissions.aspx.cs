@@ -112,36 +112,36 @@ namespace PROJETFIN1
             }
         }
 
-        protected void btnAjouterRole_Click(object sender, EventArgs e)
-        {
-            string nouveauRole = txtNouveauRole.Text.Trim();
-            if (string.IsNullOrWhiteSpace(nouveauRole))
-            {
-                lblMessage.Text = "Le nom du rôle est vide.";
-                return;
-            }
+        //protected void btnAjouterRole_Click(object sender, EventArgs e)
+        //{
+        //    string nouveauRole = txtNouveauRole.Text.Trim();
+        //    if (string.IsNullOrWhiteSpace(nouveauRole))
+        //    {
+        //        lblMessage.Text = "Le nom du rôle est vide.";
+        //        return;
+        //    }
 
-            using (OracleConnection conn = new OracleConnection(connectionString))
-            {
-                conn.Open();
-                OracleCommand checkCmd = new OracleCommand("SELECT COUNT(*) FROM ROLES WHERE NOM_ROLE = :role", conn);
-                checkCmd.Parameters.Add(new OracleParameter("role", nouveauRole));
-                int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+        //    using (OracleConnection conn = new OracleConnection(connectionString))
+        //    {
+        //        conn.Open();
+        //        OracleCommand checkCmd = new OracleCommand("SELECT COUNT(*) FROM ROLES WHERE NOM_ROLE = :role", conn);
+        //        checkCmd.Parameters.Add(new OracleParameter("role", nouveauRole));
+        //        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
 
-                if (count == 0)
-                {
-                    OracleCommand insertCmd = new OracleCommand("INSERT INTO ROLES (NOM_ROLE) VALUES (:role)", conn);
-                    insertCmd.Parameters.Add(new OracleParameter("role", nouveauRole));
-                    insertCmd.ExecuteNonQuery();
-                    lblMessage.Text = "Rôle ajouté avec succès.";
-                }
-                else
-                {
-                    lblMessage.Text = "Ce rôle existe déjà.";
-                }
-            }
-            txtNouveauRole.Text = "";
-        }
+        //        if (count == 0)A
+        //        {
+        //            OracleCommand insertCmd = new OracleCommand("INSERT INTO ROLES (NOM_ROLE) VALUES (:role)", conn);
+        //            insertCmd.Parameters.Add(new OracleParameter("role", nouveauRole));
+        //            insertCmd.ExecuteNonQuery();
+        //            lblMessage.Text = "Rôle ajouté avec succès.";
+        //        }
+        //        else
+        //        {
+        //            lblMessage.Text = "Ce rôle existe déjà.";
+        //        }
+        //    }
+        //    txtNouveauRole.Text = "";
+        //}
 
         protected void btnRecherche_Click(object sender, EventArgs e)
         {

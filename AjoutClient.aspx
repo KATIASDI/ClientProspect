@@ -216,17 +216,10 @@
    
                                            </div>
                         <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
-<a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
-<a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
-<a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
-<a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
-<a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+
 <a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
-<a href="ViewProspect.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
-<a href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
-<a href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
+<a href="test1.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
 <a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
-<a href="Decision.aspx"><i class="bi bi-file-earmark-check me-2"></i> Final Decision</a>
                 </div>
         <!-- Contenu principal -->
         <div class="col-md-10 main-content">
@@ -319,13 +312,13 @@ order by CODE_POSTAL">
 
        <!-- Capital, Forme Juridique, Dirigeant et Téléphone -->
 <div class="col-md-6 mb-3">
-    <label for="Capital">Capital</label>
+    <label for="Capital">Capital (en DZD)</label>
     <asp:TextBox ID="TBCapital" runat="server" ></asp:TextBox>
 &nbsp;</div>
 <div class="col-md-6 mb-3">
     <label for="FormeJuridique">Forme Juridique</label>
-    <asp:SqlDataSource ID="DATASOURCEFORMEJURIDIQUE" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DESCRIPTION FROM NOMENCLATURE  WHERE CODE=3 order by DESCRIPTION "></asp:SqlDataSource>
-    <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="DATASOURCEFORMEJURIDIQUE" DataTextField="DESCRIPTION" DataValueField="DESCRIPTION">
+    <asp:SqlDataSource ID="DATASOURCEFORMEJURIDIQUE" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringProspect %>" ProviderName="<%$ ConnectionStrings:ConnectionStringProspect.ProviderName %>" SelectCommand="SELECT DESCRIPTION FROM NOMENCLATURE  WHERE TYPE_CODE=3 order by DESCRIPTION "></asp:SqlDataSource>
+    <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="DATASOURCEFORMEJURIDIQUE" DataTextField="DESCRIPTION" DataValueField="DESCRIPTION" AutoPostBack="True">
     </asp:DropDownList>
 &nbsp;</div>
 <div class="mb-3">
@@ -397,10 +390,7 @@ order by CODE_POSTAL">
        
 
         <!-- Actions -->
-        <div class="col-md-12 mb-3">
-            <asp:Button ID="BtnSoumettreDirecteur" runat="server" Text="Soumettre au Directeur d'Agence"
-                CssClass="btn btn-success w-100" OnClick="BtnSoumettreDirecteur_Click" />
-        </div>
+       
         
         <div class="col-md-12 mb-3">
             <asp:Button ID="BtnSubmit" runat="server" Text="Ajouter Client" CssClass="btn btn-submit" OnClick="BtnSubmit_Click" />

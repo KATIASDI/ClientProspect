@@ -125,7 +125,7 @@ WHERE IDENTIFIANT = :identifiant
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionStringProspect (Web.config)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Nbr_Users" Modifier="Public" Name="Nbr_Users" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Nbr_Users">
+              <DbSource ConnectionRef="ConnectionStringProspect (Web.config)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Nbr_Users" Modifier="Public" Name="Nbr_Users" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Nbr_Users">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT COUNT(*) AS EXPR1
@@ -134,7 +134,7 @@ FROM     UTILISATEUR_</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionStringProspect (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePasswordAndStatus" Modifier="Public" Name="UpdatePasswordAndStatus" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdatePasswordAndStatus">
+              <DbSource ConnectionRef="ConnectionStringProspect (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePasswordAndStatus" Modifier="Public" Name="UpdatePasswordAndStatus" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdatePasswordAndStatus">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE UTILISATEUR_
@@ -149,7 +149,7 @@ WHERE ID_USER= :id
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionStringProspect (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStatus1" Modifier="Public" Name="UpdateStatus1" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateStatus1">
+              <DbSource ConnectionRef="ConnectionStringProspect (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStatus1" Modifier="Public" Name="UpdateStatus1" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateStatus1">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE UTILISATEUR_
@@ -266,12 +266,12 @@ where upper(NOM) =upper( :pNOM)</CommandText>
               <DbSource ConnectionRef="ConnectionStringProspect (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertClient" Modifier="Public" Name="InsertClient" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertClient">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>INSERT INTO "CLIENT_PROSPECT" ("NOM", "SECTEUR", "SOUS_SECTEUR", "BESOINS", "NBR_EMPLOYES", "TYPE_RENCONTRE", "CANAL_ACQUISITION", "BLACK_LIST", "INTERDIT_CHEQUIER", "DATE_CREATION", "CAPITAL", "FORME_JURIDIQUE", "NUMTEL","EMAIL","ADRESSE") VALUES (:NOM, :SECTEUR, :SOUS_SECTEUR, :BESOINS, :NBR_EMPLOYES, :TYPE_RENCONTRE, :CANAL_ACQUISITION, :BLACK_LIST, :INTERDIT_CHEQUIER, :DATE_CREATION, :CAPITAL, :FORME_JURIDIQUE, :NUMTEL,:EMAIL,:ADRESSE)</CommandText>
+                    <CommandText>INSERT INTO "CLIENT_PROSPECT" ("NOM", "SECTEUR", "SOUS_SECTEUR", "COMMENTAIRE", "NBR_EMPLOYES", "TYPE_RENCONTRE", "CANAL_ACQUISITION", "BLACK_LIST", "INTERDIT_CHEQUIER", "DATE_CREATION", "CAPITAL", "FORME_JURIDIQUE", "NUMTEL","EMAIL","ADRESSE","STATUS") VALUES (:NOM, :SECTEUR, :SOUS_SECTEUR, :COMMENTAIRE, :NBR_EMPLOYES, :TYPE_RENCONTRE, :CANAL_ACQUISITION, :BLACK_LIST, :INTERDIT_CHEQUIER, :DATE_CREATION, :CAPITAL, :FORME_JURIDIQUE, :NUMTEL,:EMAIL,:ADRESSE,0)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="NOM" ColumnName="NOM" DataSourceName="KATIA.CLIENT_PROSPECT" DataTypeServer="VARCHAR2(30)" DbType="AnsiString" Direction="Input" ParameterName="NOM" Precision="0" ProviderType="VarChar" Scale="0" Size="30" SourceColumn="NOM" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="SECTEUR" ColumnName="SECTEUR" DataSourceName="KATIA.CLIENT_PROSPECT" DataTypeServer="VARCHAR2(30)" DbType="AnsiString" Direction="Input" ParameterName="SECTEUR" Precision="0" ProviderType="VarChar" Scale="0" Size="30" SourceColumn="SECTEUR" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="SOUS_SECTEUR" ColumnName="SOUS_SECTEUR" DataSourceName="KATIA.CLIENT_PROSPECT" DataTypeServer="VARCHAR2(30)" DbType="AnsiString" Direction="Input" ParameterName="SOUS_SECTEUR" Precision="0" ProviderType="VarChar" Scale="0" Size="30" SourceColumn="SOUS_SECTEUR" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="BESOINS" ColumnName="BESOINS" DataSourceName="KATIA.CLIENT_PROSPECT" DataTypeServer="VARCHAR2(200)" DbType="AnsiString" Direction="Input" ParameterName="BESOINS" Precision="0" ProviderType="VarChar" Scale="0" Size="200" SourceColumn="BESOINS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="COMMENTAIRE" ColumnName="COMMENTAIRE" DataSourceName="KATIA.CLIENT_PROSPECT" DataTypeServer="VARCHAR2(200)" DbType="AnsiString" Direction="Input" ParameterName="COMMENTAIRE" Precision="0" ProviderType="VarChar" Scale="0" Size="200" SourceColumn="COMMENTAIRE" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="NBR_EMPLOYES" ColumnName="NBR_EMPLOYES" DataSourceName="KATIA.CLIENT_PROSPECT" DataTypeServer="VARCHAR2(50)" DbType="AnsiString" Direction="Input" ParameterName="NBR_EMPLOYES" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="NBR_EMPLOYES" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="TYPE_RENCONTRE" ColumnName="TYPE_RENCONTRE" DataSourceName="KATIA.CLIENT_PROSPECT" DataTypeServer="VARCHAR2(25)" DbType="AnsiString" Direction="Input" ParameterName="TYPE_RENCONTRE" Precision="0" ProviderType="VarChar" Scale="0" Size="25" SourceColumn="TYPE_RENCONTRE" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="CANAL_ACQUISITION" ColumnName="CANAL_ACQUISITION" DataSourceName="KATIA.CLIENT_PROSPECT" DataTypeServer="VARCHAR2(30)" DbType="AnsiString" Direction="Input" ParameterName="CANAL_ACQUISITION" Precision="0" ProviderType="VarChar" Scale="0" Size="30" SourceColumn="CANAL_ACQUISITION" SourceColumnNullMapping="false" SourceVersion="Current" />

@@ -57,7 +57,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="login-container">
-            <asp:Image ID="imgLogo" runat="server" ImageUrl="Capture d’écran (803).png" Width="150px" />
+<asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/logo.png" Width="150px" />
             <h1>Prospect Manager</h1>
             <h2>Connexion</h2>
             

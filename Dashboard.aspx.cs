@@ -56,7 +56,7 @@ namespace PROJETFIN1
                         linkViewProspect.Visible = true;
                         break;
 
-                    case "Direction commerciale":
+                    case "Direction commercial":
                         linkViewProspect.Visible = true;
                         linkViewVote.Visible = true;
                         linkDecision.Visible = true;

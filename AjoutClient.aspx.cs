@@ -34,15 +34,18 @@ namespace PROJETFIN1
             string blacklist = RadioButtonList1.SelectedValue ?? "";
             string numTel = TBNumTel.Text.Trim();
             string email = TBEMAIL.Text.Trim();
-            string adresse = TBAdresse.Text.Trim();// TBNumTel est ton TextBox pour le numéro
+            string adresse = TBAdresse.Text.Trim();
+            // TBNumTel est ton TextBox pour le numéro
+
 
             int rowsInserted = 0;
 
-
+            //ne pas inserer un Client qui existe deja 
             bool AuMoinsUnNull = new[] { nom, formeJuridique, secteur, sousSecteur, dirigeant, nbEmployes, wilaya, canal, interdit, blacklist,email,adresse }.Any(string.IsNullOrEmpty);
-            if (true)// (!AuMoinsUnNull)
-            {
-                int ifExists = (int)tPROSPECTS_.IfExists(nom.ToUpper()).Value;
+             if (true)/*(!AuMoinsUnNull)*/
+
+                {
+                    int ifExists = (int)tPROSPECTS_.IfExists(nom.ToUpper()).Value;
 
                 if (ifExists == 0)
                 {
@@ -61,7 +64,8 @@ namespace PROJETFIN1
            formeJuridique,
            numTel,
            email,
-           adresse// commentaire
+           adresse
+           // commentaire
             // numtel
        );
                 }

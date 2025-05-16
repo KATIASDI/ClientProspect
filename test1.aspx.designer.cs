@@ -7,200 +7,173 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace PROJETFIN1
+namespace WebRedaTest
 {
 
 
-    public partial class AjoutClient
+    public partial class test1
     {
 
         /// <summary>
-        /// Contrôle ajoutClientForm.
+        /// Contrôle form2.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm ajoutClientForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
 
         /// <summary>
-        /// Contrôle TBNom.
+        /// Contrôle ScriptManager1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBNom;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// Contrôle DDLSecteur.
+        /// Contrôle linkDashboard.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLSecteur;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkDashboard;
 
         /// <summary>
-        /// Contrôle SqlSecteur.
+        /// Contrôle linkManageUsers.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlSecteur;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkManageUsers;
 
         /// <summary>
-        /// Contrôle DDLSSecteur.
+        /// Contrôle linkAddUser.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLSSecteur;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkAddUser;
 
         /// <summary>
-        /// Contrôle SqlSSecteur.
+        /// Contrôle linkRolesPermissions.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlSSecteur;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkRolesPermissions;
 
         /// <summary>
-        /// Contrôle DropDownList1.
+        /// Contrôle linkHistory.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkHistory;
 
         /// <summary>
-        /// Contrôle DropDownList3.
+        /// Contrôle linkSettings.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkSettings;
 
         /// <summary>
-        /// Contrôle DropDownList2.
+        /// Contrôle linkAddProspect.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkAddProspect;
 
         /// <summary>
-        /// Contrôle SqlDataSource2.
+        /// Contrôle linkViewProspect.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkViewProspect;
 
         /// <summary>
-        /// Contrôle TBCapital.
+        /// Contrôle linkVote.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBCapital;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkVote;
 
         /// <summary>
-        /// Contrôle DATASOURCEFORMEJURIDIQUE.
+        /// Contrôle linkViewVote.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DATASOURCEFORMEJURIDIQUE;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkViewVote;
 
         /// <summary>
-        /// Contrôle DropDownList6.
+        /// Contrôle linkPlanningVisite.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkPlanningVisite;
 
         /// <summary>
-        /// Contrôle TBAdresse.
+        /// Contrôle linkDecision.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBAdresse;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkDecision;
 
         /// <summary>
-        /// Contrôle TBEMAIL.
+        /// Contrôle LiteralMessage.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBEMAIL;
+        protected global::System.Web.UI.WebControls.Literal LiteralMessage;
 
         /// <summary>
-        /// Contrôle TBNumTel.
+        /// Contrôle GridViewProspects.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBNumTel;
+        protected global::System.Web.UI.WebControls.GridView GridViewProspects;
 
         /// <summary>
-        /// Contrôle RadioButtonList1.
+        /// Contrôle UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Contrôle RadioButtonList2.
+        /// Contrôle lblDetails.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
-
-        /// <summary>
-        /// Contrôle TBBesoins.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBBesoins;
-
-        /// <summary>
-        /// Contrôle TypeRencontreDDL.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList TypeRencontreDDL;
-
-        /// <summary>
-        /// Contrôle BtnSubmit.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSubmit;
+        protected global::System.Web.UI.WebControls.Label lblDetails;
     }
 }

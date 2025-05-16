@@ -63,6 +63,8 @@ namespace YourNamespace
                                         Response.Redirect("Dashboard.aspx");
                                     else if (role == "Comité crédit")
                                         Response.Redirect("Dashboard.aspx");
+                                    else if (role == "Direction commercial")
+                                        Response.Redirect("Dashboard.aspx");
                                     else
                                         Response.Redirect("Dashboard.aspx");
                                 }
