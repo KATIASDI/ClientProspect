@@ -123,7 +123,7 @@
     <Content Include="RolesetPermissions.aspx" />
     <Content Include="Settings.aspx" />
     <Content Include="Sidebar .aspx" />
-    <Content Include="test1.aspx" />
+    <Content Include="Process.aspx" />
     <Content Include="ViewProspect.aspx" />
     <Content Include="Web.config" />
     <Content Include="AjoutUser.aspx" />
@@ -227,12 +227,12 @@
     <Compile Include="Sidebar .aspx.designer.cs">
       <DependentUpon>Sidebar .aspx</DependentUpon>
     </Compile>
-    <Compile Include="test1.aspx.cs">
-      <DependentUpon>test1.aspx</DependentUpon>
+    <Compile Include="Process.aspx.cs">
+      <DependentUpon>Process.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="test1.aspx.designer.cs">
-      <DependentUpon>test1.aspx</DependentUpon>
+    <Compile Include="Process.aspx.designer.cs">
+      <DependentUpon>Process.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewProspect.aspx.cs">
       <DependentUpon>ViewProspect.aspx</DependentUpon>

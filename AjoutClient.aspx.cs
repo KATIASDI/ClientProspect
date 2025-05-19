@@ -10,7 +10,7 @@ namespace PROJETFIN1
     public partial class AjoutClient : System.Web.UI.Page
     {
         CLIENT_PROSPECTTableAdapter tPROSPECTS_ = new CLIENT_PROSPECTTableAdapter();
-
+        //VISITETableAdapter tVisite = new VISITETableAdapter();
         protected void Page_Load(object sender, EventArgs e)
         {
         }

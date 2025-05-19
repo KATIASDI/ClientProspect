@@ -126,7 +126,6 @@
 <a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
 <a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
 <a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
-<a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
 <a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
 
                 </div>

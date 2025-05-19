@@ -44,7 +44,11 @@ namespace YourNamespace
                             if (reader.Read())
                             {
                                 string role = reader["ROLE_"].ToString();
+
                                 int status = Convert.ToInt32(reader["STATUS"]);
+
+                                Session["Username"] = username;
+
 
                                 Session["ROLE_"] = role;
 
@@ -80,8 +84,7 @@ namespace YourNamespace
                 catch (Exception ex)
                 {
                     lblMessage.Text = "Erreur de connexion : " + ex.Message;
-                }
-            }
+                }            }
         }
 
         // Fonction de hachage MD5

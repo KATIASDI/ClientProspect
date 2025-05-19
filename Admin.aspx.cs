@@ -1,4 +1,4 @@
-﻿using static PROJETFIN1.ChargeAff;
+﻿//using static PROJETFIN1.ChargeAff;
 using PROJETFIN1.DataSetProspectTableAdapters;
 using System;
 using System.Configuration;
@@ -74,7 +74,9 @@ namespace PROJETFIN1
         }
         private void ConfirmerSuppression(string userId)
         {
-            tUTILISATEUR_.UpdateStatus1(userId, "2"); // Mettre à jour le statut de l'utilisateur 
+
+
+                      tUTILISATEUR_.UpdateStatus1(userId, "2"); // Mettre à jour le statut de l'utilisateur 
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();

@@ -218,8 +218,7 @@
                         <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
 
 <a href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
-<a href="test1.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
-<a href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
+<a href="Process.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
                 </div>
         <!-- Contenu principal -->
         <div class="col-md-10 main-content">
