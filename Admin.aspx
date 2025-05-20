@@ -346,10 +346,15 @@
     PostBackUrl='<%# "EditUser.aspx?id=" + Eval("IDENTIFIANT") + "&nom=" + Eval("NOM") + "&role=" + Eval("ROLE") + "&dateAjout=" + "&email=" + Eval("EMAIL") %>'>
     <i class="bi bi-pencil-square"></i>
 </asp:LinkButton>
-                                        <label class="toggle-switch" title="Désactiver">
-                                            <input type="checkbox" checked onclick='<%# "return confirmerDesactivation(\"" + Eval("Nom") + "\", \"" + Eval("IDENTIFIANT") + "\");" %>' />
-                                            <span class="slider"></span>
-                                        </label>
+                                     <asp:LinkButton 
+                    ID="btnDesactiver" 
+                    runat="server" 
+                    CommandName="Desactiver" 
+                    CommandArgument='<%# Eval("IDENTIFIANT") %>' 
+                    OnClientClick='<%# "return confirmerDesactivation(\"" + Eval("Nom") + "\", \"" + Eval("IDENTIFIANT") + "\");" %>'>
+                    Désactiver
+                </asp:LinkButton>
+                                        
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>

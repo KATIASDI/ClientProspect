@@ -7,11 +7,11 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace PROJETFIN1
+namespace WebRedaTest
 {
 
 
-    public partial class test1
+    public partial class ChargeAff
     {
 
         /// <summary>

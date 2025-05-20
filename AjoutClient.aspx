@@ -228,7 +228,8 @@
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="Nom">Nom</label>&nbsp;
-            <asp:TextBox ID="TBNom" runat="server" MaxLength="30"></asp:TextBox>
+            <asp:TextBox ID="TBNom" runat="server" MaxLength="30" OnTextChanged="TBNom_TextChanged"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TBNom" ErrorMessage="Obligatoire" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
         <div class="col-md-6 mb-3">
             <label for="Secteur">Secteur</label>
@@ -336,6 +337,8 @@ order by CODE_POSTAL">
                 <div class="col-md-6 mb-3">
     <label for="E-mail">E-mail</label>
     <asp:TextBox ID="TBEMAIL" runat="server" ></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TBEMAIL" ErrorMessage="Obligatoire" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TBEMAIL" ErrorMessage="Email non valide" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
 </div>
 
 <!-- Téléphones -->

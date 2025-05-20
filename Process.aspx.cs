@@ -6,17 +6,12 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Web;
 using System.Web.Security;
-using PROJETFIN1.DataSetProspectTableAdapters;
-using System.Collections.Generic;
 
 namespace WebRedaTest
 {
     public partial class Process : System.Web.UI.Page
     {
-
-        VISITETableAdapter tVisite = new VISITETableAdapter();
-
-        //string role = "Direction commerciale"; // récupéré dynamiquement
+        //string role = "Direction commercial"; // récupéré dynamiquement
         string role = "";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -24,24 +19,24 @@ namespace WebRedaTest
             if (!IsPostBack)
             {
 
-                // if (Session["role"] != null)
-                // {
-                role = Session["ROLE_"] as string;
-                if (string.IsNullOrEmpty(role))
+               // if (Session["role"] != null)
                 {
-                    Response.Redirect("Login.aspx");
-                    return;
+                    role = Session["ROLE_"] as string;
+                    if (string.IsNullOrEmpty(role))
+                    {
+                        Response.Redirect("Login.aspx");
+                        return;
+                    }
                 }
-                //   }
-                //  else
-                //  {
-                // role = "Administrateur";
-                //    role = "Chargé d'affaires";
-                // role = "Directeur d'agence";
-                //   role = "Direction commerciale";
-                // role = "Comité crédit";
-                //role = "Auccun Role";
-                //   }
+               // else
+                //{
+                    // role = "Administrateur";
+                   // role = "Chargé d'affaires";
+                    //  role = "Directeur d'agence";
+                    //     role = "Direction commercial";
+                    //  role = "Comité crédit";
+                    // role = "Auccun Role";
+                //}
 
                 AfficherMessageParRole();
                 ChargerTableauAvecBoutons();
@@ -72,14 +67,14 @@ namespace WebRedaTest
                     linkManageUsers.Visible = true;
                     linkAddUser.Visible = true;
                     linkRolesPermissions.Visible = true;
-                    linkHistory.Visible = true;
+                    linkHistory.Visible = false;
                     linkSettings.Visible = true;
                     break;
 
                 case "Chargé d'affaires":
                     linkAddProspect.Visible = true;
                     linkViewProspect.Visible = true;
-                    linkPlanningVisite.Visible = true;
+                    linkPlanningVisite.Visible = false;
                     break;
 
                 case "Directeur d'agence":
@@ -88,12 +83,12 @@ namespace WebRedaTest
 
                 case "Direction commercial":
                     linkViewProspect.Visible = true;
-                    linkViewVote.Visible = true;
-                    linkDecision.Visible = true;
+                    linkViewVote.Visible = false;
+                    linkDecision.Visible = false;
                     break;
 
                 case "Comité crédit":
-                    linkVote.Visible = true;
+                    linkVote.Visible = false;
                     linkViewProspect.Visible = true;
                     break;
 
@@ -120,20 +115,19 @@ namespace WebRedaTest
                             SELECT cp.NOM, cp.BESOINS, cp.NBR_EMPLOYES, cp.TYPE_RENCONTRE,cp.CANAL_ACQUISITION, 
                                     cp.BLACK_LIST, cp.INTERDIT_CHEQUIER, cp.DATE_CREATION,cp.CAPITAL, 
                                     cp.FORME_JURIDIQUE, cp.COMMENTAIRE, cp.NUMTEL, cp.STATUS, cp.EMAIL, cp.ADRESSE,
-n1.DESCRIPTION AS SECTEUR_DESC,
-n2.DESCRIPTION AS SOUS_SECTEUR_DESC,
+                                    n1.DESCRIPTION AS SECTEUR_DESC,
+                                    n2.DESCRIPTION AS SOUS_SECTEUR_DESC,
 
-n3.DESCRIPTION AS STATUS_DESC
+                                    n3.DESCRIPTION AS STATUS_DESC
 
-            FROM CLIENT_PROSPECT cp
-            LEFT JOIN NOMENCLATURE n1 ON n1.CODE = cp.SECTEUR
-            LEFT JOIN NOMENCLATURE n2 ON n2.CODE = cp.SOUS_SECTEUR
+                                    FROM CLIENT_PROSPECT cp
+                                    LEFT JOIN NOMENCLATURE n1 ON n1.CODE = cp.SECTEUR
+                                    LEFT JOIN NOMENCLATURE n2 ON n2.CODE = cp.SOUS_SECTEUR
 
- LEFT JOIN NOMENCLATURE n3 ON n3.CODE = cp.STATUS
+                                     LEFT JOIN NOMENCLATURE n3 ON n3.CODE = cp.STATUS
 
- LEFT JOIN NOMENCLATURE n2 ON n2.CODE = cp.SOUS_SECTEUR
-            WHERE cp.ID_PROSPECT = :ID";
-
+                                     LEFT JOIN NOMENCLATURE n2 ON n2.CODE = cp.SOUS_SECTEUR
+                                     WHERE cp.ID_PROSPECT = :ID";
 
                         using (OracleCommand cmd = new OracleCommand(query, conn))
                         {
@@ -144,13 +138,9 @@ n3.DESCRIPTION AS STATUS_DESC
                                 {
                                     string details = $@"
                                         <b>Nom :</b> {(reader["NOM"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["NOM"].ToString()) : "N/A")}<br/>
-
- <b>Secteur :</b> {(reader["SECTEUR_DESC"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["SECTEUR_DESC"].ToString()) : "N/A")}<br/>
-                        <b>Sous-secteur :</b> {(reader["SOUS_SECTEUR_DESC"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["SOUS_SECTEUR_DESC"].ToString()) : "N/A")}<br/>
-                          
-  <b>Statusss :</b> {(reader["STATUS_DESC"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["STATUS_DESC"].ToString()) : "N/A")}<br/>
-
-
+                                        <b>Secteur :</b> {(reader["SECTEUR_DESC"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["SECTEUR_DESC"].ToString()) : "N/A")}<br/>
+                                        <b>Sous-secteur :</b> {(reader["SOUS_SECTEUR_DESC"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["SOUS_SECTEUR_DESC"].ToString()) : "N/A")}<br/>
+                                        <b>Status :</b> {(reader["STATUS_DESC"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["STATUS_DESC"].ToString()) : "N/A")}<br/>
                                         <b>Besoins :</b> {(reader["BESOINS"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["BESOINS"].ToString()) : "N/A")}<br/>
                                         <b>Nombre Employés :</b> {(reader["NBR_EMPLOYES"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["NBR_EMPLOYES"].ToString()) : "N/A")}<br/>
                                         <b>Type Rencontre :</b> {(reader["TYPE_RENCONTRE"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["TYPE_RENCONTRE"].ToString()) : "N/A")}<br/>
@@ -161,10 +151,10 @@ n3.DESCRIPTION AS STATUS_DESC
                                         <b>Capital :</b> {(reader["CAPITAL"] != DBNull.Value ? reader["CAPITAL"].ToString() : "N/A")}<br/>
                                         <b>Forme Juridique :</b> {(reader["FORME_JURIDIQUE"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["FORME_JURIDIQUE"].ToString()) : "N/A")}<br/>
                                         <b>Commentaire :</b> {(reader["COMMENTAIRE"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["COMMENTAIRE"].ToString()) : "N/A")}<br/>
-                                        <b>Téléphone :</b> {(reader["NUMTEL"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["NUMTEL"].ToString()) : "N/A")}<br/>
-                                        <b>Status :</b> {(reader["STATUS"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["STATUS"].ToString()) : "N/A")}<br/>
+                                        <b>Téléphone :</b> {(reader["NUMTEL"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["NUMTEL"].ToString()) : "N/A")}<br/>                                      
                                         <b>Email :</b> {(reader["EMAIL"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["EMAIL"].ToString()) : "N/A")}<br/>
                                         <b>Adresse :</b> {(reader["ADRESSE"] != DBNull.Value ? HttpUtility.HtmlEncode(reader["ADRESSE"].ToString()) : "N/A")}<br/>";
+
                                     lblDetails.Text = details;
                                     ClientScript.RegisterHiddenField("shouldOpenModal", "true");
                                     UpdatePanel1.Update();
@@ -200,7 +190,7 @@ n3.DESCRIPTION AS STATUS_DESC
                     message = "<p>Validation Directeur d'agence.</p>";
                     break;
                 case "Direction commercial":
-                    message = "<p>Validation directeur commerciale.</p>";
+                    message = "<p>Validation directeur commercial.</p>";
                     break;
                 case "Comité crédit":
                     message = "<p>Vote Comité crédit.</p>";
@@ -213,7 +203,6 @@ n3.DESCRIPTION AS STATUS_DESC
 
         }
 
-
         private void ChargerTableauAvecBoutons()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
@@ -225,7 +214,7 @@ n3.DESCRIPTION AS STATUS_DESC
                 try
                 {
                     conn.Open();
-                    string query = "SELECT NOM, NUMTEL, EMAIL, ADRESSE, ID_PROSPECT, STATUS FROM CLIENT_PROSPECT";
+                    string query = "SELECT cp.NOM, cp.NUMTEL, cp.EMAIL, cp.ADRESSE, cp.ID_PROSPECT, cp.STATUS FROM CLIENT_PROSPECT cp";
 
 
 
@@ -256,7 +245,7 @@ n3.DESCRIPTION AS STATUS_DESC
                                     switch (role)
                                     {
                                         case "Administrateur":
-                                            if (statusValue == 0 || statusValue == 3)
+                                            if (statusValue == 0 || statusValue == 3 )
                                             {
                                                 literal.Text = $"<button class='btn btn-success btn-sm' onclick=\"updateStatus('{prospectId}', 14, 'Valider'); return false;\">Valider</button>";
                                                 literal.Text += $"<button class='btn btn-warning btn-sm' onclick=\"updateStatus('{prospectId}', {statusValue}, 'Modifier'); return false;\">Modifier</button>";
@@ -293,18 +282,11 @@ n3.DESCRIPTION AS STATUS_DESC
                                                 literal.Text += $"<button class='btn btn-warning btn-sm' onclick=\"handleVisitAction('{prospectId}', 12, 'Planifier Visite', 'calendar'); return false;\">Modifier la Visite</button>";
 
 
-           
-                                                
-
-
-
-
-
                                                 literal.Text += $"<button class='btn btn-danger btn-sm' onclick=\"handleVisitAction('{prospectId}', 13, 'Visite Réalisée', 'pdf'); return false;\">Visite Réalisée</button>";
                                             }
                                             else if (statusValue == 13)
                                             {
-                                                literal.Text += $"<button class='btn btn-warning btn-sm' onclick=\"updateStatus('{prospectId}', 14, 'Soumettre a la directino commerciale'); return false;\">Soumettre a la directino commerciale</button>";
+                                                literal.Text += $"<button class='btn btn-warning btn-sm' onclick=\"updateStatus('{prospectId}', 14, 'Soumettre a la directino commercial'); return false;\">Soumettre a la directino commercial</button>";
                                             }
                                             else if (statusValue == 15)
                                             {
@@ -329,6 +311,10 @@ n3.DESCRIPTION AS STATUS_DESC
                                             else if (statusValue == 15)
                                             {
                                                 literal.Text = "<span class='text-muted'>Client accepte</span>";
+                                            }
+                                            else if (statusValue == 4)
+                                            {
+                                                literal.Text = "<span class='text-muted'>Client </span>";
                                             }
                                             else
                                             {
@@ -357,13 +343,20 @@ n3.DESCRIPTION AS STATUS_DESC
                                             }
                                             else if (statusValue == 14)
                                             {
+                                                literal.Text = $"<button class='btn btn-success btn-sm' onclick=\"updateStatus('{prospectId}', 14, 'Voir compte rendu de visite'); return false;\">Voir compte rendu de visite</button>";
 
                                                 literal.Text = $"<button class='btn btn-success btn-sm' onclick=\"updateStatus('{prospectId}', 15, 'Soummetre la décision finale'); return false;\">Decision Finale Favorable</button>";
 
                                             }
+                                              else if (statusValue == 4) {
+                                                literal.Text = "<span class='text-muted'>Client rejetté </span>";
+                                            }
                                             else if (statusValue == 15)
                                             {
                                                 literal.Text = "<span class='text-muted'>Client accepte</span>";
+                                            }
+                                            else if (statusValue == 4) {
+                                                literal.Text = "<span class='text-muted'>Client </span>";
                                             }
                                             else
                                             {
@@ -423,6 +416,11 @@ n3.DESCRIPTION AS STATUS_DESC
                 }
             }
         }
+
+
+
+
+
 
         [System.Web.Services.WebMethod]
         public static string UpdateProspectStatus(string prospectId, int newStatus, string vote = null)

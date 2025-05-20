@@ -121,6 +121,7 @@
     <Content Include="Login2.aspx" />
     <Content Include="PlanningVisite.aspx" />
     <Content Include="RolesetPermissions.aspx" />
+    <Content Include="Script\jquery-3.7.1.js" />
     <Content Include="Settings.aspx" />
     <Content Include="Sidebar .aspx" />
     <Content Include="Process.aspx" />
@@ -146,7 +147,6 @@
     </Compile>
     <Compile Include="ChargeAff.aspx.cs">
       <DependentUpon>ChargeAff.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ChargeAff.aspx.designer.cs">
       <DependentUpon>ChargeAff.aspx</DependentUpon>
@@ -272,6 +272,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

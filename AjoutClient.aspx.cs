@@ -142,5 +142,10 @@ namespace PROJETFIN1
         {
 
         }
+
+        protected void TBNom_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

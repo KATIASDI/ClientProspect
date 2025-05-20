@@ -33,6 +33,15 @@ namespace PROJETFIN1
         protected global::System.Web.UI.WebControls.TextBox TBNom;
 
         /// <summary>
+        /// Contrôle RequiredFieldValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// Contrôle DDLSecteur.
         /// </summary>
         /// <remarks>
@@ -150,6 +159,24 @@ namespace PROJETFIN1
         protected global::System.Web.UI.WebControls.TextBox TBEMAIL;
 
         /// <summary>
+        /// Contrôle RequiredFieldValidator2.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+        /// <summary>
+        /// Contrôle RegularExpressionValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+
+        /// <summary>
         /// Contrôle TBNumTel.
         /// </summary>
         /// <remarks>
@@ -157,6 +184,15 @@ namespace PROJETFIN1
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TBNumTel;
+
+        /// <summary>
+        /// Contrôle RequiredFieldValidator3.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
         /// Contrôle RadioButtonList1.

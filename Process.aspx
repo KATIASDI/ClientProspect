@@ -1,4 +1,4 @@
-﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Process.aspx.cs" Inherits="WebRedaTest.Process" %>
+﻿﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Process.aspx.cs" Inherits="WebRedaTest.Process" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :root {
             --primary: #00529B;
@@ -158,7 +159,7 @@
                 </button>
                 <div class="col-md-2 sidebar d-flex flex-column">
                     <div class="text-center mb-4">
-                        <img src="https://via.placeholder.com/150" alt="Housing Bank Logo" class="img-fluid logo-img">
+                        <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
                     </div>
                     <a id="linkDashboard" runat="server" href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
                     <a id="linkManageUsers" runat="server" href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
@@ -167,7 +168,7 @@
                     <a id="linkHistory" runat="server" href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
                     <a id="linkSettings" runat="server" href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
                     <a id="linkAddProspect" runat="server" href="AjoutClient.aspx"><i class="bi bi-person-lines-fill me-2"></i>Add New Prospect</a>
-                    <a id="linkViewProspect" runat="server" href="ViewProspect.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
+                    <a id="linkViewProspect" runat="server" href="Process.aspx"><i class="bi bi-list-check me-2"></i>View Prospect</a>
                     <a id="linkVote" runat="server" href="Vote.aspx"><i class="bi bi-check2-circle me-2"></i>Cast Your Vote</a>
                     <a id="linkViewVote" runat="server" href="ViewVote.aspx"><i class="bi bi-card-checklist me-2"></i>View Vote</a>
                     <a id="linkPlanningVisite" runat="server" href="PlanningVisite.aspx"><i class="bi bi-calendar-check me-2"></i>Schedule Visit</a>
@@ -175,19 +176,18 @@
                 </div>
                 <div class="col-md-10 p-4">
                     <div class="card-custom mb-4 text-center">
-                        <h2Tableau de Prospect</h2>
+                        <h2>Tableau de Prospect</h2>
                         <asp:Literal ID="LiteralMessage" runat="server" />
                     </div>
                     <asp:GridView ID="GridViewProspects" runat="server" AutoGenerateColumns="False"
                         CssClass="grid-table" OnRowCommand="GridViewProspects_RowCommand"
-                        DataKeyNames="STATUS" OnSelectedIndexChanged="GridViewProspects_SelectedIndexChanged">
+                        DataKeyNames="STATUS">
                         <Columns>
                             <asp:BoundField DataField="NOM" HeaderText="Nom" />
                             <asp:BoundField DataField="NUMTEL" HeaderText="Téléphone" />
                             <asp:BoundField DataField="EMAIL" HeaderText="Email" />
                             <asp:BoundField DataField="ADRESSE" HeaderText="Adresse" />
                             <asp:BoundField DataField="STATUS" HeaderText="Status" />
-                          
                             <asp:TemplateField HeaderText="Détails">
                                 <ItemTemplate>
                                     <asp:Button ID="btnDetails" runat="server"
@@ -230,63 +230,67 @@
 
 
         <!-- Modal pour le calendrier (test uniquement) -->
-<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="calendarModalLabel">Planifier une visitee</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="visitDate">Date de la visite :</label>
-                    <input type="date" class="form-control" id="visitDate" />
+        <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="calendarModalLabel">Planifier une visite</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="visitDate">Date de la visite :</label>
+                            <input type="date" class="form-control" id="visitDate" />
+                        </div>
+                        <input type="hidden" id="calendarProspectId" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" onclick="testVisitDate()">Valider</button>
+                    </div>
                 </div>
-                <input type="hidden" id="calendarProspectId" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary" onclick="testVisitDate()">Valider</button>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Modal pour l'upload PDF (test uniquement) -->
-<div class="modal fade" id="pdfUploadModal" tabindex="-1" role="dialog" aria-labelledby="pdfUploadModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pdfUploadModalLabel">Uploader le rapport de visite</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="pdfFile">Sélectionner un fichier PDF :</label>
-                    <input type="file" class="form-control-file" id="pdfFile" accept=".pdf" />
+        <!-- Modal pour l'upload PDF (test uniquement) -->
+        <div class="modal fade" id="pdfUploadModal" tabindex="-1" role="dialog" aria-labelledby="pdfUploadModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="pdfUploadModalLabel">Uploader le rapport de visite</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="pdfFile">Sélectionner un fichier PDF :</label>
+                            <input type="file" class="form-control-file" id="pdfFile" accept=".pdf" />
+                        </div>
+                        <input type="hidden" id="pdfProspectId" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" onclick="testPdfUpload()">Valider</button>
+                    </div>
                 </div>
-                <input type="hidden" id="pdfProspectId" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary" onclick="testPdfUpload()">Valider</button>
             </div>
         </div>
-    </div>
-</div>
 
 
 
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.getElementById('toggleSidebar')?.addEventListener('click', function () {
             document.querySelector('.sidebar').classList.toggle('active');
@@ -315,88 +319,130 @@
         });
 
         function updateStatus(prospectId, newStatus, action) {
-            if (confirm('Confirmez-vous l\'action : ' + action + ' ?')) {
-                PageMethods.UpdateProspectStatus(prospectId, newStatus, null, function (response) {
-                    alert(response);
-                    window.location.reload();
-                }, function (error) {
-                    alert('Erreur : ' + error._message);
-                });
-            }
+            confirmAction(
+                'Confirmer l\'action',
+                `Voulez-vous vraiment effectuer l'action : ${action} ?`,
+                'Confirmer',
+                'Annuler',
+                () => {
+                    PageMethods.UpdateProspectStatus(prospectId, newStatus, null,
+                        (response) => {
+                            showMessage('Succès', response, 'success', () => {
+                                window.location.reload();
+                            });
+                        },
+                        (error) => {
+                            showMessage('Erreur', error._message, 'error');
+                        }
+                    );
+                }
+            );
         }
 
         function submitVote(prospectId, vote, newStatus) {
-            if (confirm('Confirmez-vous votre vote : ' + vote + ' ?')) {
-                PageMethods.UpdateProspectStatus(prospectId, newStatus, vote, function (response) {
-                    alert(response);
-                    window.location.reload();
-                }, function (error) {
-                    alert('Erreur : ' + error._message);
-                });
-            }
+            confirmAction(
+                'Confirmer votre vote',
+                `Voulez-vous confirmer votre vote : ${vote} ?`,
+                'Confirmer',
+                'Annuler',
+                () => {
+                    PageMethods.UpdateProspectStatus(prospectId, newStatus, vote,
+                        (response) => {
+                            showMessage('Succès', response, 'success', () => {
+                                window.location.reload();
+                            });
+                        },
+                        (error) => {
+                            showMessage('Erreur', error._message, 'error');
+                        }
+                    );
+                }
+            );
         }
 
         function showVoteResults(prospectId) {
-            PageMethods.GetVoteResults(prospectId, function (response) {
-                alert(response);
-            }, function (error) {
-                alert('Erreur : ' + error._message);
-            });
+            PageMethods.GetVoteResults(prospectId,
+                (response) => {
+                    showMessage('Résultats des votes', response, 'info');
+                },
+                (error) => {
+                    showMessage('Erreur', error._message, 'error');
+                }
+            );
         }
 
 
 
         function handleVisitAction(prospectId, newStatus, action, modalType) {
-            if (confirm('Confirmez-vous l\'action : ' + action + ' ?')) {
-                PageMethods.UpdateProspectStatus(prospectId, newStatus, null, function (response) {
-                    alert(response); // Affiche "Statut mis à jour avec succès" ou une erreur
-                    if (modalType === 'calendar') {
-                        $('#calendarProspectId').val(prospectId);
-                        $('#visitDate').val('');
-                        $('#calendarModal').modal('show');
-                    } else if (modalType === 'pdf') {
-                        $('#pdfProspectId').val(prospectId);
-                        $('#pdfFile').val('');
-                        $('#pdfUploadModal').modal('show');
-                    } else {
-                        // Recharger la page si aucun modal n'est ouvert
-                        window.location.reload();
-                    }
-                }, function (error) {
-                    alert('Erreur : ' + error._message);
-                });
-            }
+            confirmAction(
+                'Confirmer l\'action',
+                `Voulez-vous vraiment effectuer l'action : ${action} ?`,
+                'Confirmer',
+                'Annuler',
+                () => {
+                    PageMethods.UpdateProspectStatus(prospectId, newStatus, null,
+                        (response) => {
+                            showMessage('Succès', response, 'success', () => {
+                                if (modalType === 'calendar') {
+                                    $('#calendarProspectId').val(prospectId);
+                                    $('#visitDate').val('');
+                                    $('#calendarModal').modal('show');
+                                } else if (modalType === 'pdf') {
+                                    $('#pdfProspectId').val(prospectId);
+                                    $('#pdfFile').val('');
+                                    $('#pdfUploadModal').modal('show');
+                                } else {
+                                    window.location.reload();
+                                }
+                            });
+                        },
+                        (error) => {
+                            showMessage('Erreur', error._message, 'error');
+                        }
+                    );
+                }
+            );
         }
 
         function testVisitDate() {
-            var prospectId = $('#calendarProspectId').val();
-            var visitDate = $('#visitDate').val();
+            const prospectId = $('#calendarProspectId').val();
+            const visitDate = $('#visitDate').val();
             if (!visitDate) {
-                alert('Veuillez sélectionner une date pour la visite.');
+                showMessage('Erreur', 'Veuillez sélectionner une date pour la visite.', 'error');
                 return;
             }
-            alert('Visite : Date sélectionnée pour le prospect ' + prospectId + ' : ' + visitDate);
-            $('#calendarModal').modal('hide');
-            // Attendre que le modal soit complètement fermé avant de recharger
-            $('#calendarModal').on('hidden.bs.modal', function () {
-                window.location.reload();
-            });
+            showMessage(
+                'Succès',
+                `Visite : Date sélectionnée pour le prospect ${prospectId} : ${visitDate}`,
+                'success',
+                () => {
+                    $('#calendarModal').modal('hide');
+                    $('#calendarModal').on('hidden.bs.modal', () => {
+                        window.location.reload();
+                    });
+                }
+            );
         }
 
         function testPdfUpload() {
-            var prospectId = $('#pdfProspectId').val();
-            var fileInput = document.getElementById('pdfFile');
+            const prospectId = $('#pdfProspectId').val();
+            const fileInput = document.getElementById('pdfFile');
             if (!fileInput.files[0]) {
-                alert('Veuillez sélectionner un fichier PDF pour le rapport de visite.');
+                showMessage('Erreur', 'Veuillez sélectionner un fichier PDF pour le rapport de visite.', 'error');
                 return;
             }
-            var fileName = fileInput.files[0].name;
-            alert('Rapport de visite : Fichier PDF sélectionné pour le prospect ' + prospectId + ' : ' + fileName);
-            $('#pdfUploadModal').modal('hide');
-            // Attendre que le modal soit complètement fermé avant de recharger
-            $('#pdfUploadModal').on('hidden.bs.modal', function () {
-                window.location.reload();
-            });
+            const fileName = fileInput.files[0].name;
+            showMessage(
+                'Succès',
+                `Rapport de visite : Fichier PDF sélectionné pour le prospect ${prospectId} : ${fileName}`,
+                'success',
+                () => {
+                    $('#pdfUploadModal').modal('hide');
+                    $('#pdfUploadModal').on('hidden.bs.modal', () => {
+                        window.location.reload();
+                    });
+                }
+            );
         }
 
         function openCalendar(prospectId) {
@@ -411,6 +457,43 @@
             $('#pdfProspectId').val(prospectId);
             $('#pdfFile').val('');
             $('#pdfUploadModal').modal('show');
+        }
+
+
+
+        function showMessage(title, text, icon, callback) {
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon, // 'success', 'error', 'warning', 'info'
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                },
+                buttonsStyling: false
+            }).then(callback);
+        }
+
+
+
+        function confirmAction(title, text, confirmText, cancelText, callback) {
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: confirmText,
+                cancelButtonText: cancelText,
+                customClass: {
+                    confirmButton: 'btn btn-primary me-2',
+                    cancelButton: 'btn btn-secondary'
+                },
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    callback();
+                }
+            });
         }
 
 
