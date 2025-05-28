@@ -7,11 +7,11 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace PROJETFIN1
+namespace TonProjet
 {
 
 
-    public partial class RolesetPermissions
+    public partial class VISITE
     {
 
         /// <summary>
@@ -24,30 +24,12 @@ namespace PROJETFIN1
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Contrôle linkLogout.
+        /// Contrôle GridViewVisites.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkLogout;
-
-        /// <summary>
-        /// Contrôle txtRecherche.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRecherche;
-
-        /// <summary>
-        /// Contrôle gvUsers.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvUsers;
+        protected global::System.Web.UI.WebControls.GridView GridViewVisites;
     }
 }

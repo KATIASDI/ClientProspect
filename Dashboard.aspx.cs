@@ -10,6 +10,8 @@ using System.Web.Security;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using System.Linq;
+using System.Web.Services;
 namespace PROJETFIN1
 
 {
@@ -21,6 +23,7 @@ namespace PROJETFIN1
         protected int ActiveLoansCount = 0;
         protected int TotalCount = 0;
         protected int AcceptedCount = 0;
+        protected int caCount = 0, daCount = 0, dcCount = 0, ccCount = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,7 +52,6 @@ namespace PROJETFIN1
                 linkViewProspect.Visible = false;
                 linkVote.Visible = false;
                 linkViewVote.Visible = false;
-                linkPlanningVisite.Visible = false;
                 linkDecision.Visible = false;
 
                 switch (role)
@@ -58,14 +60,13 @@ namespace PROJETFIN1
                         linkManageUsers.Visible = true;
                         linkAddUser.Visible = true;
                         linkRolesPermissions.Visible = true;
-                        linkHistory.Visible = false;
+                        linkHistory.Visible = true;
                         linkSettings.Visible = true;
                         break;
 
                     case "Chargé d'affaires":
                         linkAddProspect.Visible = true;
                         linkViewProspect.Visible = true;
-                        linkPlanningVisite.Visible = true;
                         break;
 
                     case "Directeur d'agence":
@@ -97,41 +98,42 @@ namespace PROJETFIN1
 
 
 
-                ChargerResume();
+                //ChargerResume();
                 AfficherNombreDeVisites(); LoadLoanStats();
-                BindRecentClients();
+                CountStatusByGroup();
 
 
 
 
             }
         }
-        private void BindRecentClients()
+        private void CountStatusByGroup()
         {
-            // Récupérer la chaîne de connexion depuis Web.config (le nom de ta connexion Oracle)
-            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            // Exemple avec OracleCommand
+            string query = "SELECT STATUS, COUNT(*) as COUNT FROM CLIENT_PROSPECT GROUP BY STATUS";
 
-            using (OracleConnection con = new OracleConnection(connectionString))
+            using (OracleConnection conn = new OracleConnection(ConfigurationManager.ConnectionStrings["Connectionstring1"].ConnectionString))
             {
-                // Requête Oracle pour récupérer les 10 derniers clients, en utilisant ROWNUM et ORDER BY ID DESC
-                string query = @"
-            SELECT NOM, EMAIL, STATE 
-            FROM (
-                SELECT NOM, EMAIL, STATE
-                FROM CLIENT_PROSPECT
-                ORDER BY ID_PROSPECT DESC
-            )
-            WHERE ROWNUM <= 10";
-
-                using (OracleCommand cmd = new OracleCommand(query, con))
+                conn.Open();
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    con.Open();
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int status = Convert.ToInt32(reader["STATUS"]);
+                            int count = Convert.ToInt32(reader["COUNT"]);
 
-                    DataTable dt = new DataTable();
-                    dt.Load(cmd.ExecuteReader());
-
-                    GridViewRecentClients.DataSource = dt;
-                    GridViewRecentClients.DataBind();
+                            if (new int[] { 0, 3, 6, 10, 12, 13 }.Contains(status))
+                                caCount += count;
+                            else if (new int[] {1}.Contains(status))
+                                daCount += count;
+                            else if (new int[] { 2,9,14,15 }.Contains(status))
+                                dcCount += count;
+                            else if (new int[] { 5,7,8 }.Contains(status))
+                              ccCount += count;
+                        }
+                    }
                 }
             }
         }
@@ -210,38 +212,75 @@ namespace PROJETFIN1
             public string Role { get; set; }
             public int Count { get; set; }
         }
-
-        private void ChargerResume()
+        public class ProspectionData
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            public string Mois { get; set; }
+            public int Nombre { get; set; }
+        }
 
+        [WebMethod]
+        public static List<ProspectionData> GetProspectionMensuelle()
+        {
+            List<ProspectionData> data = new List<ProspectionData>();
 
-            string query = "SELECT ROLE_, COUNT(*) AS NB FROM UTILISATEUR_ GROUP BY ROLE_";
-
-            List<RoleData> liste = new List<RoleData>();
-
-            using (OracleConnection conn = new OracleConnection(connectionString))
+            string connStr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+            using (OracleConnection conn = new OracleConnection(connStr))
             {
-                OracleCommand cmd = new OracleCommand(query, conn);
                 conn.Open();
+                string query = @"SELECT TO_CHAR(DATE_CREATION, 'YYYY-MM') AS MOIS,
+                                COUNT(*) AS NOMBRE
+                         FROM CLIENT_PROSPECT
+                         GROUP BY TO_CHAR(DATE_CREATION, 'YYYY-MM')
+                         ORDER BY TO_CHAR(DATE_CREATION, 'YYYY-MM')";
 
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 using (OracleDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        string role = reader["ROLE_"].ToString();
-                        int nb = Convert.ToInt32(reader["NB"]);
-
-                        liste.Add(new RoleData { Role = role, Count = nb });
+                        data.Add(new ProspectionData
+                        {
+                            Mois = reader.GetString(0),
+                            Nombre = reader.GetInt32(1)
+                        });
                     }
                 }
             }
 
+            return data;
+        }
+
+        //private void ChargerResume()
+        //{
+        //    string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
 
 
-            RepeaterRoles.DataSource = liste;
-            RepeaterRoles.DataBind();
-        } 
+        //    string query = "SELECT ROLE_, COUNT(*) AS NB FROM UTILISATEUR_ GROUP BY ROLE_";
+
+        //    List<RoleData> liste = new List<RoleData>();
+
+        //    using (OracleConnection conn = new OracleConnection(connectionString))
+        //    {
+        //        OracleCommand cmd = new OracleCommand(query, conn);
+        //        conn.Open();
+
+        //        using (OracleDataReader reader = cmd.ExecuteReader())
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                string role = reader["ROLE_"].ToString();
+        //                int nb = Convert.ToInt32(reader["NB"]);
+
+        //                liste.Add(new RoleData { Role = role, Count = nb });
+        //            }
+        //        }
+        //    }
+
+
+
+        //    RepeaterRoles.DataSource = liste;
+        //    RepeaterRoles.DataBind();
+        //} 
 
         public string GetIcon(string role)
         {
@@ -254,6 +293,49 @@ namespace PROJETFIN1
             if (role.Contains("client")) return "🧑‍💼";
             return "👤";
         }
+        [System.Web.Services.WebMethod]
+        public static List<SecteurData> GetClientsParSecteur()
+        {
+            List<SecteurData> data = new List<SecteurData>();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"
+            SELECT n.DESCRIPTION AS SecteurDescription, COUNT(*) AS Nombre
+            FROM CLIENT_PROSPECT cp
+            JOIN NOMENCLATURE n ON cp.SECTEUR = n.CODE
+            WHERE n.TYPE_CODE = 1
+            GROUP BY n.DESCRIPTION
+        ";
+
+                using (OracleCommand cmd = new OracleCommand(query, conn))
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        data.Add(new SecteurData
+                        {
+                            SecteurDescription = reader["SecteurDescription"].ToString(),
+                            Nombre = Convert.ToInt32(reader["Nombre"])
+                        });
+                    }
+                }
+            }
+
+            return data;
+        }
+
+        
+
+        public class SecteurData
+        {
+            public string SecteurDescription { get; set; }
+            public int Nombre { get; set; }
+        }
+
 
         public string GetLabel(string role)
         {

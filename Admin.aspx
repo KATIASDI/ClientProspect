@@ -31,11 +31,11 @@
             color: var(--text-color);
         }
 
-        .content {
+        /*.content {
             margin: 30px auto;
             max-width: 1100px;
             padding: 20px;
-        }
+        }*/
 
         .title-bar {
             display: flex;
@@ -182,6 +182,8 @@
             color: white;
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
+                        font-size: 1.2rem;
+
         }
         .sidebar a {
             color: white;
@@ -238,6 +240,12 @@
         margin-left: 0 !important;
     }
 }
+        .container-chart {
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
         .logo-img {
     max-width: 80%;
     height: auto;
@@ -270,15 +278,16 @@
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                confirmButtonText: "✅ Oui",
-                cancelButtonText: "❌ Annuler"
+                confirmButtonText: " Oui",
+                cancelButtonText: " Annuler"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    __doPostBack('btnDesactivate', userId);
+                    __doPostBack('ConfirmerSuppression', userId);
                 }
             });
             return false;
         }
+
 
         function flipPage() {
             document.getElementById('mainContent').style.display = 'none';
@@ -289,6 +298,22 @@
             document.getElementById('addUserContainer').style.display = 'none';
             document.getElementById('mainContent').style.display = 'block';
         }
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("searchInput");
+
+            searchInput.addEventListener("keyup", function () {
+            const filter = searchInput.value.toLowerCase();
+            const rows = document.querySelectorAll(".table tbody tr");
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(filter) ? "" : "none";
+            });
+        });
+    });
+    </script>
+
     </script>
 </head>
 <body>
@@ -303,16 +328,26 @@
                 <div style="width: 25px; height: 3px; background-color: white; margin: 5px 0;"></div>
             </button>
 
-            <!-- Sidebar -->
-            <div class="col-md-2 sidebar d-flex flex-column">
-                <div class="text-center mb-4">
-                    <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img" />
-                   </div>
-    <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
-<a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
-<a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
-<a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
-<a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+         
+        <div class="col-md-2 sidebar d-flex flex-column">
+
+    <div class="text-center mb-4">
+        <img src="Logo1m.png" alt="Housing Bank Logo" class="img-fluid logo-img">
+    </div>
+    <a id="linkDashboard" runat="server" href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+<a id="linkManageUsers" runat="server" href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
+<a id="linkAddUser" runat="server" href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
+<a id="linkRolesPermissions" runat="server" href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
+<a id="linkHistory" runat="server" href="Historique.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
+<a id="linkSettings" runat="server" href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+
+<div class="mt-auto p-3">
+    <a id="linkLogout" runat="server" 
+       href="Login.aspx" 
+       class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center">
+        <i class="bi bi-box-arrow-right me-2"></i> Déconnexion
+    </a>
+</div>
 
 
 
@@ -321,13 +356,35 @@
 </div>
 
             <!-- Contenu principal -->
-            <div class="col-md-10 content">
-                <div class="title-bar d-flex justify-content-between align-items-center my-4 px-3">
-                    <h3>👤 Gestion des Utilisateurs</h3>
-                </div>
+
+            <div class="col-md-10 p-4 content container-chart">
+                <div class="title-bar d-flex justify-content-center align-items-center my-4 px-3">
+    <h3 class="text-center">👤 Gestion des Utilisateurs</h3>
+</div>
 
                 <div class="card-style px-3">
-                    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-striped" OnRowCommand="gvUsers_RowCommand" OnSelectedIndexChanged="gvUsers_SelectedIndexChanged1">
+                    <div class="d-flex justify-content-end mb-3">
+  <asp:TextBox 
+      ID="txtSearch" 
+      runat="server" 
+      CssClass="form-control form-control-sm" 
+      placeholder="Rechercher un utilisateur..." 
+      style="max-width: 250px;" />
+  
+  <!-- LinkButton conserve btnSearch_Click côté serveur -->
+  <asp:LinkButton 
+      ID="btnSearch" 
+      runat="server" 
+      CssClass="btn btn-sm btn-primary ms-2 d-flex align-items-center justify-content-center" 
+      OnClick="btnSearch_Click">
+    <!-- Icône SVG de Bootstrap Icons -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.414-1.415l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+    </svg>
+  </asp:LinkButton>
+</div>
+
+                    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-striped" OnRowCommand="gvUsers_RowCommand">
                   
 
                         <Columns>
@@ -336,6 +393,8 @@
                             <asp:BoundField DataField="ROLE" HeaderText="Rôle" />
                             <asp:BoundField DataField="DateAjout" HeaderText="Date d'ajout" />
                             <asp:BoundField DataField="Email" HeaderText="Email" />
+                            <asp:BoundField DataField="STATUS" HeaderText="Status" Visible="false" />
+
 
                             <asp:TemplateField HeaderText="Actions">
                                 <ItemTemplate>
@@ -346,14 +405,30 @@
     PostBackUrl='<%# "EditUser.aspx?id=" + Eval("IDENTIFIANT") + "&nom=" + Eval("NOM") + "&role=" + Eval("ROLE") + "&dateAjout=" + "&email=" + Eval("EMAIL") %>'>
     <i class="bi bi-pencil-square"></i>
 </asp:LinkButton>
-                                     <asp:LinkButton 
-                    ID="btnDesactiver" 
-                    runat="server" 
-                    CommandName="Desactiver" 
-                    CommandArgument='<%# Eval("IDENTIFIANT") %>' 
-                    OnClientClick='<%# "return confirmerDesactivation(\"" + Eval("Nom") + "\", \"" + Eval("IDENTIFIANT") + "\");" %>'>
-                    Désactiver
-                </asp:LinkButton>
+                                    <!-- Bouton Désactiver -->
+            <asp:LinkButton 
+                ID="btnDesactiver" 
+                runat="server" 
+                CommandName="Desactiver" 
+                CommandArgument='<%# Eval("IDENTIFIANT") %>' 
+                OnClientClick='<%# "return confirmerDesactivation(\"" + Eval("Nom") + "\", \"" + Eval("IDENTIFIANT") + "\");" %>'
+                Visible='<%# Eval("STATUS").ToString() == "1" %>' 
+                CssClass="btn btn-outline-danger btn-sm">
+                <i class="bi bi-person-dash"></i> Désactiver
+            </asp:LinkButton>
+
+            <!-- Bouton Réactiver -->
+            <asp:LinkButton 
+                ID="btnReactivier" 
+                runat="server" 
+                CommandName="Reactivier" 
+                CommandArgument='<%# Eval("IDENTIFIANT") %>' 
+                OnClientClick='<%# "return confirmerReactivation(\"" + Eval("Nom") + "\", \"" + Eval("IDENTIFIANT") + "\");" %>'
+                Visible='<%# Eval("STATUS").ToString() == "2" %>' 
+                CssClass="btn btn-outline-success btn-sm">
+                <i class="bi bi-person-check"></i> Réactiver
+            </asp:LinkButton>
+
                                         
                                     </div>
                                 </ItemTemplate>

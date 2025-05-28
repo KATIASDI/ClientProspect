@@ -7,11 +7,11 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace PROJETFIN1
+namespace VotreProjet
 {
 
 
-    public partial class EditUser
+    public partial class Historique
     {
 
         /// <summary>
@@ -24,15 +24,6 @@ namespace PROJETFIN1
         protected global::System.Web.UI.HtmlControls.HtmlAnchor linkHistory;
 
         /// <summary>
-        /// Contrôle linkLogout.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkLogout;
-
-        /// <summary>
         /// Contrôle form1.
         /// </summary>
         /// <remarks>
@@ -42,57 +33,30 @@ namespace PROJETFIN1
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Contrôle txtNom.
+        /// Contrôle txtRecherche.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNom;
+        protected global::System.Web.UI.WebControls.TextBox txtRecherche;
 
         /// <summary>
-        /// Contrôle txtIdentifiant.
+        /// Contrôle btnRechercher.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdentifiant;
+        protected global::System.Web.UI.WebControls.Button btnRechercher;
 
         /// <summary>
-        /// Contrôle txtEmail.
+        /// Contrôle GridViewHistorique.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
-
-        /// <summary>
-        /// Contrôle ddlRole.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlRole;
-
-        /// <summary>
-        /// Contrôle SqlDataSource1.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-
-        /// <summary>
-        /// Contrôle btnEnregistrer.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEnregistrer;
+        protected global::System.Web.UI.WebControls.GridView GridViewHistorique;
     }
 }

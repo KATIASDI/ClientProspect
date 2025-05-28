@@ -1,5 +1,6 @@
 ﻿using PROJETFIN1.DataSetProspectTableAdapters;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,16 +12,15 @@ namespace PROJETFIN1
     {
         CLIENT_PROSPECTTableAdapter tPROSPECTS_ = new CLIENT_PROSPECTTableAdapter();
         //VISITETableAdapter tVisite = new VISITETableAdapter();
-        protected void Page_Load(object sender, EventArgs e)
-        {
-        }
+        PRINCIPAL_DIRIGEANTTableAdapter tDIRIGEANTS_ = new PRINCIPAL_DIRIGEANTTableAdapter();
+
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             //string nom = Nom.Value.Trim();
             var nom = TBNom.Text.Trim();
             decimal CAPITAL = Convert.ToDecimal(TBCapital.Text.Trim());
-           
+
             string formeJuridique = DropDownList6.SelectedValue;
             string secteur = DDLSecteur.SelectedValue;
             string sousSecteur = DDLSSecteur.SelectedValue;
@@ -35,39 +35,48 @@ namespace PROJETFIN1
             string numTel = TBNumTel.Text.Trim();
             string email = TBEMAIL.Text.Trim();
             string adresse = TBAdresse.Text.Trim();
+            List<string> dirigeants = new List<string>();
+            string[] values = Request.Form.GetValues("dirigeant[]");
+
+            if (values != null)
+            {
+                dirigeants.AddRange(values.Where(v => !string.IsNullOrWhiteSpace(v)));
+            }
             // TBNumTel est ton TextBox pour le numéro
 
 
             int rowsInserted = 0;
 
             //ne pas inserer un Client qui existe deja 
-            bool AuMoinsUnNull = new[] { nom, formeJuridique, secteur, sousSecteur, dirigeant, nbEmployes, wilaya, canal, interdit, blacklist,email,adresse }.Any(string.IsNullOrEmpty);
-             if (true)/*(!AuMoinsUnNull)*/
+            bool AuMoinsUnNull = new[] { nom, formeJuridique, secteur, sousSecteur, dirigeant, nbEmployes, wilaya, canal, interdit, blacklist, email, adresse }.Any(string.IsNullOrEmpty);
+            if (true)/*(!AuMoinsUnNull)*/
 
-                {
-                    int ifExists = (int)tPROSPECTS_.IfExists(nom.ToUpper()).Value;
+            {
+                int ifExists = (int)tPROSPECTS_.IfExists(nom.ToUpper()).Value;
 
                 if (ifExists == 0)
                 {
-                    rowsInserted = tPROSPECTS_.InsertClient(
-           nom,
-           secteur,
-           sousSecteur,
-           besoins,
-           nbEmployes, // <- ici on met l'entier converti
-           typeRencontre,
-           canal,
-           blacklist,
-           interdit,
-           DateTime.Now,
-           CAPITAL,
-           formeJuridique,
-           numTel,
-           email,
-           adresse
-           // commentaire
-            // numtel
-       );
+                    //int new_id;
+
+                    //     rowsInserted = tPROSPECTS_.InsertClient(nom,secteur,sousSecteur,besoins,nbEmployes, typeRencontre,canal, blacklist,interdit, DateTime.Now, CAPITAL, formeJuridique,numTel,email, adresse
+                    //rowsInserted = tPROSPECTS_.InsertProspect(nom, secteur, sousSecteur, nbEmployes, adresse, typeRencontre, canal, blacklist, interdit, DateTime.Now,
+                    //    CAPITAL, formeJuridique, besoins, numTel, email, out new_id);
+                    rowsInserted=tPROSPECTS_.InsertMe(nom, secteur, sousSecteur,"B", nbEmployes, adresse, typeRencontre, canal, blacklist, interdit, DateTime.Now,
+                        CAPITAL, formeJuridique, besoins, numTel, email, out int new_id);
+
+                     //new_id = 0;
+                    if (dirigeants.Count > 0)
+                    {
+                        foreach (string dir in dirigeants)
+                        {
+                            if (!string.IsNullOrWhiteSpace(dir))
+                            {
+                                //tDIRIGEANTS_.InsertDirigeant(new_id, dir.Trim());
+                                tDIRIGEANTS_.InsertDirigeant(dir.Trim(), new_id);
+                            }
+                        }
+                    }
+
                 }
                 else
                 {
@@ -86,6 +95,8 @@ namespace PROJETFIN1
             if (rowsInserted > 0)
             {
                 ShowAlert("Succès", "Le prospect a été ajouté avec succès !", "success");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "popup", "ShowAlert('Succès', 'Le prospect a été ajouté avec succès !', 'success');", true);
+
             }
             else
             {
@@ -147,5 +158,57 @@ namespace PROJETFIN1
         {
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

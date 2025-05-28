@@ -11,53 +11,26 @@ namespace PROJETFIN1
 {
 
 
-    public partial class AjoutClient
+    public partial class EditClient
     {
 
         /// <summary>
-        /// Contrôle linkDashboard.
+        /// Contrôle formEditClient.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkDashboard;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formEditClient;
 
         /// <summary>
-        /// Contrôle linkAddProspect.
+        /// Contrôle HiddenClientId.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkAddProspect;
-
-        /// <summary>
-        /// Contrôle linkViewProspect.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkViewProspect;
-
-        /// <summary>
-        /// Contrôle linkLogout.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkLogout;
-
-        /// <summary>
-        /// Contrôle ajoutClientForm.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm ajoutClientForm;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenClientId;
 
         /// <summary>
         /// Contrôle TBNom.
@@ -69,15 +42,6 @@ namespace PROJETFIN1
         protected global::System.Web.UI.WebControls.TextBox TBNom;
 
         /// <summary>
-        /// Contrôle RequiredFieldValidator1.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-
-        /// <summary>
         /// Contrôle DDLSecteur.
         /// </summary>
         /// <remarks>
@@ -85,15 +49,6 @@ namespace PROJETFIN1
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLSecteur;
-
-        /// <summary>
-        /// Contrôle RequiredFieldValidator10.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
 
         /// <summary>
         /// Contrôle SqlSecteur.
@@ -112,15 +67,6 @@ namespace PROJETFIN1
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLSSecteur;
-
-        /// <summary>
-        /// Contrôle RequiredFieldValidator11.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
 
         /// <summary>
         /// Contrôle SqlSSecteur.
@@ -366,12 +312,12 @@ namespace PROJETFIN1
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
 
         /// <summary>
-        /// Contrôle BtnSubmit.
+        /// Contrôle btnUpdate.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSubmit;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

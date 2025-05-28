@@ -38,6 +38,8 @@
             color: white;
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
+                        font-size: 1.2rem;
+
         }
 
         .sidebar a {
@@ -52,11 +54,14 @@
             text-decoration: underline;
         }
 
-        .logo-img {
-            max-width: 80%;
-            height: auto;
-            opacity: 0.95;
-        }
+               .logo-img {
+    max-width: 80%;
+    height: auto;
+    opacity: 0.95;
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    transition: all 0.3s ease-in-out;
+}
 
         .form-container {
             background: white;
@@ -125,8 +130,19 @@
                         <a href="Dashboard.aspx"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
 <a href="Admin.aspx"><i class="bi bi-person-badge-fill me-2"></i>Manage Users</a>
 <a href="AjoutUser.aspx"><i class="bi bi-person-plus-fill me-2"></i>Add New User</a>
+
 <a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
+                    <a id="linkHistory" runat="server" href="Historique.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
+
 <a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+
+                    <div class="mt-auto p-3">
+    <a id="linkLogout" runat="server" 
+       href="Login.aspx" 
+       class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center">
+        <i class="bi bi-box-arrow-right me-2"></i> Déconnexion
+    </a>
+</div>
 
                 </div>
 

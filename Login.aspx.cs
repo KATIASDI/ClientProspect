@@ -32,7 +32,7 @@ namespace YourNamespace
                     conn.Open();
 
                     // Vérification de l'utilisateur dans la base de données
-                    string query = "SELECT ROLE_, STATUS FROM UTILISATEUR_ WHERE IDENTIFIANT = :Identifiant AND PASSWORD_ = :MotDePasse\r\n";
+                    string query = "SELECT ROLE_, STATUS, ID_USER FROM UTILISATEUR_ WHERE IDENTIFIANT = :Identifiant AND PASSWORD_ = :MotDePasse\r\n";
 
                     using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
@@ -44,6 +44,7 @@ namespace YourNamespace
                             if (reader.Read())
                             {
                                 string role = reader["ROLE_"].ToString();
+                                string iduser = reader["ID_USER"].ToString();
 
                                 int status = Convert.ToInt32(reader["STATUS"]);
 
@@ -51,6 +52,7 @@ namespace YourNamespace
 
 
                                 Session["ROLE_"] = role;
+                                Session["ID_USER"] = iduser;
 
 
                                 if (status == 0)

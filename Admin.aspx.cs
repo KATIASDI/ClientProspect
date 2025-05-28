@@ -22,6 +22,14 @@ namespace PROJETFIN1
             {
                 ChargerUtilisateurs();
             }
+
+            string eventTarget = Request["__EVENTTARGET"];
+            string eventArgument = Request["__EVENTARGUMENT"];
+
+            if (!string.IsNullOrEmpty(eventTarget) && eventTarget == "ConfirmerSuppression")
+            {
+                ConfirmerSuppression(eventArgument); // Appelle ta méthode existante
+            }
         }
 
       
@@ -31,7 +39,7 @@ namespace PROJETFIN1
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
-                OracleCommand cmd = new OracleCommand("SELECT IDENTIFIANT AS IDENTIFIANT, NAME AS Nom, ROLE_ as ROLE, DATE_CREATION AS DateAjout, EMAIL FROM UTILISATEUR_", conn);
+                OracleCommand cmd = new OracleCommand("SELECT IDENTIFIANT AS IDENTIFIANT, NAME AS Nom, ROLE_ as ROLE, DATE_CREATION AS DateAjout, EMAIL,STATUS FROM UTILISATEUR_", conn);
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -66,44 +74,75 @@ namespace PROJETFIN1
                     }
                 }
             }
-            else if (e.CommandName == "DesactivateUser")
+            else if (e.CommandName == "Desactiver")
             {
-                ConfirmerSuppression(e.CommandArgument.ToString());
+                string identifiant = e.CommandArgument.ToString();
+                ConfirmerSuppression(identifiant);
+            }
+            else if (e.CommandName == "Reactivier")
+            {
+                string identifiant = e.CommandArgument.ToString();
+                ReactiverUtilisateur(identifiant);
             }
 
         }
-        private void ConfirmerSuppression(string userId)
+        private void ReactiverUtilisateur(string userId)
         {
-
-
-                      tUTILISATEUR_.UpdateStatus1(userId, "2"); // Mettre à jour le statut de l'utilisateur 
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
-                OracleCommand cmd = new OracleCommand("UPDATE UTILISATEUR_ SET STATUS =2 WHERE IDENTIFIANT = :id", conn);
-                cmd.Parameters.Add(new OracleParameter("id", userId));
-
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
+                using (OracleCommand cmd = new OracleCommand("UPDATE UTILISATEUR_ SET STATUS = 1 WHERE IDENTIFIANT = :id", conn))
                 {
-                    ChargerUtilisateurs();  // Rafraîchir le GridView après mise à jour
-                }
-                else
-                {
-                    // Gérer le postback manuel depuis __doPostBack
-                    string eventTarget = Request["__EVENTTARGET"];
-                    string eventArgument = Request["__EVENTARGUMENT"];
-
-                    if (eventTarget == "btnDesactivate" && !string.IsNullOrEmpty(eventArgument))
+                    cmd.Parameters.Add(new OracleParameter("id", userId));
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
                     {
-                        ConfirmerSuppression(eventArgument); // Désactive l’utilisateur avec l’ID
+                        ShowAlert("Réactivé", "Utilisateur réactivé avec succès.", "success");
+                        ChargerUtilisateurs();  // Rafraîchit le GridView
                     }
                 }
             }
         }
-     
-      
+
+        private void ConfirmerSuppression(string userId)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+                using (OracleCommand cmd = new OracleCommand("UPDATE UTILISATEUR_ SET STATUS = 2 WHERE IDENTIFIANT = :id", conn))
+                {
+                    cmd.Parameters.Add(new OracleParameter("id", userId));
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        ShowAlert("Désactivé", "Utilisateur désactivé avec succès.", "success");
+
+                        ChargerUtilisateurs();  // Rafraîchir le GridView après mise à jour
+                    }
+                    else
+                    {
+                        // Optionnel : afficher un message d'erreur si nécessaire
+                    }
+                }
+            }
+        }
+        private void ShowAlert(string title, string message, string icon)
+        {
+            string script = $@"<script>
+        Swal.fire({{
+            title: '{title}',
+            text: '{message}',
+            icon: '{icon}',
+            confirmButtonText: 'OK'
+        }});
+    </script>";
+
+            ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", script);
+        }
+
+
 
         protected void btnAjouter_Click(object sender, EventArgs e)
         {
@@ -122,6 +161,53 @@ namespace PROJETFIN1
                 cmd.ExecuteNonQuery();
             }
             ChargerUtilisateurs();
+            ShowAlert("Succès", "Nouvel utilisateur ajouté avec succès.", "success");
+
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            // On récupère la saisie du TextBox serveur
+            string filtre = txtSearch.Text.Trim();
+            ChargerUtilisateurs(filtre);
+        }
+
+        private void ChargerUtilisateurs(string filtre = "")
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string sql = @"
+            SELECT IDENTIFIANT AS IDENTIFIANT,
+                   NAME         AS Nom,
+                   ROLE_        AS ROLE,
+                   DATE_CREATION AS DateAjout,
+                   EMAIL,
+                   STATUS
+            FROM UTILISATEUR_";
+
+                if (!string.IsNullOrEmpty(filtre))
+                {
+                    sql += @"
+            WHERE LOWER(NAME)    LIKE :filtre
+               OR LOWER(EMAIL)   LIKE :filtre
+               OR LOWER(ROLE_)   LIKE :filtre";
+                }
+
+                using (OracleCommand cmd = new OracleCommand(sql, conn))
+                {
+                    if (!string.IsNullOrEmpty(filtre))
+                        cmd.Parameters.Add(new OracleParameter("filtre", "%" + filtre.ToLower() + "%"));
+
+                    OracleDataAdapter da = new OracleDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    gvUsers.DataSource = dt;
+                    gvUsers.DataBind();
+                }
+            }
         }
 
         protected void gvUsers_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,10 +224,7 @@ namespace PROJETFIN1
             Response.Redirect("~/Admin.aspx");
         }
 
-        protected void gvUsers_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-
-        }
+       
         protected void btnEdit_Command(object sender, CommandEventArgs e)
         {
             string identifiant = e.CommandArgument.ToString();
@@ -169,6 +252,7 @@ namespace PROJETFIN1
                 }
             }
         }
+
         protected void btnEnregistrer_Click(object sender, EventArgs e)
         {
             string identifiant = hiddenIdentifiant.Value;
@@ -195,7 +279,9 @@ namespace PROJETFIN1
             }
 
             pnlEditForm.Visible = false;
-            ChargerUtilisateurs(); // Recharge la liste
+            ChargerUtilisateurs();
+            ShowAlert("Mis à jour", "Les informations ont été mises à jour.", "success");
+            // Recharge la liste
         }
 
 

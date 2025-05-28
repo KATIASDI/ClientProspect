@@ -116,9 +116,12 @@
     <Content Include="ChargeAff.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="DirAgence.aspx" />
+    <Content Include="EditClient.aspx" />
     <Content Include="EditUser.aspx" />
+    <Content Include="Historique.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Login2.aspx" />
+    <Content Include="ModifierTables.aspx" />
     <Content Include="PlanningVisite.aspx" />
     <Content Include="RolesetPermissions.aspx" />
     <Content Include="Script\jquery-3.7.1.js" />
@@ -126,6 +129,7 @@
     <Content Include="Sidebar .aspx" />
     <Content Include="Process.aspx" />
     <Content Include="ViewProspect.aspx" />
+    <Content Include="VISITE.aspx" />
     <Content Include="Web.config" />
     <Content Include="AjoutUser.aspx" />
     <Content Include="WebForm1.aspx" />
@@ -170,12 +174,26 @@
     <Compile Include="DirAgence.aspx.designer.cs">
       <DependentUpon>DirAgence.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditClient.aspx.cs">
+      <DependentUpon>EditClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditClient.aspx.designer.cs">
+      <DependentUpon>EditClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditUser.aspx.cs">
       <DependentUpon>EditUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="EditUser.aspx.designer.cs">
       <DependentUpon>EditUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Historique.aspx.cs">
+      <DependentUpon>Historique.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Historique.aspx.designer.cs">
+      <DependentUpon>Historique.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -190,6 +208,13 @@
     </Compile>
     <Compile Include="Login2.aspx.designer.cs">
       <DependentUpon>Login2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModifierTables.aspx.cs">
+      <DependentUpon>ModifierTables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModifierTables.aspx.designer.cs">
+      <DependentUpon>ModifierTables.aspx</DependentUpon>
     </Compile>
     <Compile Include="PlanningVisite.aspx.cs">
       <DependentUpon>PlanningVisite.aspx</DependentUpon>
@@ -240,6 +265,13 @@
     </Compile>
     <Compile Include="ViewProspect.aspx.designer.cs">
       <DependentUpon>ViewProspect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VISITE.aspx.cs">
+      <DependentUpon>VISITE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VISITE.aspx.designer.cs">
+      <DependentUpon>VISITE.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

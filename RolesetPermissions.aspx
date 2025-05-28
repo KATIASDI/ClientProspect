@@ -122,6 +122,12 @@
 <a href="RolesetPermissions.aspx"><i class="bi bi-key-fill me-2"></i>Roles & Permissions</a>
 <a href="History.aspx"><i class="bi bi-clock-history me-2"></i>User History</a>
 <a href="Settings.aspx"><i class="bi bi-gear-wide-connected me-2"></i>Settings</a>
+                        <a id="linkLogout" runat="server" 
+       href="Login.aspx" 
+       class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center">
+        <i class="bi bi-box-arrow-right me-2"></i> Déconnexion
+    </a>
+</div>
 
 
 
